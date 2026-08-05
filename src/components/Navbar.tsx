@@ -36,24 +36,24 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full">
       {/* Top Utility Header with Marquee */}
-      <div className="bg-[#1E3A8A] text-white text-xs sm:text-sm py-2 border-b border-blue-900/50">
+      <div className="bg-[#003B65] text-white text-xs sm:text-sm py-2 border-b border-[#00223D]/50">
         <div className="max-container w-full overflow-hidden">
           <Marquee speed={35} gradient={false} pauseOnHover={true}>
             <div className="flex items-center gap-12 font-medium">
-              <span className="inline-flex items-center gap-1.5 bg-[#059669] text-white px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wide shadow-xs shrink-0">
+              <span className="inline-flex items-center gap-1.5 bg-[#0091A4] text-white px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wide shadow-xs shrink-0">
                 <ShieldCheck className="w-3.5 h-3.5" /> Same-Day Service Available
               </span>
-              <div className="flex items-center gap-1.5 text-blue-100 shrink-0">
-                <MapPin className="w-3.5 h-3.5 text-[#2563EB]" />
+              <div className="flex items-center gap-1.5 text-cyan-100 shrink-0">
+                <MapPin className="w-3.5 h-3.5 text-[#00A8B5]" />
                 <span>2699 Beachwood Dr, Los Angeles, CA 90068</span>
               </div>
-              <div className="flex items-center gap-1.5 text-blue-100 shrink-0">
-                <Clock className="w-3.5 h-3.5 text-[#2563EB]" />
+              <div className="flex items-center gap-1.5 text-cyan-100 shrink-0">
+                <Clock className="w-3.5 h-3.5 text-[#00A8B5]" />
                 <span>Mon-Fri 8am-6pm | Sat 9am-5pm</span>
               </div>
               <a
                 href="tel:+13238287503"
-                className="inline-flex items-center gap-1.5 text-[#D97706] hover:text-amber-300 font-bold transition-colors shrink-0"
+                className="inline-flex items-center gap-1.5 text-[#FFC72C] hover:text-amber-300 font-bold transition-colors shrink-0"
               >
                 <Phone className="w-3.5 h-3.5" />
                 <span>Call support: +1 (323) 828-7503</span>
@@ -63,7 +63,7 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Main Navbar with Glassmorphism */}
+      {/* Main Navbar */}
       <nav
         className={`w-full transition-all duration-200 ${
           isScrolled
@@ -84,10 +84,10 @@ export function Navbar() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-extrabold text-lg leading-tight tracking-tight text-[#1E3A8A]">
+              <span className="font-extrabold text-lg leading-tight tracking-tight text-[#003B65]">
                 Beachwood
               </span>
-              <span className="text-xs font-semibold text-[#2563EB] tracking-wider uppercase">
+              <span className="text-xs font-semibold text-[#00A8B5] tracking-wider uppercase">
                 Cleaners & Laundry
               </span>
             </div>
@@ -103,8 +103,8 @@ export function Navbar() {
                   href={link.href}
                   className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-colors ${
                     isActive
-                      ? "text-[#2563EB] bg-blue-50 font-bold"
-                      : "text-slate-700 hover:text-[#2563EB] hover:bg-slate-50"
+                      ? "text-[#00A8B5] bg-cyan-50 font-bold"
+                      : "text-slate-700 hover:text-[#00A8B5] hover:bg-slate-50"
                   }`}
                 >
                   {link.name}
@@ -117,13 +117,13 @@ export function Navbar() {
           <div className="hidden sm:flex items-center gap-3">
             <a
               href="tel:+13238287503"
-              className="hidden lg:inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-slate-700 hover:text-[#1E3A8A] border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors"
+              className="hidden lg:inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-slate-700 hover:text-[#003B65] border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors"
             >
               Call Now
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 text-sm font-bold text-white bg-[#2563EB] hover:bg-blue-700 rounded-xl shadow-sm hover:shadow transition-all duration-150 active:scale-98"
+              className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 text-sm font-bold text-white bg-[#00A8B5] hover:bg-[#0091A4] rounded-xl shadow-sm hover:shadow transition-all duration-150 active:scale-98"
             >
               Book Pickup <ChevronRight className="w-4 h-4" />
             </Link>
@@ -152,7 +152,7 @@ export function Navbar() {
                     onClick={() => setMobileMenuOpen(false)}
                     className={`px-3 py-2.5 rounded-lg text-base font-medium transition-colors ${
                       isActive
-                        ? "text-[#2563EB] bg-blue-50 font-semibold"
+                        ? "text-[#00A8B5] bg-cyan-50 font-semibold"
                         : "text-slate-700 hover:bg-slate-50"
                     }`}
                   >
@@ -164,14 +164,14 @@ export function Navbar() {
             <div className="pt-2 border-t border-slate-100 flex flex-col gap-2">
               <a
                 href="tel:+13238287503"
-                className="w-full py-2.5 text-center font-bold text-[#1E3A8A] bg-blue-50 rounded-xl"
+                className="w-full py-2.5 text-center font-bold text-[#003B65] bg-cyan-50 rounded-xl"
               >
                 Call +1 (323) 828-7503
               </a>
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-2.5 text-center font-bold text-white bg-[#2563EB] rounded-xl shadow"
+                className="w-full py-2.5 text-center font-bold text-white bg-[#00A8B5] rounded-xl shadow"
               >
                 Book Pickup
               </Link>
