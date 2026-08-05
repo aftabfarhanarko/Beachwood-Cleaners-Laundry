@@ -15,7 +15,7 @@
   --color-amber-warm: #FFC72C;
   --color-slate-dark: #00223D;
   --color-canvas-bg: #F8FAFC;
-  --font-inter: var(--font-inter), sans-serif;
+  --font-bai-jamjuree: var(--font-bai-jamjuree);
 }
 
 :root {
@@ -26,7 +26,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-bai-jamjuree), system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   scrollbar-width: thin;
   scrollbar-color: #00A8B5 #F8FAFC;
@@ -56,24 +56,30 @@ h1 {
   font-size: 2rem;
   font-weight: 700;
 }
+
 @media (min-width: 640px) {
   h1 {
     font-size: 3rem;
   }
 }
+
 @media (min-width: 1024px) {
   h1 {
-    font-size: 3.5rem; /* 56px */
+    font-size: 3.5rem;
+    /* 56px */
   }
 }
 
 h2 {
-  font-size: 1.5rem; /* 24px Mobile */
+  font-size: 1.5rem;
+  /* 24px Mobile */
   font-weight: 600;
 }
+
 @media (min-width: 1024px) {
   h2 {
-    font-size: 2.25rem; /* 36px Desktop */
+    font-size: 2.25rem;
+    /* 36px Desktop */
   }
 }
 
@@ -101,7 +107,8 @@ h2 {
 
 /* Custom utility styles */
 .max-container {
-  max-width: 80rem; /* max-w-7xl */
+  max-width: 80rem;
+  /* max-w-7xl */
   margin-left: auto;
   margin-right: auto;
   padding-left: 1rem;

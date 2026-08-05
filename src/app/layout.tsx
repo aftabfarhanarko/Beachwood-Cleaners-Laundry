@@ -1,15 +1,17 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Bai_Jamjuree } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { AosProvider } from "@/components/AosProvider";
 
-const inter = Inter({
+const baiJamjuree = Bai_Jamjuree({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-bai-jamjuree",
   display: "swap",
 });
+
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Beachwood Cleaners & Laundry | #1 Eco-Friendly Laundry & Dry Cleaning Los Angeles",
@@ -46,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${baiJamjuree.variable} h-full antialiased`}>
       <head>
         <script
           type="application/ld+json"
