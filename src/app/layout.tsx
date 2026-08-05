@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { AosProvider } from "@/components/AosProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -53,9 +54,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-[#F8FAFC] text-[#0F172A]">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <AosProvider>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </AosProvider>
       </body>
     </html>
   );

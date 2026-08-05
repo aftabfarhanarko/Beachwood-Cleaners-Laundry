@@ -101,12 +101,12 @@ export default function Home() {
   ];
 
   return (
-    <div className="space-y-20 pb-16">
+    <div className="space-y-20 pb-16 overflow-hidden">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[#003B65]/10 via-slate-50 to-white pt-10 pb-16 lg:pt-16 lg:pb-24">
         <div className="max-container grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Hero Box */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-6" data-aos="fade-up">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-50 text-[#003B65] border border-cyan-100 text-xs sm:text-sm font-bold tracking-wide">
               <Sparkles className="w-4 h-4 text-[#00A8B5]" />
               #1 Rated Laundry & Dry Cleaning in Los Angeles
@@ -153,7 +153,7 @@ export default function Home() {
           </div>
 
           {/* Right Hero Box - Graphic Card */}
-          <div className="lg:col-span-5 relative">
+          <div className="lg:col-span-5 relative" data-aos="fade-up" data-aos-delay="100">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               <div className="absolute -top-4 -left-4 w-72 h-72 bg-cyan-300/30 rounded-full blur-3xl -z-10" />
               <div className="absolute -bottom-4 -right-4 w-72 h-72 bg-amber-300/30 rounded-full blur-3xl -z-10" />
@@ -206,7 +206,7 @@ export default function Home() {
       </section>
 
       {/* Value Proposition Grid (6 Cards) */}
-      <section className="max-container">
+      <section className="max-container" data-aos="fade-up">
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
           <h2 className="text-xs font-bold uppercase tracking-wider text-[#00A8B5]">
             Why Beachwood Cleaners
@@ -226,6 +226,8 @@ export default function Home() {
               <div
                 key={idx}
                 className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between"
+                data-aos="fade-up"
+                data-aos-delay={idx * 50}
               >
                 <div className="space-y-4">
                   <div className="w-12 h-12 rounded-xl bg-cyan-50 text-[#00A8B5] flex items-center justify-center">
@@ -241,7 +243,7 @@ export default function Home() {
       </section>
 
       {/* Core Services Overview */}
-      <section className="bg-[#00223D] text-white py-16">
+      <section className="bg-[#00223D] text-white py-16" data-aos="fade-up">
         <div className="max-container space-y-10">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs font-bold uppercase tracking-wider text-[#00A8B5]">
@@ -260,7 +262,7 @@ export default function Home() {
       </section>
 
       {/* Transparent Pricing Preview Calculator */}
-      <section className="max-container">
+      <section className="max-container" data-aos="fade-up">
         <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
           <span className="text-xs font-bold uppercase tracking-wider text-[#00A8B5]">
             No Hidden Fees
@@ -276,7 +278,7 @@ export default function Home() {
       </section>
 
       {/* How It Works (4-Step Workflow) */}
-      <section className="bg-cyan-50/40 py-16 border-y border-cyan-100">
+      <section className="bg-cyan-50/40 py-16 border-y border-cyan-100" data-aos="fade-up">
         <div className="max-container space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs font-bold uppercase tracking-wider text-[#00A8B5]">
@@ -291,7 +293,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs relative">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs relative" data-aos="fade-up" data-aos-delay="0">
               <div className="w-10 h-10 rounded-xl bg-[#003B65] text-white font-extrabold flex items-center justify-center text-lg mb-4">
                 1
               </div>
@@ -301,7 +303,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs relative">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs relative" data-aos="fade-up" data-aos-delay="100">
               <div className="w-10 h-10 rounded-xl bg-[#00A8B5] text-white font-extrabold flex items-center justify-center text-lg mb-4">
                 2
               </div>
@@ -311,7 +313,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs relative">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs relative" data-aos="fade-up" data-aos-delay="200">
               <div className="w-10 h-10 rounded-xl bg-[#0091A4] text-white font-extrabold flex items-center justify-center text-lg mb-4">
                 3
               </div>
@@ -321,7 +323,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs relative">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs relative" data-aos="fade-up" data-aos-delay="300">
               <div className="w-10 h-10 rounded-xl bg-[#FFC72C] text-slate-950 font-extrabold flex items-center justify-center text-lg mb-4">
                 4
               </div>
@@ -335,7 +337,7 @@ export default function Home() {
       </section>
 
       {/* Customer Reviews & Trust Badges */}
-      <section className="max-container">
+      <section className="max-container" data-aos="fade-up">
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
           <span className="text-xs font-bold uppercase tracking-wider text-[#FFC72C]">
             Real Social Proof
@@ -353,6 +355,8 @@ export default function Home() {
             <div
               key={idx}
               className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4"
+              data-aos="fade-up"
+              data-aos-delay={idx * 100}
             >
               <div className="space-y-3">
                 <div className="flex text-[#FFC72C]">
@@ -372,7 +376,7 @@ export default function Home() {
       </section>
 
       {/* Interactive Google Map & Location Details */}
-      <section className="max-container">
+      <section className="max-container" data-aos="fade-up">
         <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-lg grid grid-cols-1 lg:grid-cols-12">
           <div className="lg:col-span-5 p-8 lg:p-10 space-y-6 flex flex-col justify-between">
             <div className="space-y-4">
@@ -438,7 +442,7 @@ export default function Home() {
       </section>
 
       {/* Frequently Asked Questions */}
-      <section className="max-container max-w-4xl">
+      <section className="max-container max-w-4xl" data-aos="fade-up">
         <div className="text-center mb-10 space-y-3">
           <span className="text-xs font-bold uppercase tracking-wider text-[#00A8B5]">
             Got Questions?
@@ -450,7 +454,7 @@ export default function Home() {
       </section>
 
       {/* High-Conversion Banner CTA */}
-      <section className="max-container">
+      <section className="max-container" data-aos="fade-up">
         <div className="bg-gradient-to-r from-[#003B65] via-[#00A8B5] to-[#00223D] rounded-3xl p-8 sm:p-12 text-white text-center space-y-6 shadow-2xl relative overflow-hidden">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight max-w-2xl mx-auto leading-tight">
             Ready For Fresh Clothes Without The Effort?
