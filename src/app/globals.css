@@ -1,28 +1,73 @@
 @import "tailwindcss";
 
 @theme {
-  --color-[#003B65]: #003B65;
-  --color-[#00A8B5]: #00A8B5;
-  --color-[#0091A4]: #0091A4;
-  --color-[#FFC72C]: #FFC72C;
-  --color-primary-base: #003B65;
-  --color-brand-accent: #00A8B5;
-  --color-emerald-accent: #0091A4;
+  --color-base-navy: #1E3A8A;
+  --color-primary-blue: #2563EB;
+  --color-eco-green: #059669;
+  --color-amber-warm: #D97706;
+  --color-slate-dark: #0F172A;
   --color-canvas-bg: #F8FAFC;
-  --color-slate-dark: #00223D;
-  --color-amber-warm: #FFC72C;
   --font-inter: var(--font-inter), sans-serif;
 }
 
 :root {
   --background: #F8FAFC;
-  --foreground: #00223D;
+  --foreground: #0F172A;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+/* Global Typography Specifications */
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+@media (min-width: 640px) {
+  h1 {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 3.5rem; /* 56px */
+  }
+}
+
+h2 {
+  font-size: 1.5rem; /* 24px Mobile */
+  font-weight: 600;
+}
+@media (min-width: 1024px) {
+  h2 {
+    font-size: 2.25rem; /* 36px Desktop */
+  }
+}
+
+/* Glassmorphism Card Style for USA Standard UI */
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  border-radius: 12px;
+  transition: all 0.25s ease-in-out;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px -4px rgba(37, 99, 235, 0.12);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 /* Custom utility styles */

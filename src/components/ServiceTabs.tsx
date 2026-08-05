@@ -12,33 +12,33 @@ export function ServiceTabs() {
     wash: (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div className="space-y-4">
-          <span className="bg-[#00A8B5]/20 text-[#00A8B5] border border-[#00A8B5]/30 text-xs font-bold px-3 py-1 rounded-full">
-            Most Popular Choice
+          <span className="bg-[#059669]/20 text-[#059669] border border-[#059669]/30 text-xs font-bold px-3 py-1 rounded-full">
+            Everyday Laundry Care
           </span>
-          <h3 className="text-2xl font-bold text-white">Everyday Wash & Fold Laundry</h3>
-          <p className="text-sm text-slate-300 leading-relaxed">
-            We sort your clothes by lights and darks, wash in premium hypoallergenic detergent, dry on low heat, and neatly fold your garments ready for the drawer.
+          <h3 className="text-2xl font-bold text-white">Wash & Fold Laundry ($2.45 / lb)</h3>
+          <p className="text-sm text-slate-300 leading-[1.6]">
+            Everyday clothes, towels, bedding. Separated by color, washed with hypoallergenic detergent, and neatly folded.
           </p>
           <ul className="space-y-2 text-sm text-slate-300">
             <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5]" /> Standard Rate: $2.45 / lb (15 lb min)
+              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Standard Rate: $2.45 / lb (15 lb min)
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5]" /> Includes socks, t-shirts, towels, sheets, underwear
+              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Includes socks, t-shirts, towels, sheets, underwear
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5]" /> 24 to 48 Hour Doorstep Return
+              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> 24 to 48 Hour Doorstep Return
             </li>
           </ul>
         </div>
-        <div className="bg-[#00172B] p-6 rounded-2xl border border-cyan-950 space-y-4 text-center">
-          <div className="text-4xl font-black text-[#FFC72C]">$2.45 <span className="text-base text-slate-400 font-normal">/ lb</span></div>
+        <div className="bg-[#0F172A] p-6 rounded-2xl border border-blue-900 space-y-4 text-center">
+          <div className="text-4xl font-black text-[#059669]">$2.45 <span className="text-base text-slate-400 font-normal">/ lb</span></div>
           <p className="text-xs text-slate-400">Free Pickup & Delivery on all orders over $35</p>
           <Link
             href="/contact"
-            className="block w-full py-3 bg-[#00A8B5] hover:bg-[#0091A4] text-white font-bold rounded-xl text-sm transition-all"
+            className="block w-full py-3 bg-[#2563EB] hover:bg-blue-700 text-white font-bold rounded-xl text-sm transition-all"
           >
-            Schedule Wash & Fold Pickup
+            Schedule Wash & Fold
           </Link>
         </div>
       </div>
@@ -46,33 +46,33 @@ export function ServiceTabs() {
     dry: (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div className="space-y-4">
-          <span className="bg-[#00A8B5]/20 text-[#00A8B5] border border-[#00A8B5]/30 text-xs font-bold px-3 py-1 rounded-full">
-            Eco-Friendly Organic Solvents
+          <span className="bg-[#2563EB]/20 text-[#2563EB] border border-[#2563EB]/30 text-xs font-bold px-3 py-1 rounded-full">
+            PERC-Free Organic Solvent
           </span>
-          <h3 className="text-2xl font-bold text-white">Executive Suit & Delicate Dry Cleaning</h3>
-          <p className="text-sm text-slate-300 leading-relaxed">
-            Expert hand-finishing for formalwear, silk dresses, wool suits, and outerwear. 100% PERC-free process protects fabric fibers and leaves zero odor.
+          <h3 className="text-2xl font-bold text-white">Executive Suit & Dress Dry Cleaning</h3>
+          <p className="text-sm text-slate-300 leading-[1.6]">
+            Expert hand-finishing for formalwear, silk dresses, wool suits, and outerwear. 100% PERC-free process.
           </p>
           <ul className="space-y-2 text-sm text-slate-300">
             <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5]" /> 2-Piece Suits: $22.00 | Standard Dresses: $17.00
+              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Two-Piece Suits: $22.00 / suit
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5]" /> Blazers/Jackets: $14.95 | Pants/Trousers: $8.95
+              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Dresses: $17.00 / dress | Jackets: $14.95
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5]" /> Hand-pressed with custom protective covers
+              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Pants & Trousers: $8.95 / pair
             </li>
           </ul>
         </div>
-        <div className="bg-[#00172B] p-6 rounded-2xl border border-cyan-950 space-y-4 text-center">
-          <div className="text-3xl font-black text-[#FFC72C]">Suits from $22.00</div>
+        <div className="bg-[#0F172A] p-6 rounded-2xl border border-blue-900 space-y-4 text-center">
+          <div className="text-3xl font-bold text-white">Suits $22.00 | Dresses $17.00</div>
           <p className="text-xs text-slate-400">Stain pre-treatment & structural steam press included</p>
           <Link
             href="/services"
-            className="block w-full py-3 bg-[#00A8B5] hover:bg-[#0091A4] text-white font-bold rounded-xl text-sm transition-all"
+            className="block w-full py-3 bg-[#2563EB] hover:bg-blue-700 text-white font-bold rounded-xl text-sm transition-all"
           >
-            View All Dry Cleaning Items
+            View All Pricing Details
           </Link>
         </div>
       </div>
@@ -80,33 +80,33 @@ export function ServiceTabs() {
     shirts: (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div className="space-y-4">
-          <span className="bg-[#FFC72C]/20 text-[#FFC72C] border border-[#FFC72C]/30 text-xs font-bold px-3 py-1 rounded-full">
-            Executive Crisp Finish
+          <span className="bg-[#D97706]/20 text-[#D97706] border border-[#D97706]/30 text-xs font-bold px-3 py-1 rounded-full">
+            Executive Hand-Pressed
           </span>
-          <h3 className="text-2xl font-bold text-white">Professional Laundered & Pressed Shirts</h3>
-          <p className="text-sm text-slate-300 leading-relaxed">
-            Custom button-down dress shirts washed, conditioned, and hand-pressed with crisp collar and cuff detailing. Returned on heavy hangers or folded.
+          <h3 className="text-2xl font-bold text-white">Laundered Shirts ($6.95 / shirt)</h3>
+          <p className="text-sm text-slate-300 leading-[1.6]">
+            Custom dress shirts washed and hand-pressed with collar & cuff detail. Returned on hangers.
           </p>
           <ul className="space-y-2 text-sm text-slate-300">
             <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5]" /> Flat Rate: $6.95 / shirt
+              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Flat Rate: $6.95 / shirt
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5]" /> Choice of light, medium, or heavy starch
+              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Choice of light, medium, or heavy starch
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5]" /> Free replacement of loose buttons
+              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Free button replacement audit
             </li>
           </ul>
         </div>
-        <div className="bg-[#00172B] p-6 rounded-2xl border border-cyan-950 space-y-4 text-center">
-          <div className="text-4xl font-black text-[#FFC72C]">$6.95 <span className="text-base text-slate-400 font-normal">/ shirt</span></div>
-          <p className="text-xs text-slate-400">Returned crisp on hangers in clear protective plastic</p>
+        <div className="bg-[#0F172A] p-6 rounded-2xl border border-blue-900 space-y-4 text-center">
+          <div className="text-4xl font-black text-[#D97706]">$6.95 <span className="text-base text-slate-400 font-normal">/ shirt</span></div>
+          <p className="text-xs text-slate-400">Returned crisp on heavy dress hangers</p>
           <Link
             href="/contact"
-            className="block w-full py-3 bg-[#00A8B5] hover:bg-[#0091A4] text-white font-bold rounded-xl text-sm transition-all"
+            className="block w-full py-3 bg-[#2563EB] hover:bg-blue-700 text-white font-bold rounded-xl text-sm transition-all"
           >
-            Book Shirt Laundry
+            Book Shirt Pressing
           </Link>
         </div>
       </div>
@@ -114,31 +114,31 @@ export function ServiceTabs() {
     commercial: (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div className="space-y-4">
-          <span className="bg-[#00A8B5]/20 text-[#00A8B5] border border-[#00A8B5]/30 text-xs font-bold px-3 py-1 rounded-full">
-            B2B & Host Solutions
+          <span className="bg-[#059669]/20 text-[#059669] border border-[#059669]/30 text-xs font-bold px-3 py-1 rounded-full">
+            B2B & Airbnb Hosts
           </span>
-          <h3 className="text-2xl font-bold text-white">Commercial & Airbnb Linen Care</h3>
-          <p className="text-sm text-slate-300 leading-relaxed">
-            Custom high-volume laundry plans for Airbnb hosts, boutique hotels, spa wellness centers, and fitness clubs across Los Angeles. Dedicated account manager.
+          <h3 className="text-2xl font-bold text-white">Commercial & Airbnb Laundry</h3>
+          <p className="text-sm text-slate-300 leading-[1.6]">
+            Custom high-volume laundry plans for Airbnb hosts, boutique hotels, spas, and fitness centers.
           </p>
           <ul className="space-y-2 text-sm text-slate-300">
             <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5]" /> Bulk volume pricing discounts
+              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Bulk volume pricing discounts
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5]" /> Scheduled daily or weekly pickup slots
+              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Scheduled daily or weekly pickup slots
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5]" /> Itemized monthly corporate billing
+              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Itemized monthly corporate invoicing
             </li>
           </ul>
         </div>
-        <div className="bg-[#00172B] p-6 rounded-2xl border border-cyan-950 space-y-4 text-center">
-          <div className="text-2xl font-black text-[#FFC72C]">Custom Commercial Rates</div>
+        <div className="bg-[#0F172A] p-6 rounded-2xl border border-blue-900 space-y-4 text-center">
+          <div className="text-2xl font-bold text-[#059669]">Custom Commercial Rates</div>
           <p className="text-xs text-slate-400">Dedicated driver & scheduled recurring deliveries</p>
           <a
             href="tel:+13238287503"
-            className="block w-full py-3 bg-[#FFC72C] hover:bg-amber-400 text-slate-950 font-extrabold rounded-xl text-sm transition-all"
+            className="block w-full py-3 bg-[#2563EB] hover:bg-blue-700 text-white font-bold rounded-xl text-sm transition-all"
           >
             Call Commercial Team
           </a>
@@ -150,14 +150,14 @@ export function ServiceTabs() {
   const tabs: { key: "wash" | "dry" | "shirts" | "commercial"; label: string }[] = [
     { key: "wash", label: "Wash & Fold ($2.45/lb)" },
     { key: "dry", label: "Executive Dry Cleaning" },
-    { key: "shirts", label: "Shirt Service ($6.95)" },
+    { key: "shirts", label: "Laundered Shirts ($6.95)" },
     { key: "commercial", label: "Commercial & Airbnb" },
   ];
 
   return (
     <div className="space-y-10">
       {/* Navigation Tabs */}
-      <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto bg-[#00223D]/80 p-1.5 rounded-2xl border border-cyan-900">
+      <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto bg-[#0F172A]/80 p-1.5 rounded-2xl border border-blue-900">
         {tabs.map((tab) => (
           <button
             key={tab.key}
@@ -167,7 +167,7 @@ export function ServiceTabs() {
             {activeTab === tab.key && (
               <motion.div
                 layoutId="activeTabIndicator"
-                className="absolute inset-0 bg-[#00A8B5] rounded-xl -z-10"
+                className="absolute inset-0 bg-[#2563EB] rounded-xl -z-10"
                 transition={{ type: "spring", stiffness: 300, damping: 28 }}
               />
             )}
@@ -179,7 +179,7 @@ export function ServiceTabs() {
       </div>
 
       {/* Tab Details Display with Framer Motion AnimatePresence */}
-      <div className="bg-[#00223D]/60 rounded-3xl p-8 border border-cyan-950 max-w-4xl mx-auto overflow-hidden min-h-[350px] flex items-center justify-center">
+      <div className="bg-[#0F172A]/60 rounded-3xl p-8 border border-blue-900 max-w-4xl mx-auto overflow-hidden min-h-[350px] flex items-center justify-center">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
