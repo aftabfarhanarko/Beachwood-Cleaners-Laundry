@@ -1,5 +1,8 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Star,
   ShieldCheck,
@@ -16,16 +19,393 @@ import {
   Recycle,
   BadgeCheck,
   Building2,
+  Calculator,
+  Shirt,
+  Briefcase,
 } from "lucide-react";
-import { PricingCalculator } from "@/components/PricingCalculator";
-import { ServiceTabs } from "@/components/ServiceTabs";
 import { HomeFaqAccordion } from "@/components/HomeFaqAccordion";
 
-export const metadata = {
-  title: "Beachwood Cleaners & Laundry | #1 Eco-Friendly Laundry & Dry Cleaning Los Angeles",
-  description: "Professional eco-friendly dry cleaning and wash-and-fold laundry delivery in Los Angeles (2699 Beachwood Dr, LA CA 90068). Call +1 (323) 828-7503 for doorstep service.",
-};
+/* ------------------------------------------------------------------ */
+/*  PricingCalculator — premium minimal instant price estimator        */
+/* ------------------------------------------------------------------ */
+function PricingCalculator() {
+  const [washWeight, setWashWeight] = useState<number>(15);
+  const [shirts, setShirts] = useState<number>(3);
+  const [suits, setSuits] = useState<number>(1);
+  const [dresses, setDresses] = useState<number>(0);
 
+  const washRate = 2.45;
+  const shirtRate = 6.95;
+  const suitRate = 22.0;
+  const dressRate = 17.0;
+
+  const totalWash = washWeight * washRate;
+  const totalShirts = shirts * shirtRate;
+  const totalSuits = suits * suitRate;
+  const totalDresses = dresses * dressRate;
+
+  const subtotal = totalWash + totalShirts + totalSuits + totalDresses;
+
+  const counters = [
+    {
+      key: "shirts",
+      label: "Shirts",
+      rate: "$6.95 / ea",
+      value: shirts,
+      set: setShirts,
+      icon: Shirt,
+    },
+    {
+      key: "suits",
+      label: "Suits",
+      rate: "$22.00 / ea",
+      value: suits,
+      set: setSuits,
+      icon: Briefcase,
+    },
+    {
+      key: "dresses",
+      label: "Dresses",
+      rate: "$17.00 / ea",
+      value: dresses,
+      set: setDresses,
+      icon: Sparkles,
+    },
+  ];
+
+  return (
+    <div className="relative max-w-2xl mx-auto">
+      <div className="absolute -top-10 -right-10 w-56 h-56 bg-cyan-100/50 rounded-full blur-3xl -z-10" />
+      <div className="absolute -bottom-10 -left-10 w-56 h-56 bg-amber-100/40 rounded-full blur-3xl -z-10" />
+
+      <div className="bg-white/90 backdrop-blur-xl rounded-[2rem] p-6 sm:p-9 shadow-[0_8px_40px_-12px_rgba(0,59,101,0.15)] border border-slate-100">
+        {/* Header */}
+        <div className="flex items-center gap-3.5 mb-8">
+          <div className="w-12 h-12 rounded-2xl bg-[#003B65] flex items-center justify-center text-white shrink-0">
+            <Calculator className="w-5.5 h-5.5" strokeWidth={2} />
+          </div>
+          <div>
+            <h3 className="text-lg sm:text-xl font-bold text-[#00223D] tracking-tight">
+              Instant Price Estimator
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-500">
+              A transparent quote before you ever pick up the phone.
+            </p>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          {/* Wash & Fold Slider */}
+          <div className="p-5 bg-slate-50/70 rounded-2xl border border-slate-100">
+            <div className="flex justify-between items-baseline mb-3">
+              <span className="font-semibold text-[#00223D] text-sm">
+                Wash & Fold Laundry
+              </span>
+              <span className="text-slate-400 text-xs font-medium">$2.45 / lb</span>
+            </div>
+
+            <div className="flex items-end justify-between mb-2">
+              <span className="text-3xl font-black text-[#00223D] tracking-tight">
+                {washWeight}
+                <span className="text-sm font-semibold text-slate-400 ml-1">lbs</span>
+              </span>
+              <span className="text-lg font-bold text-[#00A8B5]">
+                ${totalWash.toFixed(2)}
+              </span>
+            </div>
+
+            <input
+              type="range"
+              min="10"
+              max="50"
+              step="1"
+              value={washWeight}
+              onChange={(e) => setWashWeight(Number(e.target.value))}
+              className="w-full h-1.5 bg-slate-200 rounded-full appearance-none cursor-pointer accent-[#00A8B5]"
+            />
+            <div className="flex justify-between text-[11px] text-slate-400 mt-2 font-medium">
+              <span>10 lbs Min</span>
+              <span>25 lbs Avg Bag</span>
+              <span>50 lbs Large</span>
+            </div>
+          </div>
+
+          {/* Item Counter Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {counters.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.key}
+                  className="p-4 bg-slate-50/70 rounded-2xl border border-slate-100 flex flex-col gap-3"
+                >
+                  <div className="flex items-center gap-2">
+                    <Icon className="w-4 h-4 text-[#00A8B5]" strokeWidth={2} />
+                    <div className="leading-tight">
+                      <p className="text-xs font-bold text-[#00223D]">{item.label}</p>
+                      <p className="text-[10px] text-slate-400 font-medium">{item.rate}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <button
+                      onClick={() => item.set(Math.max(0, item.value - 1))}
+                      aria-label={`Decrease ${item.label}`}
+                      className="w-8 h-8 rounded-lg bg-white border border-slate-200 font-bold text-slate-600 hover:border-[#00A8B5] hover:text-[#00A8B5] transition-colors cursor-pointer"
+                    >
+                      –
+                    </button>
+                    <span className="font-black text-[#00223D] text-lg tabular-nums">
+                      {item.value}
+                    </span>
+                    <button
+                      onClick={() => item.set(item.value + 1)}
+                      aria-label={`Increase ${item.label}`}
+                      className="w-8 h-8 rounded-lg bg-white border border-slate-200 font-bold text-slate-600 hover:border-[#00A8B5] hover:text-[#00A8B5] transition-colors cursor-pointer"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Estimated Total Display */}
+          <div className="p-6 bg-[#003B65] text-white rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-5">
+            <div>
+              <span className="text-[11px] uppercase tracking-widest font-bold text-cyan-200/80 block mb-1">
+                Estimated Total
+              </span>
+              <div className="text-4xl font-black tracking-tight">${subtotal.toFixed(2)}</div>
+              <span className="text-[11px] text-cyan-100/90 flex items-center gap-1.5 mt-2 font-medium">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#FFC72C]" /> Free pickup & delivery included
+              </span>
+            </div>
+            <a
+              href="/contact"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#FFC72C] hover:bg-amber-400 text-[#00223D] font-extrabold rounded-xl transition-all duration-150 active:scale-[0.98] text-sm shrink-0"
+            >
+              Book This Order <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  ServiceTabs — premium light service pricing tab switcher           */
+/* ------------------------------------------------------------------ */
+function ServiceTabs() {
+  const [activeTab, setActiveTab] = useState<"wash" | "dry" | "shirts" | "commercial">("wash");
+
+  const tabContent = {
+    wash: (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
+        <div className="space-y-4">
+          <span className="inline-block bg-cyan-50 text-[#0091A4] border border-cyan-100 text-xs font-bold px-3 py-1 rounded-full">
+            Everyday Laundry Care
+          </span>
+          <h3 className="text-2xl font-bold text-[#00223D] tracking-tight">
+            Wash & Fold Laundry ($2.45 / lb)
+          </h3>
+          <p className="text-sm text-slate-600 leading-[1.6]">
+            Everyday clothes, towels, bedding. Separated by color, washed with hypoallergenic detergent, and neatly folded.
+          </p>
+          <ul className="space-y-2.5 text-sm text-slate-700">
+            <li className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Standard Rate: $2.45 / lb (15 lb min)
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Includes socks, t-shirts, towels, sheets, underwear
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> 24 to 48 Hour Doorstep Return
+            </li>
+          </ul>
+        </div>
+        <div className="bg-slate-50/80 p-7 rounded-2xl border border-slate-100 space-y-4 text-center">
+          <div className="text-4xl font-black text-[#00223D] tracking-tight">
+            $2.45 <span className="text-base text-slate-400 font-semibold">/ lb</span>
+          </div>
+          <p className="text-xs text-slate-500">Free pickup & delivery on all orders over $35</p>
+          <Link
+            href="/contact"
+            className="block w-full py-3.5 bg-[#00A8B5] hover:bg-[#0091A4] text-white font-bold rounded-xl text-sm transition-all"
+          >
+            Schedule Wash & Fold
+          </Link>
+        </div>
+      </div>
+    ),
+    dry: (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
+        <div className="space-y-4">
+          <span className="inline-block bg-cyan-50 text-[#0091A4] border border-cyan-100 text-xs font-bold px-3 py-1 rounded-full">
+            PERC-Free Organic Solvent
+          </span>
+          <h3 className="text-2xl font-bold text-[#00223D] tracking-tight">
+            Executive Suit & Dress Dry Cleaning
+          </h3>
+          <p className="text-sm text-slate-600 leading-[1.6]">
+            Expert hand-finishing for formalwear, silk dresses, wool suits, and outerwear. 100% PERC-free process.
+          </p>
+          <ul className="space-y-2.5 text-sm text-slate-700">
+            <li className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Two-Piece Suits: $22.00 / suit
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Dresses: $17.00 / dress | Jackets: $14.95
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Pants & Trousers: $8.95 / pair
+            </li>
+          </ul>
+        </div>
+        <div className="bg-slate-50/80 p-7 rounded-2xl border border-slate-100 space-y-4 text-center">
+          <div className="text-2xl font-bold text-[#00223D] tracking-tight">
+            Suits $22.00 <span className="text-slate-300 font-normal">|</span> Dresses $17.00
+          </div>
+          <p className="text-xs text-slate-500">Stain pre-treatment & structural steam press included</p>
+          <Link
+            href="/services"
+            className="block w-full py-3.5 bg-[#00A8B5] hover:bg-[#0091A4] text-white font-bold rounded-xl text-sm transition-all"
+          >
+            View All Pricing Details
+          </Link>
+        </div>
+      </div>
+    ),
+    shirts: (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
+        <div className="space-y-4">
+          <span className="inline-block bg-amber-50 text-[#B8860B] border border-amber-100 text-xs font-bold px-3 py-1 rounded-full">
+            Executive Hand-Pressed
+          </span>
+          <h3 className="text-2xl font-bold text-[#00223D] tracking-tight">
+            Laundered Shirts ($6.95 / shirt)
+          </h3>
+          <p className="text-sm text-slate-600 leading-[1.6]">
+            Custom dress shirts washed and hand-pressed with collar & cuff detail. Returned on hangers.
+          </p>
+          <ul className="space-y-2.5 text-sm text-slate-700">
+            <li className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Flat Rate: $6.95 / shirt
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Choice of light, medium, or heavy starch
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Free button replacement audit
+            </li>
+          </ul>
+        </div>
+        <div className="bg-slate-50/80 p-7 rounded-2xl border border-slate-100 space-y-4 text-center">
+          <div className="text-4xl font-black text-[#00223D] tracking-tight">
+            $6.95 <span className="text-base text-slate-400 font-semibold">/ shirt</span>
+          </div>
+          <p className="text-xs text-slate-500">Returned crisp on heavy dress hangers</p>
+          <Link
+            href="/contact"
+            className="block w-full py-3.5 bg-[#00A8B5] hover:bg-[#0091A4] text-white font-bold rounded-xl text-sm transition-all"
+          >
+            Book Shirt Pressing
+          </Link>
+        </div>
+      </div>
+    ),
+    commercial: (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
+        <div className="space-y-4">
+          <span className="inline-block bg-cyan-50 text-[#0091A4] border border-cyan-100 text-xs font-bold px-3 py-1 rounded-full">
+            B2B & Airbnb Hosts
+          </span>
+          <h3 className="text-2xl font-bold text-[#00223D] tracking-tight">
+            Commercial & Airbnb Laundry
+          </h3>
+          <p className="text-sm text-slate-600 leading-[1.6]">
+            Custom high-volume laundry plans for Airbnb hosts, boutique hotels, spas, and fitness centers.
+          </p>
+          <ul className="space-y-2.5 text-sm text-slate-700">
+            <li className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Bulk volume pricing discounts
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Scheduled daily or weekly pickup slots
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Itemized monthly corporate invoicing
+            </li>
+          </ul>
+        </div>
+        <div className="bg-slate-50/80 p-7 rounded-2xl border border-slate-100 space-y-4 text-center">
+          <div className="text-xl font-bold text-[#00223D] tracking-tight">Custom Commercial Rates</div>
+          <p className="text-xs text-slate-500">Dedicated driver & scheduled recurring deliveries</p>
+          <a
+            href="tel:+13238287503"
+            className="block w-full py-3.5 bg-[#00A8B5] hover:bg-[#0091A4] text-white font-bold rounded-xl text-sm transition-all"
+          >
+            Call Commercial Team
+          </a>
+        </div>
+      </div>
+    ),
+  };
+
+  const tabs: { key: "wash" | "dry" | "shirts" | "commercial"; label: string }[] = [
+    { key: "wash", label: "Wash & Fold ($2.45/lb)" },
+    { key: "dry", label: "Executive Dry Cleaning" },
+    { key: "shirts", label: "Laundered Shirts ($6.95)" },
+    { key: "commercial", label: "Commercial & Airbnb" },
+  ];
+
+  return (
+    <div className="space-y-10">
+      {/* Navigation Tabs — light, glass-pill selector */}
+      <div className="flex flex-wrap justify-center gap-1.5 max-w-2xl mx-auto bg-slate-100/80 p-1.5 rounded-2xl border border-slate-200">
+        {tabs.map((tab) => (
+          <button
+            key={tab.key}
+            onClick={() => setActiveTab(tab.key)}
+            className="relative px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors cursor-pointer text-slate-500 hover:text-[#00223D]"
+          >
+            {activeTab === tab.key && (
+              <motion.div
+                layoutId="activeTabIndicator"
+                className="absolute inset-0 bg-white rounded-xl shadow-sm -z-10"
+                transition={{ type: "spring", stiffness: 300, damping: 28 }}
+              />
+            )}
+            <span className={activeTab === tab.key ? "text-[#00223D] font-bold" : ""}>
+              {tab.label}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      {/* Tab Details Display — white premium card with framer-motion AnimatePresence */}
+      <div className="bg-white rounded-[2rem] p-7 sm:p-10 border border-slate-100 shadow-[0_8px_40px_-12px_rgba(0,59,101,0.1)] max-w-4xl mx-auto overflow-hidden min-h-[350px] flex items-center justify-center">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="w-full"
+          >
+            {tabContent[activeTab]}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Home Page                                                          */
+/* ------------------------------------------------------------------ */
 export default function Home() {
   const valueProps = [
     {
@@ -150,7 +530,7 @@ export default function Home() {
               <Sparkles className="w-4 h-4 text-[#00A8B5]" />
               #1 Rated Laundry & Dry Cleaning in Los Angeles
             </div>
-            
+
             <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-bold text-[#00223D] tracking-tight leading-[1.1]">
               Professional Garment Care <br className="hidden sm:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#003B65] via-[#00A8B5] to-[#0091A4]">
@@ -196,7 +576,7 @@ export default function Home() {
             <div className="relative mx-auto max-w-md lg:max-w-none">
               <div className="absolute -top-4 -left-4 w-72 h-72 bg-cyan-300/30 rounded-full blur-3xl -z-10" />
               <div className="absolute -bottom-4 -right-4 w-72 h-72 bg-amber-300/30 rounded-full blur-3xl -z-10" />
-              
+
               <div className="bg-gradient-to-tr from-[#003B65] via-[#005B94] to-[#00A8B5] rounded-3xl p-6 text-white shadow-2xl space-y-6 relative overflow-hidden border border-white/10 backdrop-blur-md">
                 <div className="flex items-center justify-between">
                   <span className="text-xs uppercase tracking-widest font-bold text-cyan-100">
@@ -351,17 +731,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Core Services Overview */}
-      <section className="bg-[#00223D] text-white py-16" data-aos="fade-up">
+      {/* Core Services Overview — light, premium section */}
+      <section className="bg-white py-16 border-y border-slate-100" data-aos="fade-up">
         <div className="max-container space-y-10">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs font-bold uppercase tracking-wider text-[#00A8B5]">
               Our Core Services
             </span>
-            <h2 className="text-2xl lg:text-[36px] font-semibold tracking-tight text-white">
+            <h2 className="text-2xl lg:text-[36px] font-semibold tracking-tight text-[#00223D]">
               Garment Care Specialized For Every Fabric
             </h2>
-            <p className="text-slate-300 text-sm sm:text-base leading-[1.6]">
+            <p className="text-slate-600 text-sm sm:text-base leading-[1.6]">
               Select a service below to preview pricing and standard turnaround times.
             </p>
           </div>
@@ -498,7 +878,7 @@ export default function Home() {
               <p className="text-sm text-slate-600 leading-[1.6]">
                 Prefer to drop off in person? Drop by our store situated right on Beachwood Dr in Los Angeles.
               </p>
-              
+
               <div className="space-y-3 pt-2 text-sm text-slate-700">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-[#00A8B5] shrink-0 mt-0.5" />
