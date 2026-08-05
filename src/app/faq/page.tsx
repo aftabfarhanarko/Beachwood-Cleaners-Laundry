@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ChevronDown, HelpCircle, Phone, ArrowRight } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 export default function FaqPage() {
   const [activeCategory, setActiveCategory] = useState<"general" | "logistics" | "care" | "billing">("general");
@@ -79,15 +79,15 @@ export default function FaqPage() {
   return (
     <div className="space-y-16 py-12">
       {/* Header Banner */}
-      <section className="bg-[#1E3A8A] text-white py-16">
+      <section className="bg-[#003B65] text-white py-16">
         <div className="max-container text-center space-y-4 max-w-3xl">
-          <span className="bg-[#2563EB] text-white text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider">
+          <span className="bg-[#00A8B5] text-white text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider">
             Help & Knowledgebase
           </span>
           <h1 className="text-4xl sm:text-5xl font-black tracking-tight">
             Frequently Asked Questions
           </h1>
-          <p className="text-blue-100 text-base sm:text-lg">
+          <p className="text-cyan-100 text-base sm:text-lg">
             Find answers regarding our eco solvents, pickup logistics, per-pound rates, and garment care.
           </p>
         </div>
@@ -104,9 +104,9 @@ export default function FaqPage() {
                 setActiveCategory(cat.key as any);
                 setOpenIndex(0);
               }}
-              className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+              className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
                 activeCategory === cat.key
-                  ? "bg-[#2563EB] text-white shadow"
+                  ? "bg-[#00A8B5] text-white shadow"
                   : "text-slate-700 hover:bg-slate-200/60"
               }`}
             >
@@ -124,12 +124,12 @@ export default function FaqPage() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                className="w-full p-6 text-left font-bold text-[#0F172A] flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors"
+                className="w-full p-6 text-left font-bold text-[#00223D] flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors cursor-pointer"
               >
                 <span className="text-base sm:text-lg">{faq.q}</span>
                 <ChevronDown
                   className={`w-5 h-5 text-slate-400 shrink-0 transition-transform ${
-                    openIndex === idx ? "rotate-180 text-[#2563EB]" : ""
+                    openIndex === idx ? "rotate-180 text-[#00A8B5]" : ""
                   }`}
                 />
               </button>
@@ -145,7 +145,7 @@ export default function FaqPage() {
 
       {/* Still Have Questions CTA */}
       <section className="max-container max-w-3xl">
-        <div className="bg-slate-900 text-white rounded-3xl p-8 text-center space-y-4">
+        <div className="bg-[#00223D] text-white rounded-3xl p-8 text-center space-y-4">
           <h3 className="text-2xl font-bold">Have a specific question not listed here?</h3>
           <p className="text-slate-400 text-sm max-w-md mx-auto">
             Our customer care team is available by phone or email Monday through Saturday.
@@ -153,13 +153,13 @@ export default function FaqPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
             <a
               href="tel:+13238287503"
-              className="px-6 py-3 bg-[#2563EB] hover:bg-blue-600 font-bold rounded-xl text-sm transition-all"
+              className="px-6 py-3 bg-[#00A8B5] hover:bg-[#0091A4] font-bold rounded-xl text-sm transition-all"
             >
               Call +1 (323) 828-7503
             </a>
             <Link
               href="/contact"
-              className="px-6 py-3 bg-slate-800 hover:bg-slate-700 font-bold rounded-xl text-sm transition-all border border-slate-700"
+              className="px-6 py-3 bg-[#00172B] hover:bg-slate-800 font-bold rounded-xl text-sm transition-all border border-cyan-950"
             >
               Send Message
             </Link>
