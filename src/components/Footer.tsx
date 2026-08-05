@@ -1,17 +1,23 @@
 import React from "react";
 import Link from "next/link";
-import { Phone, Mail, MapPin, Shield, Star, Heart } from "lucide-react";
+import Image from "next/image";
+import { Phone, Mail, MapPin, Star } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-[#0F172A] text-slate-300 pt-16 pb-8 border-t border-slate-800">
+    <footer className="bg-[#00223D] text-slate-300 pt-16 pb-8 border-t border-cyan-950">
       <div className="max-container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
           {/* Col 1: About & Info */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-xl bg-[#2563EB] flex items-center justify-center text-white font-black text-lg shadow">
-                B
+            <div className="flex items-center gap-3">
+              <div className="relative w-10 h-10 shrink-0">
+                <Image
+                  src="/logo1.png"
+                  alt="Beachwood Cleaners Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <span className="font-extrabold text-xl text-white tracking-tight">
                 Beachwood Cleaners
@@ -20,10 +26,10 @@ export function Footer() {
             <p className="text-sm text-slate-400 leading-relaxed">
               Los Angeles’ premier eco-friendly dry cleaner & wash-and-fold laundry service. Providing white-glove doorstep garment care to Beachwood Canyon & greater LA.
             </p>
-            <div className="flex items-center gap-1.5 text-amber-400 font-semibold text-sm">
-              <div className="flex text-amber-400">
+            <div className="flex items-center gap-1.5 text-[#FFC72C] font-semibold text-sm">
+              <div className="flex text-[#FFC72C]">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-amber-400 stroke-amber-400" />
+                  <Star key={i} className="w-4 h-4 fill-[#FFC72C] stroke-[#FFC72C]" />
                 ))}
               </div>
               <span className="text-white font-bold">4.9 / 5.0</span>
@@ -33,7 +39,7 @@ export function Footer() {
 
           {/* Col 2: Quick Links */}
           <div>
-            <h3 className="text-white font-bold text-base mb-4 tracking-wide uppercase text-xs text-blue-400">
+            <h3 className="text-white font-bold text-base mb-4 tracking-wide uppercase text-xs text-[#00A8B5]">
               Quick Navigation
             </h3>
             <ul className="space-y-2.5 text-sm">
@@ -72,7 +78,7 @@ export function Footer() {
 
           {/* Col 3: Services */}
           <div>
-            <h3 className="text-white font-bold text-base mb-4 tracking-wide uppercase text-xs text-blue-400">
+            <h3 className="text-white font-bold text-base mb-4 tracking-wide uppercase text-xs text-[#00A8B5]">
               Our Services
             </h3>
             <ul className="space-y-2.5 text-sm text-slate-400">
@@ -87,21 +93,21 @@ export function Footer() {
 
           {/* Col 4: Store Info & Hours */}
           <div className="space-y-3 text-sm">
-            <h3 className="text-white font-bold text-base mb-4 tracking-wide uppercase text-xs text-blue-400">
+            <h3 className="text-white font-bold text-base mb-4 tracking-wide uppercase text-xs text-[#00A8B5]">
               Contact & Store Hours
             </h3>
             <div className="flex items-start gap-2.5">
-              <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+              <MapPin className="w-4 h-4 text-[#00A8B5] shrink-0 mt-0.5" />
               <span>2699 Beachwood Dr, Los Angeles, CA 90068</span>
             </div>
             <div className="flex items-center gap-2.5">
-              <Phone className="w-4 h-4 text-amber-400 shrink-0" />
+              <Phone className="w-4 h-4 text-[#FFC72C] shrink-0" />
               <a href="tel:+13238287503" className="text-white font-semibold hover:underline">
                 +1 (323) 828-7503
               </a>
             </div>
             <div className="flex items-center gap-2.5">
-              <Mail className="w-4 h-4 text-blue-400 shrink-0" />
+              <Mail className="w-4 h-4 text-[#00A8B5] shrink-0" />
               <a href="mailto:laundryday@gmail.com" className="hover:underline">
                 laundryday@gmail.com
               </a>

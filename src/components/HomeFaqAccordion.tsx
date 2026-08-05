@@ -25,7 +25,7 @@ export function HomeFaqAccordion({ faqs }: { faqs: FaqItem[] }) {
             <span className="text-base">{faq.q}</span>
             <ChevronDown
               className={`w-5 h-5 text-slate-500 transition-transform ${
-                openFaq === idx ? "rotate-180 text-[#2563EB]" : ""
+                openFaq === idx ? "rotate-180 text-[#00A8B5]" : ""
               }`}
             />
           </button>
