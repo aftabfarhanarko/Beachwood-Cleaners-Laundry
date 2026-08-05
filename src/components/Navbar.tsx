@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import Marquee from "react-fast-marquee";
 import { Phone, MapPin, Clock, ShieldCheck, Menu, X, ChevronRight } from "lucide-react";
 
 export function Navbar() {
@@ -34,32 +35,30 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full">
-      {/* Top Utility Header */}
-      <div className="bg-[#003B65] text-white text-xs sm:text-sm py-2 px-4 border-b border-[#00223D]/50">
-        <div className="max-container flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-4 flex-wrap">
-            <span className="inline-flex items-center gap-1.5 bg-[#0091A4] text-white px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wide shadow-xs">
+      {/* Top Utility Header with Marquee */}
+      <div className="bg-[#003B65] text-white text-xs sm:text-sm py-2 px-4 border-b border-[#00223D]/50 flex items-center overflow-hidden">
+        <Marquee speed={35} gradient={false} pauseOnHover={true}>
+          <div className="flex items-center gap-12 font-medium">
+            <span className="inline-flex items-center gap-1.5 bg-[#0091A4] text-white px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wide shadow-xs shrink-0">
               <ShieldCheck className="w-3.5 h-3.5" /> Same-Day Service Available
             </span>
-            <div className="hidden md:flex items-center gap-1.5 text-cyan-100">
+            <div className="flex items-center gap-1.5 text-cyan-100 shrink-0">
               <MapPin className="w-3.5 h-3.5 text-[#00A8B5]" />
               <span>2699 Beachwood Dr, Los Angeles, CA 90068</span>
             </div>
-            <div className="hidden lg:flex items-center gap-1.5 text-cyan-100">
+            <div className="flex items-center gap-1.5 text-cyan-100 shrink-0">
               <Clock className="w-3.5 h-3.5 text-[#00A8B5]" />
               <span>Mon-Fri 8am-6pm | Sat 9am-5pm</span>
             </div>
-          </div>
-          <div className="flex items-center gap-4 ml-auto sm:ml-0">
             <a
               href="tel:+13238287503"
-              className="inline-flex items-center gap-1.5 text-[#FFC72C] hover:text-amber-300 font-bold transition-colors"
+              className="inline-flex items-center gap-1.5 text-[#FFC72C] hover:text-amber-300 font-bold transition-colors shrink-0"
             >
               <Phone className="w-3.5 h-3.5" />
-              <span>+1 (323) 828-7503</span>
+              <span>Call support: +1 (323) 828-7503</span>
             </a>
           </div>
-        </div>
+        </Marquee>
       </div>
 
       {/* Main Navbar */}
@@ -71,7 +70,7 @@ export function Navbar() {
         }`}
       >
         <div className="max-container flex items-center justify-between">
-          {/* Brand Logo with logo1.png */}
+          {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-11 h-11 shrink-0">
               <Image
