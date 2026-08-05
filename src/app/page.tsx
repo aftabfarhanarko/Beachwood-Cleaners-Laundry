@@ -107,7 +107,7 @@ export default function Home() {
         <div className="max-container grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Hero Box */}
           <div className="lg:col-span-7 space-y-6" data-aos="fade-up">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-50 text-[#003B65] border border-cyan-100 text-xs sm:text-sm font-bold tracking-wide">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-50/50 backdrop-blur-md text-[#003B65] border border-[#00A8B5]/20 text-xs sm:text-sm font-bold tracking-wide shadow-xs">
               <Sparkles className="w-4 h-4 text-[#00A8B5]" />
               #1 Rated Laundry & Dry Cleaning in Los Angeles
             </div>
@@ -152,18 +152,18 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Hero Box - Graphic Card */}
+          {/* Right Hero Box - Graphic Card with Glassmorphism */}
           <div className="lg:col-span-5 relative" data-aos="fade-up" data-aos-delay="100">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               <div className="absolute -top-4 -left-4 w-72 h-72 bg-cyan-300/30 rounded-full blur-3xl -z-10" />
               <div className="absolute -bottom-4 -right-4 w-72 h-72 bg-amber-300/30 rounded-full blur-3xl -z-10" />
               
-              <div className="bg-gradient-to-tr from-[#003B65] via-[#005B94] to-[#00A8B5] rounded-3xl p-6 text-white shadow-2xl space-y-6 relative overflow-hidden">
+              <div className="bg-gradient-to-tr from-[#003B65] via-[#005B94] to-[#00A8B5] rounded-3xl p-6 text-white shadow-2xl space-y-6 relative overflow-hidden border border-white/10 backdrop-blur-md">
                 <div className="flex items-center justify-between">
                   <span className="text-xs uppercase tracking-widest font-bold text-cyan-100">
                     Beachwood Express Care
                   </span>
-                  <span className="bg-[#FFC72C] text-slate-950 text-[11px] font-extrabold px-2.5 py-1 rounded-full">
+                  <span className="bg-[#FFC72C] text-slate-950 text-[11px] font-extrabold px-2.5 py-1 rounded-full shadow-xs">
                     Free Delivery
                   </span>
                 </div>
@@ -176,8 +176,8 @@ export default function Home() {
                 </div>
 
                 {/* Floating Badge */}
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-[#FFC72C] flex items-center justify-center text-slate-950 font-black text-xl shrink-0">
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex items-center gap-3 shadow-inner">
+                  <div className="w-12 h-12 rounded-xl bg-[#FFC72C] flex items-center justify-center text-slate-950 font-black text-xl shrink-0 shadow-xs">
                     4.9★
                   </div>
                   <div>
@@ -205,7 +205,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Value Proposition Grid (6 Cards) */}
+      {/* Value Proposition Grid (6 Cards) - Minimal design */}
       <section className="max-container" data-aos="fade-up">
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
           <h2 className="text-xs font-bold uppercase tracking-wider text-[#00A8B5]">
@@ -225,7 +225,7 @@ export default function Home() {
             return (
               <div
                 key={idx}
-                className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between"
+                className="bg-white/70 backdrop-blur-md rounded-2xl p-6 border border-slate-100 shadow-xs hover:shadow-md hover:border-[#00A8B5]/25 hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between"
                 data-aos="fade-up"
                 data-aos-delay={idx * 50}
               >
@@ -242,7 +242,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Core Services Overview */}
+      {/* Core Services Overview - Minimal Dark Card */}
       <section className="bg-[#00223D] text-white py-16" data-aos="fade-up">
         <div className="max-container space-y-10">
           <div className="text-center max-w-2xl mx-auto space-y-3">
@@ -277,8 +277,8 @@ export default function Home() {
         <PricingCalculator />
       </section>
 
-      {/* How It Works (4-Step Workflow) */}
-      <section className="bg-cyan-50/40 py-16 border-y border-cyan-100" data-aos="fade-up">
+      {/* How It Works (4-Step Workflow) - Minimal Cards */}
+      <section className="bg-cyan-50/40 py-16 border-y border-cyan-100/55" data-aos="fade-up">
         <div className="max-container space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs font-bold uppercase tracking-wider text-[#00A8B5]">
@@ -293,7 +293,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs relative" data-aos="fade-up" data-aos-delay="0">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-slate-100 shadow-xs relative" data-aos="fade-up" data-aos-delay="0">
               <div className="w-10 h-10 rounded-xl bg-[#003B65] text-white font-extrabold flex items-center justify-center text-lg mb-4">
                 1
               </div>
@@ -303,7 +303,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs relative" data-aos="fade-up" data-aos-delay="100">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-slate-100 shadow-xs relative" data-aos="fade-up" data-aos-delay="100">
               <div className="w-10 h-10 rounded-xl bg-[#00A8B5] text-white font-extrabold flex items-center justify-center text-lg mb-4">
                 2
               </div>
@@ -313,7 +313,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs relative" data-aos="fade-up" data-aos-delay="200">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-slate-100 shadow-xs relative" data-aos="fade-up" data-aos-delay="200">
               <div className="w-10 h-10 rounded-xl bg-[#0091A4] text-white font-extrabold flex items-center justify-center text-lg mb-4">
                 3
               </div>
@@ -323,7 +323,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs relative" data-aos="fade-up" data-aos-delay="300">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-slate-100 shadow-xs relative" data-aos="fade-up" data-aos-delay="300">
               <div className="w-10 h-10 rounded-xl bg-[#FFC72C] text-slate-950 font-extrabold flex items-center justify-center text-lg mb-4">
                 4
               </div>
@@ -336,7 +336,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Customer Reviews & Trust Badges */}
+      {/* Customer Reviews & Trust Badges - Glassmorphism style */}
       <section className="max-container" data-aos="fade-up">
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
           <span className="text-xs font-bold uppercase tracking-wider text-[#FFC72C]">
@@ -354,7 +354,7 @@ export default function Home() {
           {testimonials.map((t, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4"
+              className="bg-white/70 backdrop-blur-md rounded-2xl p-6 border border-slate-100 shadow-xs flex flex-col justify-between space-y-4 hover:shadow-md hover:border-[#00A8B5]/20 transition-all duration-200"
               data-aos="fade-up"
               data-aos-delay={idx * 100}
             >
@@ -377,10 +377,10 @@ export default function Home() {
 
       {/* Interactive Google Map & Location Details */}
       <section className="max-container" data-aos="fade-up">
-        <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-lg grid grid-cols-1 lg:grid-cols-12">
+        <div className="bg-white/60 backdrop-blur-md rounded-3xl border border-slate-200 overflow-hidden shadow-lg grid grid-cols-1 lg:grid-cols-12">
           <div className="lg:col-span-5 p-8 lg:p-10 space-y-6 flex flex-col justify-between">
             <div className="space-y-4">
-              <span className="bg-cyan-100 text-[#003B65] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+              <span className="bg-cyan-100/60 backdrop-blur-md text-[#003B65] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-cyan-100">
                 Store Location
               </span>
               <h3 className="text-2xl font-extrabold text-[#00223D]">
@@ -453,9 +453,9 @@ export default function Home() {
         <HomeFaqAccordion faqs={faqs} />
       </section>
 
-      {/* High-Conversion Banner CTA */}
+      {/* High-Conversion Banner CTA - Elegant Gradient */}
       <section className="max-container" data-aos="fade-up">
-        <div className="bg-gradient-to-r from-[#003B65] via-[#00A8B5] to-[#00223D] rounded-3xl p-8 sm:p-12 text-white text-center space-y-6 shadow-2xl relative overflow-hidden">
+        <div className="bg-gradient-to-r from-[#003B65] via-[#005B94] to-[#00A8B5] rounded-3xl p-8 sm:p-12 text-white text-center space-y-6 shadow-2xl relative overflow-hidden border border-white/10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight max-w-2xl mx-auto leading-tight">
             Ready For Fresh Clothes Without The Effort?
           </h2>
