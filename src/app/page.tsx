@@ -28,6 +28,8 @@ import { HomeFaqAccordion } from "@/components/HomeFaqAccordion";
 /* ------------------------------------------------------------------ */
 /*  PricingCalculator — premium minimal instant price estimator        */
 /* ------------------------------------------------------------------ */
+/*  PricingCalculator — Modern SaaS Checkout / Order Summary Cart      */
+/* ------------------------------------------------------------------ */
 function PricingCalculator() {
   const [washWeight, setWashWeight] = useState<number>(15);
   const [shirts, setShirts] = useState<number>(3);
@@ -46,147 +48,221 @@ function PricingCalculator() {
 
   const subtotal = totalWash + totalShirts + totalSuits + totalDresses;
 
-  const counters = [
-    {
-      key: "shirts",
-      label: "Shirts",
-      rate: "$6.95 / ea",
-      value: shirts,
-      set: setShirts,
-      icon: Shirt,
-    },
-    {
-      key: "suits",
-      label: "Suits",
-      rate: "$22.00 / ea",
-      value: suits,
-      set: setSuits,
-      icon: Briefcase,
-    },
-    {
-      key: "dresses",
-      label: "Dresses",
-      rate: "$17.00 / ea",
-      value: dresses,
-      set: setDresses,
-      icon: Sparkles,
-    },
-  ];
-
   return (
-    <div className="relative max-w-2xl mx-auto">
-      <div className="absolute -top-10 -right-10 w-56 h-56 bg-cyan-100/50 rounded-full blur-3xl -z-10" />
-      <div className="absolute -bottom-10 -left-10 w-56 h-56 bg-amber-100/40 rounded-full blur-3xl -z-10" />
+    <div className="relative max-w-4xl mx-auto">
+      {/* Background Glows */}
+      <div className="absolute -top-12 -right-12 w-72 h-72 bg-cyan-100/50 rounded-full blur-3xl -z-10" />
+      <div className="absolute -bottom-12 -left-12 w-72 h-72 bg-amber-100/40 rounded-full blur-3xl -z-10" />
 
-      <div className="bg-white/90 backdrop-blur-xl rounded-[2rem] p-6 sm:p-9 shadow-[0_8px_40px_-12px_rgba(0,59,101,0.15)] border border-slate-100">
-        {/* Header */}
-        <div className="flex items-center gap-3.5 mb-8">
-          <div className="w-12 h-12 rounded-2xl bg-[#003B65] flex items-center justify-center text-white shrink-0">
-            <Calculator className="w-5.5 h-5.5" strokeWidth={2} />
+      {/* Main SaaS Cart Container */}
+      <div className="bg-white rounded-[2.5rem] border border-slate-200/80 shadow-[0_16px_50px_-15px_rgba(0,59,101,0.12)] overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+        {/* Left Column: Configure Order Items */}
+        <div className="lg:col-span-7 p-6 sm:p-9 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-cyan-50 text-[#00A8B5] flex items-center justify-center font-bold">
+                <Calculator className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-extrabold text-[#00223D] text-lg tracking-tight">
+                  Customize Your Order
+                </h3>
+                <p className="text-xs text-slate-500">Instant real-time price calculator</p>
+              </div>
+            </div>
+            <span className="text-[11px] font-bold px-2.5 py-1 bg-cyan-50 text-[#0091A4] rounded-full border border-cyan-100">
+              Live Estimator
+            </span>
           </div>
-          <div>
-            <h3 className="text-lg sm:text-xl font-bold text-[#00223D] tracking-tight">
-              Instant Price Estimator
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-500">
-              A transparent quote before you ever pick up the phone.
-            </p>
+
+          <div className="space-y-5">
+            {/* Wash & Fold Slider Card */}
+            <div className="p-4 sm:p-5 bg-slate-50/80 rounded-2xl border border-slate-200/60 space-y-3">
+              <div className="flex justify-between items-center text-xs sm:text-sm">
+                <span className="font-bold text-[#00223D] flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-[#00A8B5]" /> Wash & Fold Laundry
+                </span>
+                <span className="text-[#00A8B5] font-extrabold">${totalWash.toFixed(2)}</span>
+              </div>
+
+              <div className="flex items-baseline justify-between">
+                <span className="text-2xl font-black text-[#00223D]">
+                  {washWeight} <span className="text-xs font-semibold text-slate-400">lbs</span>
+                </span>
+                <span className="text-[11px] text-slate-400 font-medium">$2.45 / lb</span>
+              </div>
+
+              <input
+                type="range"
+                min="10"
+                max="50"
+                step="1"
+                value={washWeight}
+                onChange={(e) => setWashWeight(Number(e.target.value))}
+                className="w-full h-1.5 bg-slate-200 rounded-full appearance-none cursor-pointer accent-[#00A8B5]"
+              />
+              <div className="flex justify-between text-[10px] text-slate-400 font-semibold">
+                <span>10 lbs Min ($24.50)</span>
+                <span>25 lbs Avg Bag</span>
+                <span>50 lbs Large</span>
+              </div>
+            </div>
+
+            {/* Individual Item Selectors */}
+            <div className="space-y-2.5">
+              {/* Shirts */}
+              <div className="p-3.5 bg-slate-50/60 rounded-xl border border-slate-200/60 flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <Shirt className="w-4 h-4 text-slate-500" />
+                  <div>
+                    <span className="text-xs font-bold text-[#00223D] block">Laundered Shirts</span>
+                    <span className="text-[10px] text-slate-400">$6.95 / shirt</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => setShirts(Math.max(0, shirts - 1))}
+                    className="w-7 h-7 rounded-lg bg-white border border-slate-200 text-slate-600 font-bold text-xs hover:border-[#00A8B5] transition-colors cursor-pointer"
+                  >
+                    –
+                  </button>
+                  <span className="text-sm font-black text-[#00223D] w-4 text-center tabular-nums">
+                    {shirts}
+                  </span>
+                  <button
+                    onClick={() => setShirts(shirts + 1)}
+                    className="w-7 h-7 rounded-lg bg-white border border-slate-200 text-slate-600 font-bold text-xs hover:border-[#00A8B5] transition-colors cursor-pointer"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              {/* Suits */}
+              <div className="p-3.5 bg-slate-50/60 rounded-xl border border-slate-200/60 flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <Briefcase className="w-4 h-4 text-slate-500" />
+                  <div>
+                    <span className="text-xs font-bold text-[#00223D] block">Two-Piece Suits</span>
+                    <span className="text-[10px] text-slate-400">$22.00 / suit</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => setSuits(Math.max(0, suits - 1))}
+                    className="w-7 h-7 rounded-lg bg-white border border-slate-200 text-slate-600 font-bold text-xs hover:border-[#00A8B5] transition-colors cursor-pointer"
+                  >
+                    –
+                  </button>
+                  <span className="text-sm font-black text-[#00223D] w-4 text-center tabular-nums">
+                    {suits}
+                  </span>
+                  <button
+                    onClick={() => setSuits(suits + 1)}
+                    className="w-7 h-7 rounded-lg bg-white border border-slate-200 text-slate-600 font-bold text-xs hover:border-[#00A8B5] transition-colors cursor-pointer"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              {/* Dresses */}
+              <div className="p-3.5 bg-slate-50/60 rounded-xl border border-slate-200/60 flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <Sparkles className="w-4 h-4 text-slate-500" />
+                  <div>
+                    <span className="text-xs font-bold text-[#00223D] block">Dry Clean Dresses</span>
+                    <span className="text-[10px] text-slate-400">$17.00 / dress</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => setDresses(Math.max(0, dresses - 1))}
+                    className="w-7 h-7 rounded-lg bg-white border border-slate-200 text-slate-600 font-bold text-xs hover:border-[#00A8B5] transition-colors cursor-pointer"
+                  >
+                    –
+                  </button>
+                  <span className="text-sm font-black text-[#00223D] w-4 text-center tabular-nums">
+                    {dresses}
+                  </span>
+                  <button
+                    onClick={() => setDresses(dresses + 1)}
+                    className="w-7 h-7 rounded-lg bg-white border border-slate-200 text-slate-600 font-bold text-xs hover:border-[#00A8B5] transition-colors cursor-pointer"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="space-y-4">
-          {/* Wash & Fold Slider */}
-          <div className="p-5 bg-slate-50/70 rounded-2xl border border-slate-100">
-            <div className="flex justify-between items-baseline mb-3">
-              <span className="font-semibold text-[#00223D] text-sm">
-                Wash & Fold Laundry
+        {/* Right Column: SaaS Checkout Summary Cart Panel */}
+        <div className="lg:col-span-5 bg-gradient-to-b from-[#003B65] to-[#00223D] text-white p-6 sm:p-9 flex flex-col justify-between space-y-6">
+          <div className="space-y-5">
+            <div className="flex items-center justify-between pb-3 border-b border-white/10">
+              <span className="text-xs uppercase tracking-widest font-bold text-cyan-200">
+                Order Summary
               </span>
-              <span className="text-slate-400 text-xs font-medium">$2.45 / lb</span>
-            </div>
-
-            <div className="flex items-end justify-between mb-2">
-              <span className="text-3xl font-black text-[#00223D] tracking-tight">
-                {washWeight}
-                <span className="text-sm font-semibold text-slate-400 ml-1">lbs</span>
-              </span>
-              <span className="text-lg font-bold text-[#00A8B5]">
-                ${totalWash.toFixed(2)}
+              <span className="text-[10px] font-extrabold bg-[#FFC72C] text-slate-950 px-2 py-0.5 rounded-full">
+                LA Doorstep Care
               </span>
             </div>
 
-            <input
-              type="range"
-              min="10"
-              max="50"
-              step="1"
-              value={washWeight}
-              onChange={(e) => setWashWeight(Number(e.target.value))}
-              className="w-full h-1.5 bg-slate-200 rounded-full appearance-none cursor-pointer accent-[#00A8B5]"
-            />
-            <div className="flex justify-between text-[11px] text-slate-400 mt-2 font-medium">
-              <span>10 lbs Min</span>
-              <span>25 lbs Avg Bag</span>
-              <span>50 lbs Large</span>
-            </div>
-          </div>
-
-          {/* Item Counter Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {counters.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.key}
-                  className="p-4 bg-slate-50/70 rounded-2xl border border-slate-100 flex flex-col gap-3"
-                >
-                  <div className="flex items-center gap-2">
-                    <Icon className="w-4 h-4 text-[#00A8B5]" strokeWidth={2} />
-                    <div className="leading-tight">
-                      <p className="text-xs font-bold text-[#00223D]">{item.label}</p>
-                      <p className="text-[10px] text-slate-400 font-medium">{item.rate}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <button
-                      onClick={() => item.set(Math.max(0, item.value - 1))}
-                      aria-label={`Decrease ${item.label}`}
-                      className="w-8 h-8 rounded-lg bg-white border border-slate-200 font-bold text-slate-600 hover:border-[#00A8B5] hover:text-[#00A8B5] transition-colors cursor-pointer"
-                    >
-                      –
-                    </button>
-                    <span className="font-black text-[#00223D] text-lg tabular-nums">
-                      {item.value}
-                    </span>
-                    <button
-                      onClick={() => item.set(item.value + 1)}
-                      aria-label={`Increase ${item.label}`}
-                      className="w-8 h-8 rounded-lg bg-white border border-slate-200 font-bold text-slate-600 hover:border-[#00A8B5] hover:text-[#00A8B5] transition-colors cursor-pointer"
-                    >
-                      +
-                    </button>
-                  </div>
+            {/* Itemized Line Items Breakdown */}
+            <div className="space-y-3 text-xs text-cyan-100/90 font-medium">
+              <div className="flex justify-between items-center">
+                <span>Wash & Fold ({washWeight} lbs)</span>
+                <span className="font-bold text-white">${totalWash.toFixed(2)}</span>
+              </div>
+              {shirts > 0 && (
+                <div className="flex justify-between items-center">
+                  <span>Shirts ({shirts}x @ $6.95)</span>
+                  <span className="font-bold text-white">${totalShirts.toFixed(2)}</span>
                 </div>
-              );
-            })}
-          </div>
+              )}
+              {suits > 0 && (
+                <div className="flex justify-between items-center">
+                  <span>Suits ({suits}x @ $22.00)</span>
+                  <span className="font-bold text-white">${totalSuits.toFixed(2)}</span>
+                </div>
+              )}
+              {dresses > 0 && (
+                <div className="flex justify-between items-center">
+                  <span>Dresses ({dresses}x @ $17.00)</span>
+                  <span className="font-bold text-white">${totalDresses.toFixed(2)}</span>
+                </div>
+              )}
+              <div className="flex justify-between items-center text-emerald-300">
+                <span>Doorstep Pickup & Delivery</span>
+                <span className="font-bold uppercase text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded-md border border-emerald-400/30">
+                  FREE
+                </span>
+              </div>
+            </div>
 
-          {/* Estimated Total Display */}
-          <div className="p-6 bg-[#003B65] text-white rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-5">
-            <div>
-              <span className="text-[11px] uppercase tracking-widest font-bold text-cyan-200/80 block mb-1">
+            <div className="pt-4 border-t border-white/15 flex justify-between items-baseline">
+              <span className="text-xs uppercase tracking-wider font-semibold text-cyan-200">
                 Estimated Total
               </span>
-              <div className="text-4xl font-black tracking-tight">${subtotal.toFixed(2)}</div>
-              <span className="text-[11px] text-cyan-100/90 flex items-center gap-1.5 mt-2 font-medium">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#FFC72C]" /> Free pickup & delivery included
-              </span>
+              <div className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+                ${subtotal.toFixed(2)}
+              </div>
             </div>
+          </div>
+
+          <div className="space-y-3 pt-2">
             <a
               href="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#FFC72C] hover:bg-amber-400 text-[#00223D] font-extrabold rounded-xl transition-all duration-150 active:scale-[0.98] text-sm shrink-0"
+              className="w-full py-4 bg-[#00A8B5] hover:bg-[#0091A4] text-white font-extrabold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-150 active:scale-[0.98] text-sm flex items-center justify-center gap-2"
             >
-              Book This Order <ArrowRight className="w-4 h-4" />
+              Checkout & Schedule Pickup <ArrowRight className="w-4 h-4" />
             </a>
+
+            <div className="flex items-center justify-center gap-1.5 text-[11px] text-cyan-200/80 font-medium">
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#FFC72C]" />
+              No credit card required to calculate
+            </div>
           </div>
         </div>
       </div>
