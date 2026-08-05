@@ -28,6 +28,27 @@ body {
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   line-height: 1.6;
+  scrollbar-width: thin;
+  scrollbar-color: #00A8B5 #F8FAFC;
+}
+
+/* Custom Slim Scrollbar for Webkit Browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00A8B5;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0091A4;
 }
 
 /* Global Typography Specifications */
