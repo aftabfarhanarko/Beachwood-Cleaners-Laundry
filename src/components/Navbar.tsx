@@ -36,29 +36,31 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full">
       {/* Top Utility Header with Marquee */}
-      <div className="bg-[#003B65] text-white text-xs sm:text-sm py-2 px-4 border-b border-[#00223D]/50 flex items-center overflow-hidden">
-        <Marquee speed={35} gradient={false} pauseOnHover={true}>
-          <div className="flex items-center gap-12 font-medium">
-            <span className="inline-flex items-center gap-1.5 bg-[#0091A4] text-white px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wide shadow-xs shrink-0">
-              <ShieldCheck className="w-3.5 h-3.5" /> Same-Day Service Available
-            </span>
-            <div className="flex items-center gap-1.5 text-cyan-100 shrink-0">
-              <MapPin className="w-3.5 h-3.5 text-[#00A8B5]" />
-              <span>2699 Beachwood Dr, Los Angeles, CA 90068</span>
+      <div className="bg-[#003B65] text-white text-xs sm:text-sm py-2 border-b border-[#00223D]/50">
+        <div className="max-container w-full overflow-hidden">
+          <Marquee speed={35} gradient={false} pauseOnHover={true}>
+            <div className="flex items-center gap-12 font-medium">
+              <span className="inline-flex items-center gap-1.5 bg-[#0091A4] text-white px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wide shadow-xs shrink-0">
+                <ShieldCheck className="w-3.5 h-3.5" /> Same-Day Service Available
+              </span>
+              <div className="flex items-center gap-1.5 text-cyan-100 shrink-0">
+                <MapPin className="w-3.5 h-3.5 text-[#00A8B5]" />
+                <span>2699 Beachwood Dr, Los Angeles, CA 90068</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-cyan-100 shrink-0">
+                <Clock className="w-3.5 h-3.5 text-[#00A8B5]" />
+                <span>Mon-Fri 8am-6pm | Sat 9am-5pm</span>
+              </div>
+              <a
+                href="tel:+13238287503"
+                className="inline-flex items-center gap-1.5 text-[#FFC72C] hover:text-amber-300 font-bold transition-colors shrink-0"
+              >
+                <Phone className="w-3.5 h-3.5" />
+                <span>Call support: +1 (323) 828-7503</span>
+              </a>
             </div>
-            <div className="flex items-center gap-1.5 text-cyan-100 shrink-0">
-              <Clock className="w-3.5 h-3.5 text-[#00A8B5]" />
-              <span>Mon-Fri 8am-6pm | Sat 9am-5pm</span>
-            </div>
-            <a
-              href="tel:+13238287503"
-              className="inline-flex items-center gap-1.5 text-[#FFC72C] hover:text-amber-300 font-bold transition-colors shrink-0"
-            >
-              <Phone className="w-3.5 h-3.5" />
-              <span>Call support: +1 (323) 828-7503</span>
-            </a>
-          </div>
-        </Marquee>
+          </Marquee>
+        </div>
       </div>
 
       {/* Main Navbar */}
