@@ -195,197 +195,146 @@ function PricingCalculator() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  ServiceTabs — premium light service pricing tab switcher           */
+/*  ServiceTabs — Modern SaaS Product Style Tab Switcher               */
 /* ------------------------------------------------------------------ */
 function ServiceTabs() {
   const [activeTab, setActiveTab] = useState<"wash" | "dry" | "shirts" | "commercial">("wash");
 
-  const tabContent = {
-    wash: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
-        <div className="space-y-4">
-          <span className="inline-block bg-cyan-50 text-[#0091A4] border border-cyan-100 text-xs font-bold px-3 py-1 rounded-full">
-            Everyday Laundry Care
-          </span>
-          <h3 className="text-2xl font-bold text-[#00223D] tracking-tight">
-            Wash & Fold Laundry ($2.45 / lb)
-          </h3>
-          <p className="text-sm text-slate-600 leading-[1.6]">
-            Everyday clothes, towels, bedding. Separated by color, washed with hypoallergenic detergent, and neatly folded.
-          </p>
-          <ul className="space-y-2.5 text-sm text-slate-700">
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Standard Rate: $2.45 / lb (15 lb min)
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Includes socks, t-shirts, towels, sheets, underwear
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> 24 to 48 Hour Doorstep Return
-            </li>
-          </ul>
-        </div>
-        <div className="bg-slate-50/80 p-7 rounded-2xl border border-slate-100 space-y-4 text-center">
-          <div className="text-4xl font-black text-[#00223D] tracking-tight">
-            $2.45 <span className="text-base text-slate-400 font-semibold">/ lb</span>
-          </div>
-          <p className="text-xs text-slate-500">Free pickup & delivery on all orders over $35</p>
-          <Link
-            href="/contact"
-            className="block w-full py-3.5 bg-[#00A8B5] hover:bg-[#0091A4] text-white font-bold rounded-xl text-sm transition-all"
-          >
-            Schedule Wash & Fold
-          </Link>
-        </div>
-      </div>
-    ),
-    dry: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
-        <div className="space-y-4">
-          <span className="inline-block bg-cyan-50 text-[#0091A4] border border-cyan-100 text-xs font-bold px-3 py-1 rounded-full">
-            PERC-Free Organic Solvent
-          </span>
-          <h3 className="text-2xl font-bold text-[#00223D] tracking-tight">
-            Executive Suit & Dress Dry Cleaning
-          </h3>
-          <p className="text-sm text-slate-600 leading-[1.6]">
-            Expert hand-finishing for formalwear, silk dresses, wool suits, and outerwear. 100% PERC-free process.
-          </p>
-          <ul className="space-y-2.5 text-sm text-slate-700">
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Two-Piece Suits: $22.00 / suit
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Dresses: $17.00 / dress | Jackets: $14.95
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Pants & Trousers: $8.95 / pair
-            </li>
-          </ul>
-        </div>
-        <div className="bg-slate-50/80 p-7 rounded-2xl border border-slate-100 space-y-4 text-center">
-          <div className="text-2xl font-bold text-[#00223D] tracking-tight">
-            Suits $22.00 <span className="text-slate-300 font-normal">|</span> Dresses $17.00
-          </div>
-          <p className="text-xs text-slate-500">Stain pre-treatment & structural steam press included</p>
-          <Link
-            href="/services"
-            className="block w-full py-3.5 bg-[#00A8B5] hover:bg-[#0091A4] text-white font-bold rounded-xl text-sm transition-all"
-          >
-            View All Pricing Details
-          </Link>
-        </div>
-      </div>
-    ),
-    shirts: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
-        <div className="space-y-4">
-          <span className="inline-block bg-amber-50 text-[#B8860B] border border-amber-100 text-xs font-bold px-3 py-1 rounded-full">
-            Executive Hand-Pressed
-          </span>
-          <h3 className="text-2xl font-bold text-[#00223D] tracking-tight">
-            Laundered Shirts ($6.95 / shirt)
-          </h3>
-          <p className="text-sm text-slate-600 leading-[1.6]">
-            Custom dress shirts washed and hand-pressed with collar & cuff detail. Returned on hangers.
-          </p>
-          <ul className="space-y-2.5 text-sm text-slate-700">
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Flat Rate: $6.95 / shirt
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Choice of light, medium, or heavy starch
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Free button replacement audit
-            </li>
-          </ul>
-        </div>
-        <div className="bg-slate-50/80 p-7 rounded-2xl border border-slate-100 space-y-4 text-center">
-          <div className="text-4xl font-black text-[#00223D] tracking-tight">
-            $6.95 <span className="text-base text-slate-400 font-semibold">/ shirt</span>
-          </div>
-          <p className="text-xs text-slate-500">Returned crisp on heavy dress hangers</p>
-          <Link
-            href="/contact"
-            className="block w-full py-3.5 bg-[#00A8B5] hover:bg-[#0091A4] text-white font-bold rounded-xl text-sm transition-all"
-          >
-            Book Shirt Pressing
-          </Link>
-        </div>
-      </div>
-    ),
-    commercial: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
-        <div className="space-y-4">
-          <span className="inline-block bg-cyan-50 text-[#0091A4] border border-cyan-100 text-xs font-bold px-3 py-1 rounded-full">
-            B2B & Airbnb Hosts
-          </span>
-          <h3 className="text-2xl font-bold text-[#00223D] tracking-tight">
-            Commercial & Airbnb Laundry
-          </h3>
-          <p className="text-sm text-slate-600 leading-[1.6]">
-            Custom high-volume laundry plans for Airbnb hosts, boutique hotels, spas, and fitness centers.
-          </p>
-          <ul className="space-y-2.5 text-sm text-slate-700">
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Bulk volume pricing discounts
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Scheduled daily or weekly pickup slots
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" /> Itemized monthly corporate invoicing
-            </li>
-          </ul>
-        </div>
-        <div className="bg-slate-50/80 p-7 rounded-2xl border border-slate-100 space-y-4 text-center">
-          <div className="text-xl font-bold text-[#00223D] tracking-tight">Custom Commercial Rates</div>
-          <p className="text-xs text-slate-500">Dedicated driver & scheduled recurring deliveries</p>
-          <a
-            href="tel:+13238287503"
-            className="block w-full py-3.5 bg-[#00A8B5] hover:bg-[#0091A4] text-white font-bold rounded-xl text-sm transition-all"
-          >
-            Call Commercial Team
-          </a>
-        </div>
-      </div>
-    ),
-  };
-
-  const tabs: { key: "wash" | "dry" | "shirts" | "commercial"; label: string }[] = [
-    { key: "wash", label: "Wash & Fold ($2.45/lb)" },
-    { key: "dry", label: "Executive Dry Cleaning" },
-    { key: "shirts", label: "Laundered Shirts ($6.95)" },
-    { key: "commercial", label: "Commercial & Airbnb" },
+  const services = [
+    {
+      id: "wash",
+      name: "Wash & Fold",
+      tagline: "$2.45 / lb",
+      icon: Sparkles,
+      badge: "Everyday Laundry",
+      title: "Effortless Everyday Laundry ($2.45 / lb)",
+      desc: "We wash, dry, and neatly fold your everyday clothes, towels, and bed linens using hypoallergenic eco-detergents.",
+      priceDisplay: "$2.45",
+      priceUnit: "/ lb (15 lbs minimum)",
+      features: [
+        "Color-separated washing cycles",
+        "Hypoallergenic & scent-free options",
+        "Neatly folded & ready to wear",
+        "24-48 hour guaranteed return",
+      ],
+      ctaText: "Schedule Wash & Fold",
+      ctaLink: "/contact",
+    },
+    {
+      id: "dry",
+      name: "Dry Cleaning",
+      tagline: "Suits & Dresses",
+      icon: Briefcase,
+      badge: "Organic & Non-Toxic",
+      title: "Executive Dry Cleaning & Pressing",
+      desc: "Gentle organic solvent cleaning for suits, silk dresses, coats, and formalwear with expert hand-press finishing.",
+      priceDisplay: "$22.00",
+      priceUnit: "Suits ($17.00 Dresses)",
+      features: [
+        "100% PERC-free organic process",
+        "Hand pre-treatment for tough stains",
+        "Custom protective garment covers",
+        "Executive steam press finish",
+      ],
+      ctaText: "Book Dry Cleaning",
+      ctaLink: "/contact",
+    },
+    {
+      id: "shirts",
+      name: "Laundered Shirts",
+      tagline: "$6.95 / shirt",
+      icon: Shirt,
+      badge: "Crisp Finish",
+      title: "Hand-Pressed Dress Shirts ($6.95 / ea)",
+      desc: "Washed with specialized collar cleaners and hand-pressed with your choice of light, medium, or heavy starch.",
+      priceDisplay: "$6.95",
+      priceUnit: "/ shirt (on hangers)",
+      features: [
+        "Choice of starch intensity",
+        "Collar & cuff detail pressing",
+        "Free button inspection & repair",
+        "Returned crisp on heavy hangers",
+      ],
+      ctaText: "Book Shirt Pressing",
+      ctaLink: "/contact",
+    },
+    {
+      id: "commercial",
+      name: "B2B & Airbnb",
+      tagline: "Custom Volume",
+      icon: Building2,
+      badge: "Commercial Business",
+      title: "Commercial & Airbnb Turnover Cleaning",
+      desc: "Reliable, high-capacity linen and garment service tailored for Airbnb hosts, boutique hotels, spas, and gyms.",
+      priceDisplay: "Volume",
+      priceUnit: "Custom B2B Tier Rates",
+      features: [
+        "Dedicated pickup driver & schedule",
+        "Itemized monthly billing statement",
+        "Fast 24-hour turnaround for turnover",
+        "High-temp sanitizing towel & sheet wash",
+      ],
+      ctaText: "Inquire Commercial Rates",
+      ctaLink: "tel:+13238287503",
+    },
   ];
 
+  const currentService = services.find((s) => s.id === activeTab) || services[0];
+
   return (
-    <div className="space-y-10">
-      {/* Navigation Tabs — light, glass-pill selector */}
-      <div className="flex flex-wrap justify-center gap-1.5 max-w-2xl mx-auto bg-slate-100/80 p-1.5 rounded-2xl border border-slate-200">
-        {tabs.map((tab) => (
-          <button
-            key={tab.key}
-            onClick={() => setActiveTab(tab.key)}
-            className="relative px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors cursor-pointer text-slate-500 hover:text-[#00223D]"
-          >
-            {activeTab === tab.key && (
-              <motion.div
-                layoutId="activeTabIndicator"
-                className="absolute inset-0 bg-white rounded-xl shadow-sm -z-10"
-                transition={{ type: "spring", stiffness: 300, damping: 28 }}
-              />
-            )}
-            <span className={activeTab === tab.key ? "text-[#00223D] font-bold" : ""}>
-              {tab.label}
-            </span>
-          </button>
-        ))}
+    <div className="space-y-10 max-w-5xl mx-auto">
+      {/* SaaS Product Navigation Bar */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 bg-slate-100/90 p-2 rounded-3xl border border-slate-200/80 shadow-xs">
+        {services.map((service) => {
+          const Icon = service.icon;
+          const isActive = activeTab === service.id;
+          return (
+            <button
+              key={service.id}
+              onClick={() => setActiveTab(service.id as any)}
+              className="relative p-3.5 sm:p-4 rounded-2xl transition-all cursor-pointer text-left flex items-center gap-3.5 group"
+            >
+              {isActive && (
+                <motion.div
+                  layoutId="activeSaaSIndicator"
+                  className="absolute inset-0 bg-white rounded-2xl shadow-sm border border-slate-200/60 -z-10"
+                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                />
+              )}
+              <div
+                className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                  isActive
+                    ? "bg-[#003B65] text-white"
+                    : "bg-slate-200/60 text-slate-600 group-hover:bg-slate-200"
+                }`}
+              >
+                <Icon className="w-5 h-5" strokeWidth={2} />
+              </div>
+              <div className="leading-tight overflow-hidden">
+                <span
+                  className={`block text-xs sm:text-sm font-bold truncate ${
+                    isActive ? "text-[#00223D]" : "text-slate-700"
+                  }`}
+                >
+                  {service.name}
+                </span>
+                <span
+                  className={`text-[11px] font-medium block truncate ${
+                    isActive ? "text-[#00A8B5]" : "text-slate-400"
+                  }`}
+                >
+                  {service.tagline}
+                </span>
+              </div>
+            </button>
+          );
+        })}
       </div>
 
-      {/* Tab Details Display — white premium card with framer-motion AnimatePresence */}
-      <div className="bg-white rounded-[2rem] p-7 sm:p-10 border border-slate-100 shadow-[0_8px_40px_-12px_rgba(0,59,101,0.1)] max-w-4xl mx-auto overflow-hidden min-h-[350px] flex items-center justify-center">
+      {/* SaaS Active Feature Showcase Panel */}
+      <div className="bg-white rounded-[2.5rem] p-7 sm:p-10 border border-slate-200/80 shadow-[0_12px_45px_-15px_rgba(0,59,101,0.08)] overflow-hidden min-h-[380px] relative">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-50/60 rounded-full blur-3xl -z-0" />
+
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -393,9 +342,66 @@ function ServiceTabs() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="w-full"
+            className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
           >
-            {tabContent[activeTab]}
+            {/* Left Column: Feature Details */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50 text-[#0091A4] border border-cyan-100 text-xs font-bold tracking-wide">
+                <Sparkles className="w-3.5 h-3.5 text-[#00A8B5]" />
+                {currentService.badge}
+              </div>
+
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#00223D] tracking-tight">
+                {currentService.title}
+              </h3>
+
+              <p className="text-sm sm:text-base text-slate-600 leading-[1.6]">
+                {currentService.desc}
+              </p>
+
+              {/* Feature Checklist */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                {currentService.features.map((feat, idx) => (
+                  <div key={idx} className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-[#00A8B5] shrink-0" />
+                    <span>{feat}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column: Pricing & Action Card */}
+            <div className="lg:col-span-5 bg-gradient-to-b from-slate-50 to-slate-100/80 p-7 rounded-3xl border border-slate-200/80 text-center space-y-5 shadow-xs flex flex-col justify-between">
+              <div className="space-y-1">
+                <span className="text-[11px] uppercase tracking-widest font-bold text-slate-400">
+                  Standard Rate
+                </span>
+                <div className="text-4xl sm:text-5xl font-black text-[#00223D] tracking-tight">
+                  {currentService.priceDisplay}
+                </div>
+                <p className="text-xs font-medium text-slate-500">{currentService.priceUnit}</p>
+              </div>
+
+              <div className="py-3 px-4 bg-white rounded-xl border border-slate-200/60 text-xs text-slate-600 font-medium">
+                ✨ Includes free doorstep pickup & delivery on orders over $35
+              </div>
+
+              {currentService.ctaLink.startsWith("tel:") ? (
+                <a
+                  href={currentService.ctaLink}
+                  className="w-full py-4 bg-[#00A8B5] hover:bg-[#0091A4] text-white font-extrabold rounded-2xl shadow-md hover:shadow-lg transition-all duration-150 active:scale-[0.98] text-sm flex items-center justify-center gap-2"
+                >
+                  <Phone className="w-4 h-4" /> {currentService.ctaText}
+                </a>
+              ) : (
+                <Link
+                  href={currentService.ctaLink}
+                  className="w-full py-4 bg-[#00A8B5] hover:bg-[#0091A4] text-white font-extrabold rounded-2xl shadow-md hover:shadow-lg transition-all duration-150 active:scale-[0.98] text-sm flex items-center justify-center gap-2"
+                >
+                  {currentService.ctaText} <ArrowRight className="w-4 h-4" />
+                </Link>
+              )}
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>
