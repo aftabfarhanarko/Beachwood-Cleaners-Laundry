@@ -1,0 +1,47 @@
+<svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Glow Circle -->
+  <circle cx="250" cy="200" r="170" fill="#E0F2FE" />
+  
+  <!-- Front-Load Washing Machine Body -->
+  <rect x="130" y="80" width="240" height="260" rx="20" fill="white" stroke="#0284C7" stroke-width="6" />
+  
+  <!-- Control Panel & Digital Display -->
+  <rect x="150" y="100" width="200" height="36" rx="8" fill="#F0F9FF" stroke="#38BDF8" stroke-width="2" />
+  <circle cx="175" cy="118" r="8" fill="#F97316" />
+  <circle cx="198" cy="118" r="5" fill="#0284C7" />
+  <circle cx="215" cy="118" r="5" fill="#0284C7" />
+  <rect x="290" y="110" width="50" height="16" rx="4" fill="#0284C7" />
+  
+  <!-- Glass Door Ring -->
+  <circle cx="250" cy="230" r="70" fill="#E0F2FE" stroke="#0284C7" stroke-width="8" />
+  <circle cx="250" cy="230" r="54" fill="#38BDF8" opacity="0.8" />
+  <!-- Water & Bubbles Inside Drum -->
+  <path d="M198 230 C220 250, 280 210, 302 230 C302 250, 198 250, 198 230 Z" fill="#0284C7" opacity="0.6" />
+  <circle cx="230" cy="210" r="8" fill="white" opacity="0.8" />
+  <circle cx="265" cy="225" r="5" fill="white" opacity="0.8" />
+  <circle cx="245" cy="240" r="4" fill="white" opacity="0.7" />
+
+  <!-- Laundry Basket with Folded Clothes on Left -->
+  <g transform="translate(60, 220)">
+    <!-- Basket -->
+    <path d="M10 50 L90 50 L80 110 L20 110 Z" fill="#F59E0B" />
+    <path d="M5 45 L95 45 L90 55 L10 55 Z" fill="#D97706" />
+    <!-- Clothes inside basket -->
+    <path d="M15 45 Q50 20 85 45 Z" fill="#EC4899" />
+    <path d="M20 40 Q50 15 80 40 Z" fill="#10B981" />
+    <path d="M25 35 Q50 10 75 35 Z" fill="#38BDF8" />
+  </g>
+
+  <!-- Detergent Bottle on Right -->
+  <g transform="translate(360, 200)">
+    <rect x="15" y="40" width="40" height="90" rx="12" fill="#F97316" />
+    <path d="M25 20 L45 20 L45 40 L25 40 Z" fill="#0284C7" />
+    <circle cx="35" cy="15" r="7" fill="#38BDF8" />
+    <rect x="22" y="60" width="26" height="30" rx="4" fill="#FEF3C7" />
+  </g>
+
+  <!-- Floating Soap Bubbles -->
+  <circle cx="100" cy="120" r="16" fill="#38BDF8" opacity="0.3" stroke="white" stroke-width="2" />
+  <circle cx="120" cy="90" r="8" fill="#38BDF8" opacity="0.3" stroke="white" stroke-width="1.5" />
+  <circle cx="390" cy="110" r="20" fill="#38BDF8" opacity="0.3" stroke="white" stroke-width="2" />
+</svg>

@@ -1,198 +1,164 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
+import { Check } from "lucide-react";
 
 export function ServiceTabs() {
-  const [activeTab, setActiveTab] = useState<"wash" | "dry" | "shirts" | "commercial">("wash");
-
-  const tabContent = {
-    wash: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div className="space-y-4">
-          <span className="bg-[#059669]/20 text-[#059669] border border-[#059669]/30 text-xs font-bold px-3 py-1 rounded-full">
-            Everyday Laundry Care
-          </span>
-          <h3 className="text-2xl font-bold text-white">Wash & Fold Laundry ($2.45 / lb)</h3>
-          <p className="text-sm text-slate-300 leading-[1.6]">
-            Everyday clothes, towels, bedding. Separated by color, washed with hypoallergenic detergent, and neatly folded.
-          </p>
-          <ul className="space-y-2 text-sm text-slate-300">
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Standard Rate: $2.45 / lb (15 lb min)
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Includes socks, t-shirts, towels, sheets, underwear
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> 24 to 48 Hour Doorstep Return
-            </li>
-          </ul>
-        </div>
-        <div className="bg-[#0F172A] p-6 rounded-2xl border border-blue-900 space-y-4 text-center">
-          <div className="text-4xl font-black text-[#059669]">$2.45 <span className="text-base text-slate-400 font-normal">/ lb</span></div>
-          <p className="text-xs text-slate-400">Free Pickup & Delivery on all orders over $35</p>
-          <Link
-            href="/contact"
-            className="block w-full py-3 bg-[#2563EB] hover:bg-blue-700 text-white font-bold rounded-xl text-sm transition-all"
-          >
-            Schedule Wash & Fold
-          </Link>
-        </div>
-      </div>
-    ),
-    dry: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div className="space-y-4">
-          <span className="bg-[#2563EB]/20 text-[#2563EB] border border-[#2563EB]/30 text-xs font-bold px-3 py-1 rounded-full">
-            PERC-Free Organic Solvent
-          </span>
-          <h3 className="text-2xl font-bold text-white">Executive Suit & Dress Dry Cleaning</h3>
-          <p className="text-sm text-slate-300 leading-[1.6]">
-            Expert hand-finishing for formalwear, silk dresses, wool suits, and outerwear. 100% PERC-free process.
-          </p>
-          <ul className="space-y-2 text-sm text-slate-300">
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Two-Piece Suits: $22.00 / suit
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Dresses: $17.00 / dress | Jackets: $14.95
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Pants & Trousers: $8.95 / pair
-            </li>
-          </ul>
-        </div>
-        <div className="bg-[#0F172A] p-6 rounded-2xl border border-blue-900 space-y-4 text-center">
-          <div className="text-3xl font-bold text-white">Suits $22.00 | Dresses $17.00</div>
-          <p className="text-xs text-slate-400">Stain pre-treatment & structural steam press included</p>
-          <Link
-            href="/services"
-            className="block w-full py-3 bg-[#2563EB] hover:bg-blue-700 text-white font-bold rounded-xl text-sm transition-all"
-          >
-            View All Pricing Details
-          </Link>
-        </div>
-      </div>
-    ),
-    shirts: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div className="space-y-4">
-          <span className="bg-[#D97706]/20 text-[#D97706] border border-[#D97706]/30 text-xs font-bold px-3 py-1 rounded-full">
-            Executive Hand-Pressed
-          </span>
-          <h3 className="text-2xl font-bold text-white">Laundered Shirts ($6.95 / shirt)</h3>
-          <p className="text-sm text-slate-300 leading-[1.6]">
-            Custom dress shirts washed and hand-pressed with collar & cuff detail. Returned on hangers.
-          </p>
-          <ul className="space-y-2 text-sm text-slate-300">
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Flat Rate: $6.95 / shirt
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Choice of light, medium, or heavy starch
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Free button replacement audit
-            </li>
-          </ul>
-        </div>
-        <div className="bg-[#0F172A] p-6 rounded-2xl border border-blue-900 space-y-4 text-center">
-          <div className="text-4xl font-black text-[#D97706]">$6.95 <span className="text-base text-slate-400 font-normal">/ shirt</span></div>
-          <p className="text-xs text-slate-400">Returned crisp on heavy dress hangers</p>
-          <Link
-            href="/contact"
-            className="block w-full py-3 bg-[#2563EB] hover:bg-blue-700 text-white font-bold rounded-xl text-sm transition-all"
-          >
-            Book Shirt Pressing
-          </Link>
-        </div>
-      </div>
-    ),
-    commercial: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div className="space-y-4">
-          <span className="bg-[#059669]/20 text-[#059669] border border-[#059669]/30 text-xs font-bold px-3 py-1 rounded-full">
-            B2B & Airbnb Hosts
-          </span>
-          <h3 className="text-2xl font-bold text-white">Commercial & Airbnb Laundry</h3>
-          <p className="text-sm text-slate-300 leading-[1.6]">
-            Custom high-volume laundry plans for Airbnb hosts, boutique hotels, spas, and fitness centers.
-          </p>
-          <ul className="space-y-2 text-sm text-slate-300">
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Bulk volume pricing discounts
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Scheduled daily or weekly pickup slots
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#059669]" /> Itemized monthly corporate invoicing
-            </li>
-          </ul>
-        </div>
-        <div className="bg-[#0F172A] p-6 rounded-2xl border border-blue-900 space-y-4 text-center">
-          <div className="text-2xl font-bold text-[#059669]">Custom Commercial Rates</div>
-          <p className="text-xs text-slate-400">Dedicated driver & scheduled recurring deliveries</p>
-          <a
-            href="tel:+13238287503"
-            className="block w-full py-3 bg-[#2563EB] hover:bg-blue-700 text-white font-bold rounded-xl text-sm transition-all"
-          >
-            Call Commercial Team
-          </a>
-        </div>
-      </div>
-    ),
-  };
-
-  const tabs: { key: "wash" | "dry" | "shirts" | "commercial"; label: string }[] = [
-    { key: "wash", label: "Wash & Fold ($2.45/lb)" },
-    { key: "dry", label: "Executive Dry Cleaning" },
-    { key: "shirts", label: "Laundered Shirts ($6.95)" },
-    { key: "commercial", label: "Commercial & Airbnb" },
+  const cards = [
+    {
+      title: "Wash & Fold",
+      subtitle: "Provides simple and convenient doorstep wash & neatly folded laundry",
+      price: "$2.45",
+      unit: "PER LB (15 LBS MIN)",
+      isPopular: false,
+      buttonText: "Schedule Wash & Fold",
+      buttonHref: "/contact",
+      features: [
+        "Color-separated washing cycles",
+        "Hypoallergenic & eco detergents",
+        "Neatly folded & ready to wear",
+        "24-48 hour guaranteed return",
+        "Free doorstep pickup & delivery",
+      ],
+    },
+    {
+      title: "Executive Dry Cleaning",
+      subtitle: "Gentle organic solvent cleaning for suits, silk dresses & formalwear",
+      price: "$22.00",
+      unit: "SUITS & FORMALWEAR",
+      isPopular: true,
+      popularTag: "MOST POPULAR 🔥",
+      buttonText: "Book Dry Cleaning",
+      buttonHref: "/contact",
+      features: [
+        "100% PERC-free organic process",
+        "Hand pre-treatment for tough stains",
+        "Custom protective garment covers",
+        "Executive steam press finish",
+        "Free minor button audit & repairs",
+      ],
+    },
+    {
+      title: "Laundered Shirts",
+      subtitle: "Custom dress shirts hand-pressed and returned crisp on heavy hangers",
+      price: "$6.95",
+      unit: "PER SHIRT ON HANGERS",
+      isPopular: false,
+      buttonText: "Book Shirt Pressing",
+      buttonHref: "/contact",
+      features: [
+        "Choice of starch intensity",
+        "Collar & cuff detail pressing",
+        "Free button inspection & repair",
+        "Returned crisp on heavy dress hangers",
+        "Same-day express return option",
+      ],
+    },
   ];
 
-  return (
-    <div className="space-y-10">
-      {/* Navigation Tabs */}
-      <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto bg-[#0F172A]/80 p-1.5 rounded-2xl border border-blue-900">
-        {tabs.map((tab) => (
-          <button
-            key={tab.key}
-            onClick={() => setActiveTab(tab.key)}
-            className="relative px-5 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer text-slate-300 hover:text-white"
-          >
-            {activeTab === tab.key && (
-              <motion.div
-                layoutId="activeTabIndicator"
-                className="absolute inset-0 bg-[#2563EB] rounded-xl -z-10"
-                transition={{ type: "spring", stiffness: 300, damping: 28 }}
-              />
-            )}
-            <span className={activeTab === tab.key ? "text-white font-bold" : ""}>
-              {tab.label}
-            </span>
-          </button>
-        ))}
-      </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.1,
+      },
+    },
+  };
 
-      {/* Tab Details Display with Framer Motion AnimatePresence */}
-      <div className="bg-[#0F172A]/60 rounded-3xl p-8 border border-blue-900 max-w-4xl mx-auto overflow-hidden min-h-[350px] flex items-center justify-center">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="w-full"
-          >
-            {tabContent[activeTab]}
-          </motion.div>
-        </AnimatePresence>
-      </div>
-    </div>
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.65,
+        ease: [0.16, 1, 0.3, 1] as const,
+      },
+    },
+  };
+
+  return (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-40px" }}
+      className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 items-stretch max-w-6xl mx-auto"
+    >
+      {cards.map((card, idx) => (
+        <motion.div
+          key={idx}
+          variants={cardVariants}
+          whileHover={{ y: -8 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className={`bg-white rounded-[1.75rem] shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden relative ${
+            card.isPopular
+              ? "border-2 border-[#00A8B5] shadow-lg shadow-[#00A8B5]/10"
+              : "border border-slate-200/80"
+          }`}
+        >
+          {/* Top Tag for Featured Popular Card */}
+          {card.isPopular && (
+            <div className="bg-[#00A8B5] text-white text-[11px] font-black tracking-widest uppercase py-1.5 text-center w-full">
+              {card.popularTag}
+            </div>
+          )}
+
+          <div className="p-7 sm:p-8 space-y-6 flex-1 flex flex-col justify-between">
+            {/* Header: Title, Subtitle, Price */}
+            <div className="space-y-4">
+              <div className="space-y-1.5">
+                <h3 className="text-2xl font-extrabold text-[#00223D] tracking-tight">
+                  {card.title}
+                </h3>
+                <p className="text-xs text-slate-500 leading-relaxed font-normal min-h-[36px]">
+                  {card.subtitle}
+                </p>
+              </div>
+
+              <div className="pt-2">
+                <div className="text-4xl sm:text-5xl font-black text-[#00223D] tracking-tight">
+                  {card.price}
+                </div>
+                <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest mt-1">
+                  {card.unit}
+                </div>
+              </div>
+
+              {/* Action CTA Button */}
+              <div className="pt-2">
+                <Link
+                  href={card.buttonHref}
+                  className={`block w-full text-center py-3.5 px-4 rounded-xl text-xs sm:text-sm font-extrabold transition-all shadow-md active:scale-98 ${
+                    card.isPopular
+                      ? "bg-[#00A8B5] hover:bg-[#0091A4] text-white shadow-cyan-500/20"
+                      : "bg-[#00A8B5] hover:bg-[#0091A4] text-white"
+                  }`}
+                >
+                  {card.buttonText}
+                </Link>
+              </div>
+            </div>
+
+            {/* Features Checklist */}
+            <div className="pt-6 border-t border-slate-100 space-y-3">
+              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-2">
+                Features Included
+              </span>
+              {card.features.map((feat, fIdx) => (
+                <div key={fIdx} className="flex items-start gap-2.5 text-xs text-slate-600 font-medium">
+                  <Check className="w-4 h-4 text-[#00A8B5] shrink-0 mt-0.5" strokeWidth={2.5} />
+                  <span>{feat}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </motion.div>
   );
 }

@@ -15,30 +15,24 @@ const baiJamjuree = Bai_Jamjuree({
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Beachwood Cleaners & Laundry | #1 Eco-Friendly Laundry & Dry Cleaning Los Angeles",
-  description: "Professional eco-friendly dry cleaning and wash-and-fold laundry delivery in Los Angeles (2699 Beachwood Dr, LA CA 90068). Call +1 (323) 828-7503 for doorstep service.",
-  keywords: "dry cleaners los angeles, wash and fold beachwood canyon, laundry pickup delivery 90068, suit dry cleaning LA",
+  title: "QuickFold Laundry Service | Premium Eco-Friendly Laundry & Dry Cleaning",
+  description: "Simplify your life with QuickFold Laundry Service. Professional wash & fold, dry cleaning, ironing, and express 24-hour doorstep pickup & delivery.",
+  keywords: "quickfold laundry, dry cleaning, wash and fold, laundry delivery, eco friendly laundry service",
 };
 
 const jsonLdSchema = {
   "@context": "https://schema.org",
   "@type": "DryCleaner",
-  "name": "Beachwood Cleaners & Laundry",
-  "image": "https://beachwoodcleaners.com/og-image.jpg",
-  "telephone": "+1-323-828-7503",
-  "email": "laundryday@gmail.com",
+  "name": "QuickFold Laundry Service",
+  "telephone": "+1-123-456-7890",
+  "email": "info@quickfoldlaundry.com",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "2699 Beachwood Dr",
-    "addressLocality": "Los Angeles",
-    "addressRegion": "CA",
-    "postalCode": "90068",
+    "streetAddress": "123 Clean Street",
+    "addressLocality": "Beachwood",
+    "addressRegion": "NY",
+    "postalCode": "10001",
     "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 34.120027,
-    "longitude": -118.321431
   },
   "priceRange": "$$"
 };
@@ -56,7 +50,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#F8FAFC] text-[#0F172A]">
+      <body className="min-h-full flex flex-col bg-white text-[#0F172A]">
         <AosProvider>
           <Navbar />
           <main className="flex-1">

@@ -2,113 +2,182 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ShieldCheck, Building2, Star, Users, Recycle, BadgeCheck, Award } from "lucide-react";
+import { ShieldCheck, Heart, Sparkles, Award } from "lucide-react";
 
 export function TrustCommunitySection() {
   const trustStats = [
     {
-      icon: Building2,
-      value: "2017",
       label: "Locally Owned Since",
-      desc: "Proudly serving the Beachwood Canyon community for years.",
+      value: "2017",
+      offset: false,
     },
     {
-      icon: Star,
-      value: "4.9★",
-      label: "250+ Verified Reviews",
-      desc: "Rated top laundry & dry cleaning service across Google & Yelp.",
+      label: "Verified LA Reviews",
+      value: "250+",
+      offset: true, // Sitting slightly higher like screenshot
     },
     {
-      icon: Users,
-      value: "10 mi",
-      label: "Neighborhoods Covered",
-      desc: "Free doorstep service across Hollywood, Los Feliz & Silver Lake.",
+      label: "Satisfaction Rate",
+      value: "99.8%",
+      offset: true, // Sitting slightly higher like screenshot
     },
     {
-      icon: Recycle,
-      value: "100%",
-      label: "PERC-Free Process",
-      desc: "Every order cleaned with non-toxic, environmentally safe solvents.",
+      label: "Happy LA Neighbors",
+      value: "12,480+",
+      offset: false,
     },
   ];
 
-  const trustBadges = [
-    { icon: ShieldCheck, label: "Fully Insured & Bonded" },
-    { icon: BadgeCheck, label: "Locally Owned & Operated" },
-    { icon: Recycle, label: "Eco-Certified Solvents" },
-    { icon: Award, label: "Satisfaction Guaranteed" },
+  const coreValues = [
+    {
+      icon: Heart,
+      title: "Garment-First Always",
+      desc: "Every item is treated with personalized European care, eco-solvents, and hand pre-treatment.",
+    },
+    {
+      icon: Sparkles,
+      title: "100% Non-Toxic & PERC Free",
+      desc: "Zero harsh chemicals. Organic cleaning safe for sensitive skin, babies, and nature.",
+    },
+    {
+      icon: Award,
+      title: "Garment Protection Guarantee",
+      desc: "If an item isn't cleaned to your exact standards, we re-clean it free — no questions asked.",
+    },
   ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.65,
+        ease: [0.16, 1, 0.3, 1] as const,
+      },
+    },
+  };
 
   return (
-    <section className="max-container">
+    <section className="max-container py-10 sm:py-16 overflow-hidden">
+      {/* 1. Top Section: Centered Title & Narrative (Matching Screenshot Header) */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
-        className="relative rounded-[2.25rem] bg-white overflow-hidden border border-[#00A8B5]/20 shadow-sm"
+        className="text-center max-w-2xl mx-auto space-y-3 mb-12 sm:mb-16"
       >
-        {/* Ambient glass glows */}
-        <div className="absolute -top-24 -left-24 w-80 h-80 bg-cyan-200/25 rounded-full blur-3xl -z-0" />
-        <div className="absolute -bottom-24 -right-16 w-80 h-80 bg-amber-200/20 rounded-full blur-3xl -z-0" />
+        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#E6F7F9] text-[#00A8B5] text-xs font-bold uppercase tracking-wider border border-[#00A8B5]/20">
+          <ShieldCheck className="w-3.5 h-3.5" /> Trusted Neighborhood Valet
+        </span>
+        <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#00223D] tracking-tight leading-tight">
+          Serving Los Angeles Since 2017
+        </h2>
+        <p className="text-slate-500 text-xs sm:text-sm leading-relaxed max-w-xl mx-auto">
+          We were tired of clunky laundry services that lost garments or used toxic chemicals. So we built a local Beachwood Canyon service combining eco solvents and doorstep care.
+        </p>
+      </motion.div>
 
-        <div className="relative z-10 p-8 sm:p-12 lg:p-14 space-y-12">
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#E6F7F9] backdrop-blur-sm text-[#00A8B5] text-xs font-bold uppercase tracking-wider border border-[#00A8B5]/20">
-              <ShieldCheck className="w-3.5 h-3.5" /> Trusted Local Business
-            </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-[#00223D] tracking-tight">
-              Serving Los Angeles Since 2017
-            </h2>
-            <p className="text-slate-600 text-sm sm:text-base leading-[1.6]">
-              A neighborhood business built on reliability, transparency, and care for both your garments and the environment.
+      {/* 2. Stat Cards Grid (4 Big Cards matching screenshot layout) */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-40px" }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mb-20 items-end"
+      >
+        {trustStats.map((stat, idx) => (
+          <motion.div
+            key={idx}
+            variants={cardVariants}
+            whileHover={{ y: -6, scale: 1.015 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            className={`bg-white border border-slate-200/80 rounded-[1.75rem] p-5 sm:p-6 flex flex-col justify-between h-36 sm:h-44 shadow-sm hover:shadow-xl hover:shadow-[#00A8B5]/10 hover:border-[#00A8B5]/30 transition-all duration-300 ${
+              stat.offset ? "lg:-translate-y-5" : ""
+            }`}
+          >
+            <p className="text-xs sm:text-sm font-semibold text-slate-500 tracking-wide">
+              {stat.label}
+            </p>
+            <p className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#00223D] tracking-tight leading-none">
+              {stat.value}
+            </p>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* 3. Bottom Sub-Section: "What We Believe In" (Matching Screenshot Bottom Half) */}
+      <div className="space-y-10">
+        {/* Header Row: Title on Left, Text on Right */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end"
+        >
+          <div className="lg:col-span-6">
+            <h3 className="text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-[#00223D] tracking-tight">
+              What We Believe In
+            </h3>
+          </div>
+          <div className="lg:col-span-6">
+            <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+              Our values guide everything we do — from garment cleaning techniques to transparent door-to-door delivery. They keep us focused on reliable, human-centered service.
             </p>
           </div>
+        </motion.div>
 
-          {/* Stat Cards */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {trustStats.map((stat, idx) => {
-              const Icon = stat.icon;
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 25 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] as const }}
-                  whileHover={{ y: -5 }}
-                  className="bg-[#E6F7F9]/50 border border-[#00A8B5]/20 rounded-[1.75rem] p-5 sm:p-6 text-center flex flex-col items-center gap-2 backdrop-blur-md transition-all duration-200 hover:shadow-lg hover:shadow-[#00A8B5]/10 group"
-                >
-                  <div className="w-11 h-11 rounded-2xl bg-white border border-[#00A8B5]/20 text-[#00A8B5] group-hover:bg-[#00A8B5] group-hover:text-white flex items-center justify-center mb-1 transition-all duration-200 shadow-2xs">
-                    <Icon className="w-5 h-5" />
+        {/* 3 Value Cards with Soft Glowing Icon Badges (Matching Screenshot Bottom Row) */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-30px" }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
+          {coreValues.map((val, idx) => {
+            const Icon = val.icon;
+            return (
+              <motion.div
+                key={idx}
+                variants={cardVariants}
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="bg-[#E6F7F9]/40 border border-[#00A8B5]/20 rounded-[1.75rem] p-7 sm:p-8 flex flex-col justify-between space-y-6 shadow-2xs hover:shadow-lg hover:shadow-[#00A8B5]/10 transition-all duration-300 group"
+              >
+                {/* Soft Glowing Icon Badge */}
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#00A8B5] to-[#00D2E0] text-white flex items-center justify-center shadow-md shadow-[#00A8B5]/20 group-hover:scale-105 transition-transform duration-200">
+                    <Icon className="w-6 h-6" strokeWidth={2} />
                   </div>
-                  <p className="text-2xl sm:text-3xl font-black text-[#00223D] tracking-tight">
-                    {stat.value}
-                  </p>
-                  <p className="text-xs sm:text-sm font-bold text-[#00A8B5]">{stat.label}</p>
-                  <p className="text-[11px] sm:text-xs text-slate-500 leading-[1.5]">{stat.desc}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Trust Badge Strip */}
-          <div className="pt-8 border-t border-slate-100 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-            {trustBadges.map((badge, idx) => {
-              const Icon = badge.icon;
-              return (
-                <div
-                  key={idx}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/70 backdrop-blur-md border border-[#00A8B5]/20 text-xs sm:text-sm font-semibold text-slate-700 shadow-2xs"
-                >
-                  <Icon className="w-4 h-4 text-[#00A8B5]" />
-                  {badge.label}
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </motion.div>
+
+                <div className="space-y-2">
+                  <h4 className="text-xl font-extrabold text-[#00223D] tracking-tight">
+                    {val.title}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    {val.desc}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
     </section>
   );
 }

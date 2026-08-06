@@ -1,0 +1,48 @@
+<svg viewBox="0 0 600 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Ground Shadow -->
+  <ellipse cx="300" cy="440" rx="220" ry="25" fill="#0F172A" opacity="0.1" />
+
+  <!-- Stack of Neatly Folded Colorful Clothes -->
+  <!-- Layer 1 (Bottom - Cyan) -->
+  <path d="M160 380 Q300 375 440 380 C460 380 465 410 440 415 L160 415 C140 410 140 380 160 380 Z" fill="#0284C7" />
+  <!-- Layer 2 (Magenta / Purple) -->
+  <path d="M165 345 Q300 340 435 345 C455 345 460 375 435 380 L165 380 C145 375 145 345 165 345 Z" fill="#9333EA" />
+  <!-- Layer 3 (Yellow) -->
+  <path d="M170 310 Q300 305 430 310 C450 310 455 340 430 345 L170 345 C150 340 150 310 170 310 Z" fill="#EAB308" />
+  <!-- Layer 4 (Bright Orange) -->
+  <path d="M175 275 Q300 270 425 275 C445 275 450 305 425 310 L175 310 C155 305 155 275 175 275 Z" fill="#F97316" />
+  <!-- Layer 5 (Peach / Beige) -->
+  <path d="M180 240 Q300 235 420 240 C440 240 445 270 420 275 L180 275 C160 270 160 240 180 240 Z" fill="#FED7AA" />
+  <!-- Layer 6 (Pink / Lavender) -->
+  <path d="M185 205 Q300 200 415 205 C435 205 440 235 415 240 L185 240 C165 235 165 205 185 205 Z" fill="#EC4899" />
+  <!-- Layer 7 (Top - Turquoise) -->
+  <path d="M190 170 Q300 165 410 170 C430 170 435 200 410 205 L190 205 C170 200 170 170 190 170 Z" fill="#06B6D4" />
+
+  <!-- Modern Maroon Steam Iron in Front -->
+  <g transform="translate(190, 220)">
+    <!-- Iron Shadow -->
+    <ellipse cx="140" cy="205" rx="140" ry="15" fill="#000000" opacity="0.25" />
+
+    <!-- Soleplate Base -->
+    <path d="M20 190 L270 190 C290 190, 310 180, 280 160 L120 160 C50 160, 20 175, 20 190 Z" fill="#CBD5E1" />
+    <path d="M15 195 L275 195 L265 190 L20 190 Z" fill="#94A3B8" />
+
+    <!-- Iron Body (Maroon / Burgundy) -->
+    <path d="M30 160 L260 160 C285 160, 295 130, 240 85 L140 85 C80 85, 30 120, 30 160 Z" fill="#881337" />
+    <path d="M40 150 C50 120, 100 95, 140 95 L230 95 C265 130, 250 150, 240 150 Z" fill="#9F1239" />
+    
+    <!-- Metallic Chrome Accent Strip -->
+    <path d="M45 155 L250 155" stroke="#E2E8F0" stroke-width="4" stroke-linecap="round" />
+
+    <!-- Steam Control Dial -->
+    <ellipse cx="160" cy="115" rx="22" ry="10" fill="#1E293B" />
+    <ellipse cx="160" cy="115" rx="16" ry="6" fill="#64748B" />
+
+    <!-- Dark Handle -->
+    <path d="M60 110 C60 50, 220 50, 220 110" stroke="#1E293B" stroke-width="22" stroke-linecap="round" fill="none" />
+    <path d="M60 110 C60 50, 220 50, 220 110" stroke="#0F172A" stroke-width="14" stroke-linecap="round" fill="none" />
+
+    <!-- Power Cable Connector at Back -->
+    <rect x="220" y="100" width="20" height="15" rx="4" fill="#1E293B" transform="rotate(20 220 100)" />
+  </g>
+</svg>

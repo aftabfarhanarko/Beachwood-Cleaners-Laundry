@@ -1,0 +1,77 @@
+<svg viewBox="0 0 500 550" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Soft Backdrop Radial Aura (Transparent Blend) -->
+  <circle cx="250" cy="270" r="210" fill="#E0F2FE" opacity="0.6" />
+  <circle cx="250" cy="270" r="160" fill="#FFF7ED" opacity="0.8" />
+
+  <!-- Drop Shadow under Basket & Feet -->
+  <ellipse cx="250" cy="505" rx="160" ry="25" fill="#0F172A" opacity="0.08" />
+  <ellipse cx="250" cy="495" rx="120" ry="18" fill="#00A8E8" opacity="0.12" />
+
+  <!-- Laundry Professional Body -->
+  <!-- White T-Shirt with soft shadow -->
+  <path d="M140 280 C140 220, 360 220, 360 280 L380 520 L120 520 Z" fill="#FFFFFF" />
+  
+  <!-- Face & Head -->
+  <!-- Skin Tone Base -->
+  <path d="M250 90 C205 90 180 120 180 168 C180 215 205 240 250 240 C295 240 320 215 320 168 C320 120 295 90 250 90 Z" fill="#7C2D12" />
+  
+  <!-- Haircut -->
+  <path d="M180 145 C175 105 215 80 250 80 C285 80 325 105 320 145 C305 110 285 100 250 100 C215 100 195 110 180 145 Z" fill="#1E293B" />
+  
+  <!-- Ears -->
+  <circle cx="178" cy="165" r="12" fill="#7C2D12" />
+  <circle cx="322" cy="165" r="12" fill="#7C2D12" />
+  <circle cx="178" cy="165" r="6" fill="#581C87" opacity="0.2" />
+  <circle cx="322" cy="165" r="6" fill="#581C87" opacity="0.2" />
+
+  <!-- Beaming White Smile -->
+  <path d="M218 190 Q250 222 282 190 Z" fill="#FFFFFF" />
+  <path d="M222 190 Q250 198 278 190" stroke="#E2E8F0" stroke-width="2" fill="none" />
+
+  <!-- Eyes & Eyebrows -->
+  <path d="M212 142 Q225 136 238 142" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round" fill="none" />
+  <path d="M262 142 Q275 136 288 142" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round" fill="none" />
+  
+  <circle cx="225" cy="155" r="7" fill="#FFFFFF" />
+  <circle cx="275" cy="155" r="7" fill="#FFFFFF" />
+  <circle cx="226" cy="155" r="4" fill="#0F172A" />
+  <circle cx="276" cy="155" r="4" fill="#0F172A" />
+  <circle cx="228" cy="153" r="1.5" fill="#FFFFFF" />
+  <circle cx="278" cy="153" r="1.5" fill="#FFFFFF" />
+
+  <!-- Apron (Fresh Mint Teal) -->
+  <path d="M185 260 L315 260 L335 520 L165 520 Z" fill="#2DD4BF" />
+  <!-- Apron Straps (Orange/Amber) -->
+  <path d="M195 260 L218 190 L233 190 L210 260 Z" fill="#F59E0B" />
+  <path d="M305 260 L282 190 L267 190 L290 260 Z" fill="#F59E0B" />
+  <!-- Clothes Pegs on Strap -->
+  <rect x="220" y="215" width="8" height="18" rx="2.5" fill="#38BDF8" />
+  <rect x="220" y="238" width="8" height="18" rx="2.5" fill="#F97316" />
+
+  <!-- Overflowing Colorful Laundry Stack -->
+  <!-- Purple Towel -->
+  <path d="M135 375 C115 305 175 295 195 365 Z" fill="#8B5CF6" />
+  <!-- Pink Waffle Towel -->
+  <path d="M175 365 C165 275 240 265 250 365 Z" fill="#F43F5E" />
+  <!-- Teal Soft Towel -->
+  <path d="M230 355 C210 265 305 250 315 345 Z" fill="#10B981" />
+  <!-- Yellow Folded Clothes -->
+  <path d="M290 365 C280 295 365 290 370 370 Z" fill="#FBBF24" />
+  <!-- Gray Towel Right -->
+  <path d="M340 375 C330 310 395 320 375 385 Z" fill="#94A3B8" />
+
+  <!-- Eco Soap Bottle sticking out -->
+  <rect x="245" y="275" width="22" height="42" rx="7" fill="#0284C7" transform="rotate(-15 245 275)" />
+  <circle cx="240" cy="270" r="7.5" fill="#F97316" />
+
+  <!-- High-Quality Cyan Laundry Tub / Basket with Front Lip -->
+  <path d="M120 375 L380 375 L350 495 C350 510 335 520 320 520 L180 520 C165 520 150 510 150 495 Z" fill="#00A8E8" />
+  <path d="M105 365 C105 355 130 355 140 365 L360 365 C370 355 395 355 395 365 L385 385 L115 385 Z" fill="#0284C7" />
+  <rect x="180" y="440" width="140" height="12" rx="6" fill="#38BDF8" opacity="0.6" />
+
+  <!-- Sparkles & Magic Clean Highlights -->
+  <path d="M105 220 L110 205 L115 220 L130 225 L115 230 L110 245 L105 230 L90 225 Z" fill="#FBBF24" />
+  <path d="M385 180 L388 170 L391 180 L401 183 L391 186 L388 196 L385 186 L375 183 Z" fill="#F97316" />
+  <circle cx="140" cy="290" r="4" fill="#38BDF8" opacity="0.8" />
+  <circle cx="360" cy="270" r="5" fill="#38BDF8" opacity="0.8" />
+</svg>

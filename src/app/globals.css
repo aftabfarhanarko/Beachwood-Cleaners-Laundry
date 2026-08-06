@@ -1,26 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-logo-navy: #003B65;
-  --color-[#003B65]: #003B65;
-  --color-logo-cyan: #00A8B5;
-  --color-[#00A8B5]: #00A8B5;
-  --color-logo-teal: #0091A4;
-  --color-[#0091A4]: #0091A4;
-  --color-logo-yellow: #FFC72C;
-  --color-[#FFC72C]: #FFC72C;
-  --color-base-navy: #003B65;
-  --color-primary-blue: #00A8B5;
-  --color-eco-green: #0091A4;
-  --color-amber-warm: #FFC72C;
-  --color-slate-dark: #00223D;
-  --color-canvas-bg: #F8FAFC;
-  --font-bai-jamjuree: var(--font-bai-jamjuree);
+  --color-quick-blue: #00A8E8;
+  --color-quick-blue-dark: #0084C7;
+  --color-quick-orange: #F97316;
+  --color-quick-orange-hover: #EA580C;
+  --color-quick-bg-light: #F4FAFF;
+  --color-quick-bg-cyan: #E6F7FF;
+  --color-quick-navy: #0F172A;
+  --color-quick-card-blue: #0077B6;
 }
 
 :root {
-  --background: #F8FAFC;
-  --foreground: #00223D;
+  --background: #FFFFFF;
+  --foreground: #0F172A;
 }
 
 body {
@@ -29,102 +22,99 @@ body {
   font-family: var(--font-bai-jamjuree), system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   scrollbar-width: thin;
-  scrollbar-color: #00A8B5 #F8FAFC;
+  scrollbar-color: #00A8E8 #F4FAFF;
 }
 
-/* Custom Slim Scrollbar for Webkit Browsers (Chrome, Safari, Edge) */
+/* Custom Slim Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F8FAFC;
+  background: #F4FAFF;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #00A8B5;
+  background: #00A8E8;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0091A4;
+  background: #0084C7;
 }
 
-/* Global Typography Specifications */
+/* Typography styles */
 h1 {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.15;
 }
 
 @media (min-width: 640px) {
   h1 {
-    font-size: 3rem;
+    font-size: 3.25rem;
   }
 }
 
 @media (min-width: 1024px) {
   h1 {
-    font-size: 3.5rem;
-    /* 56px */
+    font-size: 3.75rem;
   }
 }
 
 h2 {
-  font-size: 1.5rem;
-  /* 24px Mobile */
-  font-weight: 600;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 @media (min-width: 1024px) {
   h2 {
-    font-size: 2.25rem;
-    /* 36px Desktop */
+    font-size: 2.5rem;
   }
 }
 
-/* Glassmorphism Card Style matching Logo Palette */
-.glass-card {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-  box-shadow: 0 4px 20px -2px rgba(0, 34, 61, 0.05);
-  border-radius: 12px;
-  transition: all 0.25s ease-in-out;
-}
-
-.glass-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px -4px rgba(0, 168, 181, 0.15);
-}
-
-.glass-nav {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-/* Custom utility styles */
+/* Section Container */
 .max-container {
   max-width: 80rem;
-  /* max-w-7xl */
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 @media (min-width: 640px) {
   .max-container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .max-container {
     padding-left: 2rem;
     padding-right: 2rem;
   }
+}
+
+/* Orange text pill / accent highlight */
+.orange-highlight {
+  color: #F97316;
+}
+
+/* Curved Orange Badge Pill */
+.orange-pill-bg {
+  background-color: #FFF2E6;
+  color: #F97316;
+  border-radius: 9999px;
+  padding: 0.2rem 0.8rem;
+  display: inline-block;
+}
+
+/* Soft Cyan Gradient Background */
+.bg-quick-soft-gradient {
+  background: linear-gradient(180deg, #F0F9FF 0%, #FFFFFF 100%);
+}
+
+.bg-quick-hero-gradient {
+  background: linear-gradient(135deg, #E6F7FF 0%, #FFF8F0 50%, #F0F9FF 100%);
+}
+
+/* Custom dashed SVG connector styling */
+.dashed-connector {
+  stroke-dasharray: 6, 6;
 }
