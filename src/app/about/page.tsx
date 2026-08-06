@@ -1,111 +1,216 @@
 import React from "react";
-import { Leaf, MapPin, CheckCircle2 } from "lucide-react";
+import { TrustCommunitySection } from "@/components/TrustCommunitySection";
+import { NewsletterBannerSection } from "@/components/NewsletterBannerSection";
+import { HeartHandshake, ShieldCheck, Sparkles, Clock, Scale, Truck, Award, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 
 export const metadata = {
-  title: "About Us & Eco Guarantee | Beachwood Cleaners LA",
-  description: "Learn about Beachwood Cleaners & Laundry, located at 2699 Beachwood Dr, LA. Serving Beachwood Canyon & Hollywood with 100% PERC-free eco-friendly dry cleaning.",
+  title: "About Us | Beachwood Cleaners & Laundry",
+  description: "Learn about Beachwood Cleaners & Laundry, our 5+ years of dedicated garment care, eco-friendly washing techniques, and doorstep pickup service in Los Angeles.",
 };
 
 export default function AboutPage() {
-  const steps = [
-    { step: "01", title: "Barcoded Garment Tagging", desc: "Every item is tagged and cataloged under your personal account to ensure zero misplaced garments." },
-    { step: "02", title: "Hand Spot Inspection", desc: "Our master cleaners inspect cuffs, collars, and hems for spots, applying custom pre-treatment solutions." },
-    { step: "03", title: "100% Non-Toxic Eco Wash", desc: "Garments are cleaned using non-hazardous, hypoallergenic organic solvents that protect fine fibers." },
-    { step: "04", title: "Custom Steam Pressing", desc: "Garments are hand steam-pressed to recreate original tailored lines, crisp pleats, and smooth contours." },
-    { step: "05", title: "Final Quality Audit", desc: "A supervisor conducts a 5-point final inspection before packaging garments in breathable protective covers." },
+  const pillars = [
+    {
+      title: "Eco-Friendly Organic Care",
+      desc: "We exclusively use non-toxic, hypoallergenic biodegradable soaps safe for sensitive skin and delicate silk/wool.",
+      icon: Sparkles,
+      color: "text-[#00A8E8]",
+      bg: "bg-[#EAF7FD]",
+    },
+    {
+      title: "Digital Scale Transparency",
+      desc: "Every laundry bag is weighed on certified digital scales with instant itemized digital receipts prior to washing.",
+      icon: Scale,
+      color: "text-[#F97316]",
+      bg: "bg-[#FFF4E8]",
+    },
+    {
+      title: "24-Hour Express Delivery",
+      desc: "Our daily route drivers pick up dirty clothes and deliver fresh folded garments back to your doorstep within 24 hours.",
+      icon: Truck,
+      color: "text-[#00A8E8]",
+      bg: "bg-[#EAF7FD]",
+    },
+    {
+      title: "100% Free Re-Wash Guarantee",
+      desc: "If you're not completely wowed by the freshness or crease lines, our master cleaners will re-wash your garment for free.",
+      icon: ShieldCheck,
+      color: "text-emerald-600",
+      bg: "bg-emerald-50",
+    },
+  ];
+
+  const team = [
+    {
+      name: "Elena Rostova",
+      role: "Master Fabric Specialist",
+      experience: "12+ Years Exp.",
+      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80",
+    },
+    {
+      name: "Marcus Vance",
+      role: "Stain Restoration Expert",
+      experience: "9+ Years Exp.",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80",
+    },
+    {
+      name: "Sarah Jenkins",
+      role: "Logistics & Route Manager",
+      experience: "6+ Years Exp.",
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80",
+    },
   ];
 
   return (
-    <div className="space-y-16 py-12">
-      {/* Header Banner */}
-      <section className="bg-[#003B65] text-white py-16">
-        <div className="max-container text-center space-y-4 max-w-3xl">
-          <span className="bg-[#0091A4] text-white text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider">
-            Beachwood Canyon Community Heritage
+    <div className="space-y-0 overflow-hidden bg-white">
+      
+      {/* Hero Page Banner */}
+      <section className="py-12 sm:py-16 bg-gradient-to-r from-[#EBF7FD] via-[#FAFDFE] to-[#FFF4E8] text-center border-b border-sky-100">
+        <div className="max-container space-y-3">
+          <span className="inline-block bg-[#EAF7FD] border border-sky-200/60 text-[#00A8E8] px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider">
+            Our Story & Mission
           </span>
-          <h1 className="text-4xl sm:text-5xl font-black tracking-tight">
-            About Beachwood Cleaners & Laundry
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#363C44] tracking-tight">
+            About Beachwood <span className="text-[#F97316]">Cleaners & Laundry</span>
           </h1>
-          <p className="text-cyan-100 text-base sm:text-lg">
-            Dedicated to providing Hollywood & Beachwood Canyon residents with white-glove, eco-friendly garment care since day one.
+          <p className="text-[#5B636B] text-xs sm:text-sm font-medium max-w-xl mx-auto leading-relaxed">
+            For over 5 years, we have been dedicated to providing exceptional customer service and top quality dry cleaning and laundry services in Los Angeles.
           </p>
         </div>
       </section>
 
-      {/* Local Heritage Story */}
-      <section className="max-container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 text-xs font-bold text-[#00A8B5] uppercase tracking-wider">
-              <MapPin className="w-4 h-4 text-[#0091A4]" />
-              2699 Beachwood Dr, Los Angeles, CA 90068
+      {/* Story & Mission Section */}
+      <section className="py-14 sm:py-20 bg-white">
+        <div className="max-container grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div className="lg:col-span-6 space-y-6">
+            <div className="space-y-2">
+              <span className="text-xs font-extrabold text-[#F97316] uppercase tracking-wider">
+                Who We Are
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#363C44] leading-tight">
+                Simplifying Garment Care <br />
+                with <span className="text-[#00A8E8]">Precision & Passion</span>
+              </h2>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#00223D] tracking-tight">
-              Rooted In The Heart Of Beachwood Canyon
-            </h2>
-            <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-              Beachwood Cleaners & Laundry was founded with a singular purpose: to deliver premium, hassle-free garment care tailored to high-value residential and commercial clients across Los Angeles.
-            </p>
-            <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-              Situated right at the foothills of Beachwood Canyon below the iconic Hollywood Sign, we understand the fast-paced lifestyle of LA professionals, artists, and families. That’s why we created a seamless doorstep pickup and delivery model paired with strict artisanal cleaning standards.
+
+            <p className="text-[#5B636B] text-xs sm:text-sm font-medium leading-relaxed">
+              Beachwood Cleaners & Laundry was founded with a simple mission: to take the hassle out of laundry day for busy families, professionals, and local businesses in Los Angeles.
             </p>
 
-            <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="p-4 bg-cyan-50 rounded-2xl border border-cyan-100">
-                <p className="text-2xl font-black text-[#003B65]">250+</p>
-                <p className="text-xs text-slate-600 font-semibold">5-Star Google Reviews</p>
+            <p className="text-[#5B636B] text-xs sm:text-sm font-medium leading-relaxed">
+              Located on Beachwood Drive, our facility combines eco-friendly washing technologies, digital weight verification, and hand steam pressing to keep your wardrobe looking fresh and crisp.
+            </p>
+
+            <div className="p-4 rounded-2xl bg-[#EAF7FD] border border-sky-100 flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-[#00A8E8] text-white flex items-center justify-center font-black text-xl shrink-0">
+                5+
               </div>
-              <div className="p-4 bg-emerald-50/60 rounded-2xl border border-emerald-100">
-                <p className="text-2xl font-black text-[#0091A4]">100%</p>
-                <p className="text-xs text-slate-600 font-semibold">PERC-Free Organic Clean</p>
+              <div>
+                <h4 className="font-extrabold text-[#2C3238] text-sm sm:text-base">Years of Excellence</h4>
+                <p className="text-xs text-[#5B636B] font-medium">Over 150,000 garments cleaned across Beachwood & LA</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-gradient-to-tr from-[#003B65] via-[#005B94] to-[#00A8B5] text-white p-8 sm:p-10 rounded-3xl space-y-6 shadow-xl">
-            <div className="w-12 h-12 rounded-2xl bg-[#00A8B5] text-white flex items-center justify-center">
-              <Leaf className="w-6 h-6" />
+          <div className="lg:col-span-6 relative">
+            <div className="relative rounded-3xl overflow-hidden shadow-lg border-4 border-white">
+              <img
+                src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?w=800&auto=format&fit=crop&q=80"
+                alt="Beachwood Cleaners Facility"
+                className="w-full h-[360px] sm:h-[400px] object-cover"
+              />
             </div>
-            <h3 className="text-2xl font-bold">Our Eco-Friendly Commitment</h3>
-            <p className="text-sm text-cyan-100 leading-relaxed">
-              Traditional dry cleaners rely on Perchloroethylene (PERC)—a harsh, toxic chemical solvent harmful to fabrics, human health, and groundwater.
+          </div>
+
+        </div>
+      </section>
+
+      {/* 4 Floating Trust Stats Cards */}
+      <TrustCommunitySection />
+
+      {/* 4 Core Pillars Section */}
+      <section className="py-14 sm:py-20 bg-[#FAFDFE] border-y border-sky-100">
+        <div className="max-container space-y-10">
+          <div className="text-center max-w-xl mx-auto space-y-2">
+            <span className="inline-block bg-[#EAF7FD] border border-sky-200/60 text-[#00A8E8] px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider">
+              Our Principles
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-black text-[#363C44]">
+              Our Core <span className="text-[#F97316]">Pillars</span>
+            </h2>
+            <p className="text-[#5B636B] text-xs sm:text-sm font-medium">
+              The standards that guide our fabric cleaning operations every single day.
             </p>
-            <p className="text-sm text-cyan-100 leading-relaxed">
-              At Beachwood Cleaners, we use 100% toxic-free, biodegradable organic solvents and advanced wet-cleaning technology. Your clothes come back clean, soft, vibrant, and completely odorless.
-            </p>
-            <div className="pt-2 border-t border-white/20 flex items-center gap-2 text-xs font-semibold text-[#FFC72C]">
-              <CheckCircle2 className="w-4 h-4" /> Hypoallergenic & Safe For Delicate Baby Clothing
-            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {pillars.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div key={idx} className="bg-white rounded-3xl p-6 border border-sky-100/90 space-y-4 text-center shadow-xs hover:shadow-md transition-all">
+                  <div className={`w-12 h-12 rounded-2xl ${item.bg} ${item.color} mx-auto flex items-center justify-center`}>
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-extrabold text-[#2C3238] text-base sm:text-lg">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-[#5B636B] font-medium leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Quality Assurance 5-Point Process */}
-      <section className="bg-[#00223D] text-white py-16">
-        <div className="max-container space-y-12">
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#FFC72C]">
-              Artisanal Inspection
+      {/* Meet Our Master Cleaners Team Section */}
+      <section className="py-14 sm:py-20 bg-white">
+        <div className="max-container space-y-10">
+          <div className="text-center max-w-xl mx-auto space-y-2">
+            <span className="inline-block bg-[#EAF7FD] border border-sky-200/60 text-[#00A8E8] px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider">
+              The Experts Behind The Care
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-              Our 5-Point Quality Inspection Standard
+            <h2 className="text-2xl sm:text-3xl font-black text-[#363C44]">
+              Meet Our <span className="text-[#F97316]">Master Team</span>
             </h2>
-            <p className="text-slate-400 text-sm sm:text-base">
-              How every single garment is treated from the moment it arrives at our Beachwood location.
+            <p className="text-[#5B636B] text-xs sm:text-sm font-medium">
+              Experienced fabric specialists dedicated to inspecting and caring for your garments.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {steps.map((s, idx) => (
-              <div key={idx} className="bg-[#00172B] p-5 rounded-2xl border border-cyan-950 space-y-3">
-                <span className="text-2xl font-black text-[#FFC72C]">{s.step}</span>
-                <h3 className="font-bold text-white text-base">{s.title}</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">{s.desc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {team.map((member, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-3xl p-5 border border-sky-100/90 shadow-xs hover:shadow-lg transition-all space-y-4 text-center group"
+              >
+                <div className="relative h-60 w-full rounded-2xl overflow-hidden bg-slate-100">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute bottom-3 left-3 bg-[#00A8E8] text-white px-3 py-0.5 rounded-full text-[11px] font-extrabold shadow-sm">
+                    {member.experience}
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <h3 className="font-black text-[#2C3238] text-lg">{member.name}</h3>
+                  <p className="text-xs font-bold text-[#F97316]">{member.role}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Newsletter Banner */}
+      <NewsletterBannerSection />
+
     </div>
   );
 }

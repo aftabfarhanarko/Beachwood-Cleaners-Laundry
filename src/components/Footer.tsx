@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { Waves, Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
+import { BrandLogo } from "@/components/BrandLogo";
 
 export function Footer() {
   return (
@@ -13,15 +14,7 @@ export function Footer() {
           
           {/* Column 1: Brand Info & Follow Us */}
           <div className="lg:col-span-4 space-y-6">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#00A8E8] to-[#00C2FF] flex items-center justify-center text-white shadow-xs">
-                <Waves className="w-5 h-5" />
-              </div>
-              <div className="flex items-center font-black text-2xl tracking-tight leading-none">
-                <span className="text-[#00A8E8]">Beachwood Cleaners </span>
-                <span className="text-[#F97316]">& Laundry</span>
-              </div>
-            </Link>
+            <BrandLogo />
 
             <p className="text-[#64748B] text-sm leading-relaxed max-w-sm font-medium">
               Beachwood Cleaners & Laundry offers professional laundering solutions to assist individuals and businesses in achieving optimal garment care and cleanliness.
@@ -76,7 +69,7 @@ export function Footer() {
             <h4 className="font-extrabold text-[#2C3238] text-lg">Company</h4>
             <ul className="space-y-2.5 text-sm font-medium">
               <li>
-                <Link href="/about" className="hover:text-[#00A8E8] transition-colors">About</Link>
+                <Link href="/about" className="hover:text-[#00A8E8] transition-colors">About Us</Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-[#00A8E8] transition-colors">Contact</Link>
@@ -88,7 +81,7 @@ export function Footer() {
                 <Link href="/services" className="hover:text-[#00A8E8] transition-colors">Services</Link>
               </li>
               <li>
-                <Link href="#news" className="hover:text-[#00A8E8] transition-colors">Latest Posts</Link>
+                <Link href="/blog" className="hover:text-[#00A8E8] transition-colors">Latest Posts</Link>
               </li>
             </ul>
           </div>
@@ -98,16 +91,16 @@ export function Footer() {
             <h4 className="font-extrabold text-[#2C3238] text-lg">Further Links</h4>
             <ul className="space-y-2.5 text-sm font-medium">
               <li>
-                <Link href="/terms" className="hover:text-[#00A8E8] transition-colors">Terms and Condition</Link>
+                <Link href="/pricing" className="hover:text-[#00A8E8] transition-colors">Pricing Rates</Link>
               </li>
               <li>
-                <Link href="#news" className="hover:text-[#00A8E8] transition-colors">News</Link>
+                <Link href="/location" className="hover:text-[#00A8E8] transition-colors">Find Location</Link>
               </li>
               <li>
-                <Link href="/careers" className="hover:text-[#00A8E8] transition-colors">Recruitments</Link>
+                <Link href="/blog" className="hover:text-[#00A8E8] transition-colors">Garment Journal</Link>
               </li>
               <li>
-                <Link href="/privacy" className="hover:text-[#00A8E8] transition-colors">Privacy Policy</Link>
+                <Link href="/contact" className="hover:text-[#00A8E8] transition-colors">Support & Help</Link>
               </li>
             </ul>
           </div>

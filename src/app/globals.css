@@ -98,23 +98,42 @@ h2 {
 
 /* Curved Orange Badge Pill */
 .orange-pill-bg {
-  background-color: #FFF2E6;
-  color: #F97316;
-  border-radius: 9999px;
-  padding: 0.2rem 0.8rem;
-  display: inline-block;
+  background-color: #F97316;
+  color: #ffffff;
 }
 
-/* Soft Cyan Gradient Background */
-.bg-quick-soft-gradient {
-  background: linear-gradient(180deg, #F0F9FF 0%, #FFFFFF 100%);
+/* Infinite Marquee Animations for Testimonials */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-.bg-quick-hero-gradient {
-  background: linear-gradient(135deg, #E6F7FF 0%, #FFF8F0 50%, #F0F9FF 100%);
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
 
-/* Custom dashed SVG connector styling */
-.dashed-connector {
-  stroke-dasharray: 6, 6;
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 32s linear infinite;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 32s linear infinite;
+}
+
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
 }

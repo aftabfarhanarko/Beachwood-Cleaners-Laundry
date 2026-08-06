@@ -1,17 +1,18 @@
 import React from "react";
 import { HeroSection } from "@/components/HeroSection";
+import { TrustCommunitySection } from "@/components/TrustCommunitySection";
 import { ServicesSection } from "@/components/ServicesSection";
-import { PricingSection } from "@/components/PricingSection";
 import { WhyChooseUsSection } from "@/components/WhyChooseUsSection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { WorkingProcessSection } from "@/components/WorkingProcessSection";
+import { PricingSection } from "@/components/PricingSection";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { ContactFormSection } from "@/components/ContactFormSection";
 import { LatestNewsSection } from "@/components/LatestNewsSection";
 import { NewsletterBannerSection } from "@/components/NewsletterBannerSection";
 
 export const metadata = {
-  title: "Beachwood Cleaners & Laundry | Professional Garment Care in Los Angeles",
-  description: "Fast, reliable wash-and-fold, dry cleaning, ironing, and doorstep delivery with Beachwood Cleaners & Laundry.",
+  title: "Beachwood Cleaners & Laundry | Premier Dry Cleaning & Wash Service in Los Angeles",
+  description: "Express wash-and-fold, dry cleaning, ironing, and doorstep delivery across Los Angeles with Beachwood Cleaners & Laundry.",
 };
 
 export default function Home() {
@@ -20,28 +21,31 @@ export default function Home() {
       {/* 1. Hero Section */}
       <HeroSection />
 
-      {/* 2. Services Section */}
+      {/* 2. Trust & Community Stats (4 Floating Cards) */}
+      <TrustCommunitySection />
+
+      {/* 3. Services Section ("We are here to make our customers smile") */}
       <ServicesSection />
 
-      {/* 3. Pricing Section with Real Rates */}
-      <PricingSection />
-
-      {/* 4. Why Choose Us (Circular Orbit Diagram) */}
+      {/* 4. Why Choose Us (Circular Orbit Laundry Diagram) */}
       <WhyChooseUsSection />
 
-      {/* 5. Customer Testimonials (Vibrant Blue Card Slider) */}
-      <TestimonialsSection />
-
-      {/* 6. Working Process (4 Connected Steps) */}
+      {/* 5. Working Process (4 Connected Steps) */}
       <WorkingProcessSection />
 
-      {/* 7. Contact Form ("Lets Talk With Us") */}
+      {/* 6. Laundry Rates & Pricing Section */}
+      <PricingSection />
+
+      {/* 7. Customer Testimonials (Dark Blue Slider) */}
+      <TestimonialsSection />
+
+      {/* 8. Contact Form ("Lets Talk With Us") */}
       <ContactFormSection />
 
-      {/* 8. Latest News */}
+      {/* 9. Latest News (Blog Articles) */}
       <LatestNewsSection />
 
-      {/* 9. Join Our Newsletter Banner */}
+      {/* 10. Full-Width Newsletter Subscription Banner */}
       <NewsletterBannerSection />
     </div>
   );

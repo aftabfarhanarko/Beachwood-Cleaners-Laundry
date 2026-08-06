@@ -14,7 +14,7 @@ export function ContactFormSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Thank you! Your message has been sent to Beachwood Cleaners & Laundry.");
+    alert("Thank you! Your message has been sent to QuickFold Laundry.");
   };
 
   return (
@@ -33,7 +33,7 @@ export function ContactFormSection() {
           {/* Left Cyan Card with Solid Orange Bottom-Right Quarter-Circle */}
           <div className="lg:col-span-5 bg-[#00A8E8] text-white p-8 sm:p-10 rounded-3xl relative overflow-hidden flex flex-col justify-between space-y-8 shadow-xl min-h-[500px]">
             
-            {/* Solid Orange Curved Oval Shape in Bottom Right Corner */}
+            {/* Solid Orange Curved Oval Shape in Bottom Right Corner matching screenshot */}
             <div className="absolute -bottom-10 -right-10 w-52 h-52 bg-[#F97316] rounded-full pointer-events-none z-0" />
 
             <div className="space-y-6 relative z-10">
@@ -52,14 +52,14 @@ export function ContactFormSection() {
                   <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0">
                     <Phone className="w-4 h-4 text-white" />
                   </div>
-                  <span>+1 (323) 828-7503</span>
+                  <span>+1 (828) 325 - 4480</span>
                 </div>
 
                 <div className="flex items-center gap-4">
                   <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0">
                     <Mail className="w-4 h-4 text-white" />
                   </div>
-                  <span className="break-all">laundryday@gmail.com</span>
+                  <span className="break-all">hello.laundry@quickfold.com</span>
                 </div>
 
                 <div className="flex items-start gap-4">
@@ -67,13 +67,13 @@ export function ContactFormSection() {
                     <MapPin className="w-4 h-4 text-white" />
                   </div>
                   <span className="leading-relaxed">
-                    2699 Beachwood Dr, Los Angeles, CA 90068, United States
+                    69853 Harvey Shoals Apt. 358, Rosenbaumborough, New Jersey, USA.
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Bottom Left Social Icons */}
+            {/* Bottom Left Social Icons matching exact reference image */}
             <div className="flex items-center gap-4 relative z-10 pt-8">
               <a
                 href="#facebook"
@@ -115,7 +115,7 @@ export function ContactFormSection() {
 
           </div>
 
-          {/* Right Form Container */}
+          {/* Right Form Container matching exact reference screenshot */}
           <div className="lg:col-span-7 flex flex-col justify-between py-2">
             <form onSubmit={handleSubmit} className="space-y-6">
               
@@ -197,7 +197,7 @@ export function ContactFormSection() {
                 />
               </div>
 
-              {/* Submit Button */}
+              {/* Submit Button at Bottom Left */}
               <div className="pt-2">
                 <button
                   type="submit"

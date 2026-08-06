@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Waves, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { BrandLogo } from "@/components/BrandLogo";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -26,8 +27,9 @@ export function Navbar() {
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "Pricing", href: "/pricing" },
-    { name: "Find Location", href: "#location" },
-    { name: "Blog", href: "#news" },
+    { name: "Find Location", href: "/location" },
+    { name: "Blog", href: "/blog" },
+    { name: "About Us", href: "/about" },
   ];
 
   return (
@@ -35,32 +37,24 @@ export function Navbar() {
       <nav
         className={`w-full transition-all duration-300 ${
           isScrolled
-            ? "bg-white shadow-sm py-3 border-b border-sky-100"
+            ? "bg-white/95 backdrop-blur-md shadow-sm py-3 border-b border-sky-100"
             : "bg-gradient-to-r from-[#EBF7FD] via-white to-[#FFF6ED] py-4 border-b border-transparent"
         }`}
       >
         <div className="max-container flex items-center justify-between">
-          {/* QuickFold Logo matching screenshot */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#00A8E8] to-[#00C2FF] flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
-              <Waves className="w-5 h-5" />
-            </div>
-            <div className="flex items-center font-extrabold text-2xl tracking-tight leading-none">
-              <span className="text-[#00A8E8]">Beachwood Cleaners </span>
-              <span className="text-[#F97316]">& Laundry</span>
-            </div>
-          </Link>
+          {/* Custom Brand Logo */}
+          <BrandLogo />
 
-          {/* Center Links matching screenshot */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop Nav Links */}
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => {
-              const isActive = link.name === "Home";
+              const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-sm font-semibold transition-colors ${
-                    isActive ? "text-[#F97316] font-bold" : "text-slate-700 hover:text-[#00A8E8]"
+                  className={`text-sm font-extrabold transition-colors hover:text-[#00A8E8] ${
+                    isActive ? "text-[#00A8E8]" : "text-[#2C3238]"
                   }`}
                 >
                   {link.name}
@@ -69,46 +63,50 @@ export function Navbar() {
             })}
           </div>
 
-          {/* Right Action Button matching screenshot */}
-          <div className="hidden sm:flex items-center">
+          {/* Right Action Button */}
+          <div className="hidden lg:flex items-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-bold text-white bg-[#00A8E8] hover:bg-[#0094D8] shadow-md shadow-sky-200 transition-all hover:scale-102 active:scale-98"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-extrabold text-white bg-[#00A8E8] hover:bg-[#0094D8] shadow-md shadow-sky-100 transition-all hover:scale-105 cursor-pointer"
             >
               Contact us
             </Link>
           </div>
 
-          {/* Mobile Menu Trigger */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-slate-700 hover:bg-sky-50 transition-colors"
-            aria-label="Toggle Navigation Menu"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Menu Hamburger */}
+          <div className="flex lg:hidden items-center">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-xl text-[#2C3238] hover:bg-sky-50 transition-colors"
+              aria-label="Toggle Navigation Menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
-        {/* Mobile Dropdown */}
+        {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-b border-sky-100 px-6 py-4 space-y-3 shadow-xl">
-            <div className="flex flex-col space-y-2">
+          <div className="lg:hidden bg-white border-b border-sky-100 px-6 py-6 space-y-4 shadow-xl animate-fadeIn">
+            <div className="flex flex-col space-y-3">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-3 py-2 rounded-lg text-base font-semibold text-slate-700 hover:text-[#F97316] hover:bg-orange-50"
+                  className={`text-base font-extrabold transition-colors ${
+                    pathname === link.href ? "text-[#00A8E8]" : "text-[#2C3238]"
+                  }`}
                 >
                   {link.name}
                 </Link>
               ))}
             </div>
-            <div className="pt-2 border-t border-slate-100">
+            <div className="pt-2">
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-3 rounded-full text-sm font-bold text-white bg-[#00A8E8]"
+                className="w-full inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-extrabold text-white bg-[#00A8E8] shadow-md"
               >
                 Contact us
               </Link>
