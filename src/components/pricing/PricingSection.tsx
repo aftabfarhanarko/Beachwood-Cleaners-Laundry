@@ -1,10 +1,39 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Check, Sparkles, ArrowRight } from "lucide-react";
 
-{/* Custom Vector Sticker Icons for Premium Cards */}
+/* ---------------------------------------------------
+   Scroll-reveal hook — RE-TRIGGERS on every scroll pass,
+   whether scrolling top→bottom or bottom→top. Leaving the
+   viewport resets state so it replays next time it enters.
+--------------------------------------------------- */
+function useInView(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+      },
+      { threshold, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return { ref, inView };
+}
+
+const EASE = "cubic-bezier(0.16, 1, 0.3, 1)"; // premium "settle-in" easing
+
+/* Custom Vector Sticker Icons for Premium Cards */
 function RegularLaundryIcon() {
   return (
     <svg viewBox="0 0 24 24" className="w-7 h-7 text-[#F97316]" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -63,7 +92,199 @@ function DressIcon() {
   );
 }
 
+/* ---------------------------------------------------
+   Individual animated pricing card
+--------------------------------------------------- */
+function PriceCard({
+  item,
+  index,
+}: {
+  item: {
+    id: number;
+    title: string;
+    price: string;
+    unit: string;
+    description: string;
+    popular: boolean;
+    badgeText?: string;
+    Icon: React.ElementType;
+    features: string[];
+  };
+  index: number;
+}) {
+  const { ref, inView } = useInView();
+  const IconComponent = item.Icon;
+
+  // row-based stagger: 3 columns on desktop
+  const col = index % 3;
+  const row = Math.floor(index / 3);
+  const delay = row * 160 + col * 130;
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        transitionDelay: inView ? `${delay}ms` : "0ms",
+        transitionTimingFunction: EASE,
+      }}
+      className={`group relative rounded-3xl p-8 transition-all duration-700 flex flex-col justify-between space-y-7 ${
+        item.popular
+          ? "bg-gradient-to-b from-[#00A8E8] to-[#0086BD] text-white shadow-2xl scale-102 border-2 border-sky-300"
+          : "bg-white text-[#2C3238] border border-sky-100/80 shadow-xs hover:shadow-xl hover:-translate-y-1.5"
+      } ${
+        inView
+          ? `opacity-100 translate-y-0 ${item.popular ? "scale-102" : "scale-100"}`
+          : "opacity-0 translate-y-14 scale-90"
+      }`}
+    >
+      {/* Popular Pill Badge — pops in with a bounce, after the card lands */}
+      {item.popular && (
+        <div
+          style={{
+            transitionDelay: inView ? `${delay + 400}ms` : "0ms",
+            transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+          }}
+          className={`absolute -top-3.5 right-6 bg-[#F97316] text-white px-4 py-1 rounded-full text-xs font-black shadow-md flex items-center gap-1.5 transition-all duration-500 ${
+            inView ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-0 rotate-12"
+          }`}
+        >
+          <Sparkles className="w-3.5 h-3.5 fill-white" /> {item.badgeText}
+        </div>
+      )}
+
+      <div className="space-y-5">
+        {/* Top Header: Icon Badge & Title */}
+        <div
+          style={{
+            transitionDelay: inView ? `${delay + 150}ms` : "0ms",
+            transitionTimingFunction: EASE,
+          }}
+          className={`flex items-center gap-4 transition-all duration-600 ${
+            inView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
+          }`}
+        >
+          <div
+            className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-transform group-hover:scale-110 group-hover:rotate-6 ${
+              item.popular
+                ? "bg-white/20 border border-white/30 backdrop-blur-xs text-white"
+                : "bg-[#EAF7FD] border border-sky-100 text-[#00A8E8]"
+            }`}
+          >
+            <IconComponent />
+          </div>
+          <div>
+            <h3
+              className={`font-black text-xl sm:text-2xl tracking-tight ${
+                item.popular ? "text-white" : "text-[#2C3238]"
+              }`}
+            >
+              {item.title}
+            </h3>
+            <span
+              className={`text-xs font-semibold ${
+                item.popular ? "text-sky-100" : "text-slate-400"
+              }`}
+            >
+              Standard Garment Rate
+            </span>
+          </div>
+        </div>
+
+        {/* Price Banner Tag */}
+        <div
+          style={{
+            transitionDelay: inView ? `${delay + 250}ms` : "0ms",
+            transitionTimingFunction: EASE,
+          }}
+          className={`p-4 rounded-2xl flex items-baseline justify-between transition-all duration-600 ${
+            item.popular
+              ? "bg-white/10 border border-white/20"
+              : "bg-[#F4F9FD] border border-sky-100/60"
+          } ${inView ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}
+        >
+          <span
+            className={`text-3xl sm:text-4xl font-black ${
+              item.popular ? "text-white" : "text-[#00A8E8]"
+            }`}
+          >
+            {item.price}
+          </span>
+          <span
+            className={`text-xs sm:text-sm font-bold uppercase ${
+              item.popular ? "text-sky-100" : "text-[#5B636B]"
+            }`}
+          >
+            {item.unit}
+          </span>
+        </div>
+
+        <p
+          className={`text-xs sm:text-sm leading-relaxed font-medium ${
+            item.popular ? "text-sky-100" : "text-[#5B636B]"
+          }`}
+        >
+          {item.description}
+        </p>
+
+        {/* Feature Bullets — each ticks in one after another */}
+        <ul className="space-y-2.5 pt-2 border-t border-slate-100/20">
+          {item.features.map((feat, idx) => (
+            <li
+              key={idx}
+              style={{
+                transitionDelay: inView ? `${delay + 400 + idx * 90}ms` : "0ms",
+                transitionTimingFunction: EASE,
+              }}
+              className={`flex items-center gap-2.5 text-xs sm:text-sm font-semibold transition-all duration-500 ${
+                inView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-3"
+              }`}
+            >
+              <div
+                className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${
+                  item.popular ? "bg-white/20 text-white" : "bg-emerald-100 text-emerald-600"
+                }`}
+              >
+                <Check className="w-3 h-3 stroke-[3]" />
+              </div>
+              <span className={item.popular ? "text-white" : "text-slate-700"}>{feat}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* CTA Button */}
+      <div
+        style={{
+          transitionDelay: inView ? `${delay + 550}ms` : "0ms",
+          transitionTimingFunction: EASE,
+        }}
+        className={`pt-2 transition-all duration-600 ${
+          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+        }`}
+      >
+        <Link
+          href="/contact"
+          className={`w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl text-sm font-extrabold transition-all group-hover:scale-102 cursor-pointer ${
+            item.popular
+              ? "bg-[#F97316] text-white hover:bg-[#EA580C] shadow-lg shadow-orange-950/20"
+              : "bg-[#00A8E8] text-white hover:bg-[#0094D8] shadow-md shadow-sky-100"
+          }`}
+        >
+          <span>Schedule Pickup</span>
+          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+/* ---------------------------------------------------
+   Section
+--------------------------------------------------- */
+
 export function PricingSection() {
+  const { ref: headerRef, inView: headerInView } = useInView();
+
   const rates = [
     {
       id: 1,
@@ -155,15 +376,21 @@ export function PricingSection() {
 
   return (
     <section className="py-10 sm:py-14 bg-gradient-to-b from-[#F7FCFF] via-[#FAFDFE] to-white relative overflow-hidden" id="pricing">
-      
+
       {/* Decorative Translucent Glowing Background Circles */}
       <div className="absolute top-1/4 -left-20 w-80 h-80 bg-[#00A8E8]/5 rounded-full filter blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 -right-20 w-80 h-80 bg-[#F97316]/5 rounded-full filter blur-3xl pointer-events-none" />
 
       <div className="max-container space-y-8 relative z-10">
-        
+
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto space-y-3">
+        <div
+          ref={headerRef}
+          style={{ transitionTimingFunction: EASE }}
+          className={`text-center max-w-2xl mx-auto space-y-3 transition-all duration-700 ${
+            headerInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <span className="inline-block bg-[#EAF7FD] border border-sky-200/60 text-[#00A8E8] px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider">
             Beachwood Pricing Table
           </span>
@@ -177,124 +404,9 @@ export function PricingSection() {
 
         {/* 6 Unique & Ultra-Premium Price Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-          {rates.map((item) => {
-            const IconComponent = item.Icon;
-            return (
-              <div
-                key={item.id}
-                className={`group relative rounded-3xl p-8 transition-all duration-500 flex flex-col justify-between space-y-7 ${
-                  item.popular
-                    ? "bg-gradient-to-b from-[#00A8E8] to-[#0086BD] text-white shadow-2xl scale-102 border-2 border-sky-300"
-                    : "bg-white text-[#2C3238] border border-sky-100/80 shadow-xs hover:shadow-xl hover:-translate-y-1.5"
-                }`}
-              >
-                {/* Popular Pill Badge */}
-                {item.popular && (
-                  <div className="absolute -top-3.5 right-6 bg-[#F97316] text-white px-4 py-1 rounded-full text-xs font-black shadow-md flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 fill-white" /> {item.badgeText}
-                  </div>
-                )}
-
-                <div className="space-y-5">
-                  {/* Top Header: Icon Badge & Title */}
-                  <div className="flex items-center gap-4">
-                    <div
-                      className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-transform group-hover:scale-110 ${
-                        item.popular
-                          ? "bg-white/20 border border-white/30 backdrop-blur-xs text-white"
-                          : "bg-[#EAF7FD] border border-sky-100 text-[#00A8E8]"
-                      }`}
-                    >
-                      <IconComponent />
-                    </div>
-                    <div>
-                      <h3
-                        className={`font-black text-xl sm:text-2xl tracking-tight ${
-                          item.popular ? "text-white" : "text-[#2C3238]"
-                        }`}
-                      >
-                        {item.title}
-                      </h3>
-                      <span
-                        className={`text-xs font-semibold ${
-                          item.popular ? "text-sky-100" : "text-slate-400"
-                        }`}
-                      >
-                        Standard Garment Rate
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Price Banner Tag */}
-                  <div
-                    className={`p-4 rounded-2xl flex items-baseline justify-between ${
-                      item.popular
-                        ? "bg-white/10 border border-white/20"
-                        : "bg-[#F4F9FD] border border-sky-100/60"
-                    }`}
-                  >
-                    <span
-                      className={`text-3xl sm:text-4xl font-black ${
-                        item.popular ? "text-white" : "text-[#00A8E8]"
-                      }`}
-                    >
-                      {item.price}
-                    </span>
-                    <span
-                      className={`text-xs sm:text-sm font-bold uppercase ${
-                        item.popular ? "text-sky-100" : "text-[#5B636B]"
-                      }`}
-                    >
-                      {item.unit}
-                    </span>
-                  </div>
-
-                  <p
-                    className={`text-xs sm:text-sm leading-relaxed font-medium ${
-                      item.popular ? "text-sky-100" : "text-[#5B636B]"
-                    }`}
-                  >
-                    {item.description}
-                  </p>
-
-                  {/* Feature Bullets */}
-                  <ul className="space-y-2.5 pt-2 border-t border-slate-100/20">
-                    {item.features.map((feat, idx) => (
-                      <li key={idx} className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold">
-                        <div
-                          className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${
-                            item.popular
-                              ? "bg-white/20 text-white"
-                              : "bg-emerald-100 text-emerald-600"
-                          }`}
-                        >
-                          <Check className="w-3 h-3 stroke-[3]" />
-                        </div>
-                        <span className={item.popular ? "text-white" : "text-slate-700"}>
-                          {feat}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* CTA Button */}
-                <div className="pt-2">
-                  <Link
-                    href="/contact"
-                    className={`w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl text-sm font-extrabold transition-all group-hover:scale-102 cursor-pointer ${
-                      item.popular
-                        ? "bg-[#F97316] text-white hover:bg-[#EA580C] shadow-lg shadow-orange-950/20"
-                        : "bg-[#00A8E8] text-white hover:bg-[#0094D8] shadow-md shadow-sky-100"
-                    }`}
-                  >
-                    <span>Schedule Pickup</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
+          {rates.map((item, index) => (
+            <PriceCard key={item.id} item={item} index={index} />
+          ))}
         </div>
 
       </div>

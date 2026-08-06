@@ -1,7 +1,35 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { Phone, Mail, MapPin } from "lucide-react";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: (delay: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
+
+const fadeLeft = {
+  hidden: { opacity: 0, x: -60 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const fadeRight = {
+  hidden: { opacity: 0, x: 60 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
 export function ContactFormSection() {
   const [formData, setFormData] = useState({
@@ -21,60 +49,113 @@ export function ContactFormSection() {
     <section className="py-10 sm:py-14 bg-[#FAFDFE]" id="contact">
       <div className="max-container space-y-8">
         {/* Title matching reference image */}
-        <div className="text-center max-w-2xl mx-auto">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.6 }}
+          variants={fadeUp}
+          className="text-center max-w-2xl mx-auto"
+        >
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-[#2D3339] tracking-tight">
             Lets <span className="text-[#F97316]">Talk</span> With Us
           </h2>
-        </div>
+        </motion.div>
 
         {/* Split Container Grid */}
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
           
           {/* Left Cyan Card with Solid Orange Bottom-Right Quarter-Circle */}
-          <div className="lg:col-span-5 bg-[#00A8E8] text-white p-8 sm:p-10 rounded-3xl relative overflow-hidden flex flex-col justify-between space-y-8 shadow-xl min-h-[500px]">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeLeft}
+            className="lg:col-span-5 bg-[#00A8E8] text-white p-8 sm:p-10 rounded-3xl relative overflow-hidden flex flex-col justify-between space-y-8 shadow-xl min-h-[500px]"
+          >
             
             {/* Solid Orange Curved Oval Shape in Bottom Right Corner matching screenshot */}
-            <div className="absolute -bottom-10 -right-10 w-52 h-52 bg-[#F97316] rounded-full pointer-events-none z-0" />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.6 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute -bottom-10 -right-10 w-52 h-52 bg-[#F97316] rounded-full pointer-events-none z-0"
+            />
 
             <div className="space-y-6 relative z-10">
-              <div className="space-y-3">
+              <motion.div
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.5 }}
+                custom={0.1}
+                variants={fadeUp}
+                className="space-y-3"
+              >
                 <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
                   Contact Information
                 </h3>
                 <p className="text-[#E0F2FE] text-sm leading-relaxed font-medium max-w-xs">
                   Fill up the form and our Team will get back to you within 24 hours.
                 </p>
-              </div>
+              </motion.div>
 
               {/* Contact List with Icons */}
               <div className="space-y-6 pt-6 text-sm font-semibold">
-                <div className="flex items-center gap-4">
+                <motion.div
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.5 }}
+                  custom={0.2}
+                  variants={fadeUp}
+                  className="flex items-center gap-4"
+                >
                   <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0">
                     <Phone className="w-4 h-4 text-white" />
                   </div>
                   <span>+1 (828) 325 - 4480</span>
-                </div>
+                </motion.div>
 
-                <div className="flex items-center gap-4">
+                <motion.div
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.5 }}
+                  custom={0.3}
+                  variants={fadeUp}
+                  className="flex items-center gap-4"
+                >
                   <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0">
                     <Mail className="w-4 h-4 text-white" />
                   </div>
                   <span className="break-all">hello.laundry@quickfold.com</span>
-                </div>
+                </motion.div>
 
-                <div className="flex items-start gap-4">
+                <motion.div
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.5 }}
+                  custom={0.4}
+                  variants={fadeUp}
+                  className="flex items-start gap-4"
+                >
                   <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5">
                     <MapPin className="w-4 h-4 text-white" />
                   </div>
                   <span className="leading-relaxed">
                     69853 Harvey Shoals Apt. 358, Rosenbaumborough, New Jersey, USA.
                   </span>
-                </div>
+                </motion.div>
               </div>
             </div>
 
             {/* Bottom Left Social Icons matching exact reference image */}
-            <div className="flex items-center gap-4 relative z-10 pt-8">
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.5 }}
+              custom={0.5}
+              variants={fadeUp}
+              className="flex items-center gap-4 relative z-10 pt-8"
+            >
               <a
                 href="#facebook"
                 className="text-white hover:text-orange-200 transition-colors"
@@ -111,19 +192,32 @@ export function ContactFormSection() {
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                 </svg>
               </a>
-            </div>
+            </motion.div>
 
-          </div>
+          </motion.div>
 
           {/* Right Form Container matching exact reference screenshot */}
-          <div className="lg:col-span-7 flex flex-col justify-between py-2">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeRight}
+            className="lg:col-span-7 flex flex-col justify-between py-2"
+          >
             <form onSubmit={handleSubmit} className="space-y-6">
               
               {/* 2-Column Grid Fields */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 
                 {/* Field 1: Name */}
-                <div className="space-y-2">
+                <motion.div
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.5 }}
+                  custom={0.1}
+                  variants={fadeUp}
+                  className="space-y-2"
+                >
                   <label className="text-xs font-bold text-[#2C3238]">
                     Name
                   </label>
@@ -133,12 +227,19 @@ export function ContactFormSection() {
                     placeholder="Your full name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3.5 rounded-2xl bg-[#EAF7FD] border border-[#D0ECFC] text-slate-800 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#00A8E8]"
+                    className="w-full px-4 py-3.5 rounded-2xl bg-[#EAF7FD] border border-[#D0ECFC] text-slate-800 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#00A8E8] transition-all duration-200 focus:scale-[1.01]"
                   />
-                </div>
+                </motion.div>
 
                 {/* Field 2: Email */}
-                <div className="space-y-2">
+                <motion.div
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.5 }}
+                  custom={0.2}
+                  variants={fadeUp}
+                  className="space-y-2"
+                >
                   <label className="text-xs font-bold text-[#2C3238]">
                     Email
                   </label>
@@ -148,12 +249,19 @@ export function ContactFormSection() {
                     placeholder="Enter your mail"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3.5 rounded-2xl bg-[#EAF7FD] border border-[#D0ECFC] text-slate-800 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#00A8E8]"
+                    className="w-full px-4 py-3.5 rounded-2xl bg-[#EAF7FD] border border-[#D0ECFC] text-slate-800 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#00A8E8] transition-all duration-200 focus:scale-[1.01]"
                   />
-                </div>
+                </motion.div>
 
                 {/* Field 3: Phone Number */}
-                <div className="space-y-2">
+                <motion.div
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.5 }}
+                  custom={0.3}
+                  variants={fadeUp}
+                  className="space-y-2"
+                >
                   <label className="text-xs font-bold text-[#2C3238]">
                     Phone Number
                   </label>
@@ -162,12 +270,19 @@ export function ContactFormSection() {
                     placeholder="Enter your number"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3.5 rounded-2xl bg-[#EAF7FD] border border-[#D0ECFC] text-slate-800 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#00A8E8]"
+                    className="w-full px-4 py-3.5 rounded-2xl bg-[#EAF7FD] border border-[#D0ECFC] text-slate-800 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#00A8E8] transition-all duration-200 focus:scale-[1.01]"
                   />
-                </div>
+                </motion.div>
 
                 {/* Field 4: Address */}
-                <div className="space-y-2">
+                <motion.div
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.5 }}
+                  custom={0.4}
+                  variants={fadeUp}
+                  className="space-y-2"
+                >
                   <label className="text-xs font-bold text-[#2C3238]">
                     Address
                   </label>
@@ -176,14 +291,21 @@ export function ContactFormSection() {
                     placeholder="Enter your full address"
                     value={formData.address}
                     onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                    className="w-full px-4 py-3.5 rounded-2xl bg-[#EAF7FD] border border-[#D0ECFC] text-slate-800 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#00A8E8]"
+                    className="w-full px-4 py-3.5 rounded-2xl bg-[#EAF7FD] border border-[#D0ECFC] text-slate-800 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#00A8E8] transition-all duration-200 focus:scale-[1.01]"
                   />
-                </div>
+                </motion.div>
 
               </div>
 
               {/* Full Width Field: Message */}
-              <div className="space-y-2">
+              <motion.div
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.5 }}
+                custom={0.5}
+                variants={fadeUp}
+                className="space-y-2"
+              >
                 <label className="text-xs font-bold text-[#2C3238]">
                   Message
                 </label>
@@ -193,22 +315,31 @@ export function ContactFormSection() {
                   placeholder="Enter your message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3.5 rounded-2xl bg-[#EAF7FD] border border-[#D0ECFC] text-slate-800 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#00A8E8]"
+                  className="w-full px-4 py-3.5 rounded-2xl bg-[#EAF7FD] border border-[#D0ECFC] text-slate-800 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#00A8E8] transition-all duration-200 focus:scale-[1.01]"
                 />
-              </div>
+              </motion.div>
 
               {/* Submit Button at Bottom Left */}
-              <div className="pt-2">
-                <button
+              <motion.div
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.5 }}
+                custom={0.6}
+                variants={fadeUp}
+                className="pt-2"
+              >
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.96 }}
                   type="submit"
-                  className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-[#00A8E8] hover:bg-[#0094D8] text-white font-extrabold text-sm shadow-md hover:scale-105 transition-all cursor-pointer"
+                  className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-[#00A8E8] hover:bg-[#0094D8] text-white font-extrabold text-sm shadow-md transition-colors cursor-pointer"
                 >
                   Send Message
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
 
             </form>
-          </div>
+          </motion.div>
 
         </div>
       </div>

@@ -1,9 +1,41 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Star, Quote, CheckCircle2 } from "lucide-react";
 
+/* ---------------------------------------------------
+   Scroll-reveal hook — RE-TRIGGERS on every scroll pass,
+   whether scrolling top→bottom or bottom→top.
+--------------------------------------------------- */
+function useInView(threshold = 0.1) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+      },
+      { threshold, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return { ref, inView };
+}
+
+const EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
+
 export function TestimonialsSection() {
+  const { ref: headerRef, inView: headerInView } = useInView();
+  const { ref: row1Ref, inView: row1InView } = useInView(0.05);
+  const { ref: row2Ref, inView: row2InView } = useInView(0.05);
+
   const row1 = [
     {
       id: 1,
@@ -96,9 +128,15 @@ export function TestimonialsSection() {
   return (
     <section className="py-10 sm:py-14 bg-[#FAFDFE] overflow-hidden" id="testimonials">
       <div className="space-y-8">
-        
+
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto px-4 space-y-3">
+        <div
+          ref={headerRef}
+          style={{ transitionTimingFunction: EASE }}
+          className={`text-center max-w-2xl mx-auto px-4 space-y-3 transition-all duration-700 ${
+            headerInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <span className="inline-block bg-[#EAF7FD] border border-sky-200/60 text-[#00A8E8] px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider">
             Verified Reviews
           </span>
@@ -112,13 +150,19 @@ export function TestimonialsSection() {
 
         {/* 2-Row Infinite Marquee Container */}
         <div className="space-y-6 relative">
-          
+
           {/* Edge Fade Gradients */}
           <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-[#FAFDFE] to-transparent z-10 pointer-events-none" />
           <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-[#FAFDFE] to-transparent z-10 pointer-events-none" />
 
-          {/* Row 1: Right to Left Infinite Slider */}
-          <div className="overflow-hidden w-full">
+          {/* Row 1: Right to Left Infinite Slider — reveals from the left on scroll-in */}
+          <div
+            ref={row1Ref}
+            style={{ transitionTimingFunction: EASE }}
+            className={`overflow-hidden w-full transition-all duration-700 ${
+              row1InView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+            }`}
+          >
             <div className="animate-marquee-left gap-6">
               {marqueeRow1.map((item, idx) => (
                 <div
@@ -132,7 +176,6 @@ export function TestimonialsSection() {
                   <Quote className="absolute top-4 right-4 w-10 h-10 text-sky-100/60 pointer-events-none group-hover:text-[#F97316]/20 transition-colors" />
 
                   <div className="space-y-3 relative z-10">
-                    {/* Top Row: Stars + Verified Badge */}
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-1 text-amber-400">
                         {[...Array(5)].map((_, i) => (
@@ -144,13 +187,11 @@ export function TestimonialsSection() {
                       </span>
                     </div>
 
-                    {/* Quote */}
                     <p className="text-xs sm:text-sm text-[#475569] font-medium leading-relaxed italic">
                       "{item.quote}"
                     </p>
                   </div>
 
-                  {/* Author Footer */}
                   <div className="flex items-center gap-3 pt-3 border-t border-slate-100 relative z-10">
                     <img
                       src={item.avatar}
@@ -167,8 +208,14 @@ export function TestimonialsSection() {
             </div>
           </div>
 
-          {/* Row 2: Left to Right Infinite Slider */}
-          <div className="overflow-hidden w-full">
+          {/* Row 2: Left to Right Infinite Slider — reveals from the right on scroll-in */}
+          <div
+            ref={row2Ref}
+            style={{ transitionTimingFunction: EASE, transitionDelay: row2InView ? "120ms" : "0ms" }}
+            className={`overflow-hidden w-full transition-all duration-700 ${
+              row2InView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
+            }`}
+          >
             <div className="animate-marquee-right gap-6">
               {marqueeRow2.map((item, idx) => (
                 <div
@@ -182,7 +229,6 @@ export function TestimonialsSection() {
                   <Quote className="absolute top-4 right-4 w-10 h-10 text-sky-100/60 pointer-events-none group-hover:text-[#00A8E8]/20 transition-colors" />
 
                   <div className="space-y-3 relative z-10">
-                    {/* Top Row: Stars + Verified Badge */}
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-1 text-amber-400">
                         {[...Array(5)].map((_, i) => (
@@ -194,13 +240,11 @@ export function TestimonialsSection() {
                       </span>
                     </div>
 
-                    {/* Quote */}
                     <p className="text-xs sm:text-sm text-[#475569] font-medium leading-relaxed italic">
                       "{item.quote}"
                     </p>
                   </div>
 
-                  {/* Author Footer */}
                   <div className="flex items-center gap-3 pt-3 border-t border-slate-100 relative z-10">
                     <img
                       src={item.avatar}

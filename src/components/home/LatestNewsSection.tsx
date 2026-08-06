@@ -2,6 +2,44 @@
 
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+
+// Parent triggers whileInView ONCE (viewport: { once: true }); children only
+// carry variants and inherit the trigger via staggerChildren. No child has
+// its own whileInView, so scrolling back up/down never replays the animation.
+
+const containerStagger = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.15, delayChildren: 0.05 },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 32 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const cardStagger = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.15, delayChildren: 0.1 },
+  },
+};
+
+const cardUp = {
+  hidden: { opacity: 0, y: 48, scale: 0.96 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
 export function LatestNewsSection() {
   const articles = [
@@ -36,24 +74,42 @@ export function LatestNewsSection() {
       <div className="max-container space-y-8">
         
         {/* Section Header matching reference screenshot */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#363C44] tracking-tight">
-            Read Our <span className="text-[#F97316]">Latest News</span>
-          </h2>
-
-          <Link
-            href="#news"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-[#00A8E8] hover:bg-[#0094D8] shadow-md transition-all hover:scale-105"
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={containerStagger}
+          className="flex flex-col sm:flex-row items-center justify-between gap-6"
+        >
+          <motion.h2
+            variants={fadeUp}
+            className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#363C44] tracking-tight"
           >
-            View All Blogs
-          </Link>
-        </div>
+            Read Our <span className="text-[#F97316]">Latest News</span>
+          </motion.h2>
+
+          <motion.div variants={fadeUp}>
+            <Link
+              href="#news"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-[#00A8E8] hover:bg-[#0094D8] shadow-md transition-all hover:scale-105"
+            >
+              View All Blogs
+            </Link>
+          </motion.div>
+        </motion.div>
 
         {/* 3 Blog Cards Grid matching exact layout in screenshot */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={cardStagger}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
           {articles.map((item) => (
-            <article
+            <motion.article
               key={item.id}
+              variants={cardUp}
               className="bg-white rounded-3xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 space-y-4 border border-sky-100/60 flex flex-col justify-between group"
             >
               <div className="space-y-4">
@@ -87,9 +143,9 @@ export function LatestNewsSection() {
                 </div>
 
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
 
       </div>
     </section>

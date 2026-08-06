@@ -1,8 +1,41 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-{/* Sticker 1: Schedule Pickup (Calendar & Clock) */}
+/* ---------------------------------------------------
+   Scroll-reveal hook — RE-TRIGGERS on every scroll pass
+   (top→bottom OR bottom→top). Not a one-time animation.
+--------------------------------------------------- */
+function useInView(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Toggle both ways — scrolling down into view OR scrolling
+        // back up into view both re-fire the animation. Leaving the
+        // viewport in either direction resets it so it can replay.
+        setInView(entry.isIntersecting);
+      },
+      { threshold, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return { ref, inView };
+}
+
+const EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
+
+/* ---------------------------------------------------
+   Sticker components
+--------------------------------------------------- */
 function SchedulePickupSticker() {
   return (
     <svg viewBox="0 0 100 100" className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28" fill="none">
@@ -23,7 +56,6 @@ function SchedulePickupSticker() {
   );
 }
 
-{/* Sticker 2: Laundry Collection (Box with Clothes & Detergent) */}
 function LaundryCollectionSticker() {
   return (
     <svg viewBox="0 0 100 100" className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28" fill="none">
@@ -41,7 +73,6 @@ function LaundryCollectionSticker() {
   );
 }
 
-{/* Sticker 3: Expert Cleaning (Orange Shirt & Towel Stack) */}
 function ExpertCleaningSticker() {
   return (
     <svg viewBox="0 0 100 100" className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28" fill="none">
@@ -57,7 +88,6 @@ function ExpertCleaningSticker() {
   );
 }
 
-{/* Sticker 4: Convenient Delivery (Hands & Package Box) */}
 function ConvenientDeliverySticker() {
   return (
     <svg viewBox="0 0 100 100" className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28" fill="none">
@@ -72,7 +102,136 @@ function ConvenientDeliverySticker() {
   );
 }
 
+/* ---------------------------------------------------
+   Checkmark tick badge
+--------------------------------------------------- */
+function CheckTick({ show, delay }: { show: boolean; delay: number }) {
+  return (
+    <div
+      style={{
+        transitionDelay: show ? `${delay}ms` : "0ms",
+        transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+      }}
+      className={`absolute -top-1 -right-1 sm:top-0 sm:right-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#10B981] border-[3px] border-white shadow-md flex items-center justify-center z-30 transition-all duration-500 ${
+        show ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-0 rotate-180"
+      }`}
+    >
+      <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+    </div>
+  );
+}
+
+/* ---------------------------------------------------
+   Connector arrow — clean single curved path for
+   every step, identical style, "draws" on each pass
+--------------------------------------------------- */
+function ConnectorArrow({ show, delay }: { show: boolean; delay: number }) {
+  return (
+    <div className="hidden lg:block absolute top-20 -right-14 w-28 h-12 -z-0 pointer-events-none">
+      <svg className="w-full h-full text-[#F97316]" viewBox="0 0 100 40" fill="none">
+        <path
+          d="M10 25 Q 50 5 85 20"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          fill="none"
+          strokeLinecap="round"
+          pathLength={100}
+          style={{
+            strokeDasharray: 100,
+            strokeDashoffset: show ? 0 : 100,
+            transition: `stroke-dashoffset 900ms ${EASE}`,
+            transitionDelay: show ? `${delay}ms` : "0ms",
+          }}
+        />
+        <path
+          d="M78 24 L 88 20 L 82 13"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          style={{
+            opacity: show ? 1 : 0,
+            transition: `opacity 300ms ease-out`,
+            transitionDelay: show ? `${delay + 850}ms` : "0ms",
+          }}
+        />
+      </svg>
+    </div>
+  );
+}
+
+/* ---------------------------------------------------
+   Individual step card
+--------------------------------------------------- */
+function StepCard({
+  item,
+  index,
+  isLast,
+}: {
+  item: {
+    step: number;
+    title: string;
+    desc: string;
+    Sticker: React.ElementType;
+  };
+  index: number;
+  isLast: boolean;
+}) {
+  const { ref, inView } = useInView();
+  const StickerComponent = item.Sticker;
+  const baseDelay = index * 260;
+
+  return (
+    <div ref={ref} className="relative text-center space-y-6 group">
+      {!isLast && <ConnectorArrow show={inView} delay={baseDelay + 350} />}
+
+      <div
+        style={{
+          transitionDelay: inView ? `${baseDelay}ms` : "0ms",
+          transitionTimingFunction: EASE,
+        }}
+        className={`relative mx-auto w-36 h-36 sm:w-44 sm:h-44 lg:w-48 lg:h-48 rounded-full border-2 border-dashed border-[#FDBA74] p-2 bg-white shadow-md hover:shadow-2xl hover:scale-108 transition-all duration-700 cursor-pointer ${
+          inView ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-50 -rotate-45"
+        }`}
+      >
+        <div className="w-full h-full rounded-full bg-[#38BDF8] flex items-center justify-center shadow-inner group-hover:bg-[#0284C7] transition-colors duration-500">
+          <div className="transform group-hover:scale-110 transition-transform duration-300">
+            <StickerComponent />
+          </div>
+        </div>
+
+        <CheckTick show={inView} delay={baseDelay + 500} />
+      </div>
+
+      <div
+        style={{
+          transitionDelay: inView ? `${baseDelay + 200}ms` : "0ms",
+          transitionTimingFunction: EASE,
+        }}
+        className={`space-y-2 transition-all duration-700 ${
+          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}
+      >
+        <h3 className="font-extrabold text-[#2C3238] text-xl sm:text-2xl group-hover:text-[#F97316] transition-colors">
+          {item.title}
+        </h3>
+        <p className="text-[#5B636B] text-xs sm:text-sm leading-relaxed max-w-[240px] mx-auto font-medium">
+          {item.desc}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ---------------------------------------------------
+   Section
+--------------------------------------------------- */
+
 export function WorkingProcessSection() {
+  const { ref: headerRef, inView: headerInView } = useInView();
+
   const steps = [
     {
       step: 1,
@@ -102,8 +261,7 @@ export function WorkingProcessSection() {
 
   return (
     <section className="py-10 sm:py-14 bg-[#EAF5FC] relative overflow-hidden" id="how-it-works">
-      
-      {/* Floating Translucent Soap Bubbles Background */}
+
       <div className="absolute inset-0 pointer-events-none opacity-50">
         <svg className="w-full h-full" viewBox="0 0 1000 500" fill="none">
           <circle cx="40" cy="220" r="35" fill="#38BDF8" opacity="0.25" stroke="white" strokeWidth="2" />
@@ -116,69 +274,28 @@ export function WorkingProcessSection() {
       </div>
 
       <div className="max-container space-y-8 relative z-10">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto space-y-2">
+        <div
+          ref={headerRef}
+          style={{ transitionTimingFunction: EASE }}
+          className={`text-center max-w-2xl mx-auto space-y-2 transition-all duration-700 ${
+            headerInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-[#383F47] tracking-tight leading-tight">
             Our Working <span className="text-[#F97316]">Process</span>
           </h2>
         </div>
 
-        {/* 4 Steps Row with Enlarged Animated Sticker Circles */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 relative">
-          {steps.map((item, index) => {
-            const StickerComponent = item.Sticker;
-            return (
-              <div key={item.step} className="relative text-center space-y-6 group">
-                
-                {/* Animated Curved Orange Connector Arrow between steps */}
-                {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-20 -right-14 w-28 h-12 -z-0 pointer-events-none">
-                    <svg className="w-full h-full text-[#F97316]" viewBox="0 0 100 40" fill="none">
-                      <path
-                        d="M10 25 Q 50 5 85 20"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        fill="none"
-                        strokeDasharray="100"
-                        className="group-hover:animate-pulse"
-                      />
-                      <path
-                        d="M78 24 L 88 20 L 82 13"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                )}
-
-                {/* Enlarged Circle Badge with Hover Scale, Shadow & Rotating Dashed Ring */}
-                <div className="relative mx-auto w-36 h-36 sm:w-44 sm:h-44 lg:w-48 lg:h-48 rounded-full border-2 border-dashed border-[#FDBA74] p-2 bg-white shadow-md hover:shadow-2xl hover:scale-108 transition-all duration-500 cursor-pointer">
-                  {/* Rotating Inner Dash Effect on Hover */}
-                  <div className="w-full h-full rounded-full bg-[#38BDF8] flex items-center justify-center shadow-inner group-hover:bg-[#0284C7] transition-colors duration-500">
-                    <div className="transform group-hover:scale-110 transition-transform duration-300">
-                      <StickerComponent />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Step Title & Subtitle */}
-                <div className="space-y-2">
-                  <h3 className="font-extrabold text-[#2C3238] text-xl sm:text-2xl group-hover:text-[#F97316] transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-[#5B636B] text-xs sm:text-sm leading-relaxed max-w-[240px] mx-auto font-medium">
-                    {item.desc}
-                  </p>
-                </div>
-
-              </div>
-            );
-          })}
+          {steps.map((item, index) => (
+            <StepCard
+              key={item.step}
+              item={item}
+              index={index}
+              isLast={index === steps.length - 1}
+            />
+          ))}
         </div>
-
       </div>
     </section>
   );

@@ -1,11 +1,41 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+
+/* ---------------------------------------------------
+   Scroll-reveal hook — RE-TRIGGERS on every scroll pass,
+   whether scrolling top→bottom or bottom→top. Leaving the
+   viewport resets state so it replays next time it enters.
+--------------------------------------------------- */
+function useInView(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+      },
+      { threshold, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return { ref, inView };
+}
+
+const EASE = "cubic-bezier(0.16, 1, 0.3, 1)"; // premium "settle-in" easing
 
 export function WhyChooseUsSection() {
   const [activeHoverIndex, setActiveHoverIndex] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const { ref: sectionRef, inView } = useInView();
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 640);
@@ -62,6 +92,7 @@ export function WhyChooseUsSection() {
 
   return (
     <section
+      ref={sectionRef}
       className="relative overflow-hidden bg-gradient-to-r from-[#EBF7FD] via-[#FAFDFE] to-[#FFF4E8] py-10 sm:py-14"
       id="why-choose-us"
     >
@@ -78,7 +109,12 @@ export function WhyChooseUsSection() {
       <div className="max-container relative z-10 space-y-8 text-center">
 
         {/* Section Header */}
-        <div className="max-w-2xl mx-auto space-y-3 px-4">
+        <div
+          style={{ transitionTimingFunction: EASE }}
+          className={`max-w-2xl mx-auto space-y-3 px-4 transition-all duration-700 ${
+            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-[#363C44] tracking-tight">
             Why <span className="text-[#F97316]">Choose Us</span>
           </h2>
@@ -96,8 +132,16 @@ export function WhyChooseUsSection() {
           }}
         >
           {/* Center graphic + CTA */}
-          <div className="relative z-10 flex flex-col items-center pointer-events-auto"
-            style={{ gap: isMobile ? 12 : 24 }}>
+          <div
+            style={{
+              gap: isMobile ? 12 : 24,
+              transitionTimingFunction: EASE,
+              transitionDelay: inView ? "100ms" : "0ms",
+            }}
+            className={`relative z-10 flex flex-col items-center pointer-events-auto transition-all duration-700 ${
+              inView ? "opacity-100 scale-100" : "opacity-0 scale-75"
+            }`}
+          >
             <div
               style={{
                 width: isMobile ? 130 : 300,
@@ -124,13 +168,18 @@ export function WhyChooseUsSection() {
             </Link>
           </div>
 
-          {/* 7 Interactive Orbit Badges */}
-          {items.map((item) => {
+          {/* 7 Interactive Orbit Badges — fly out from center on scroll-in */}
+          {items.map((item, index) => {
             const isActive = activeHoverIndex === item.id;
             const tx = isMobile ? item.mx : item.x;
             const ty = isMobile ? item.my : item.y;
             const badgeSize = isMobile ? 60 : 108;
             const fontSize = isMobile ? 7.5 : 12;
+
+            // staggered "orbit-out": start at center (0,0) scaled down, fly to final position
+            const entranceTransform = inView
+              ? `translate(${tx}px, ${ty}px) scale(1)`
+              : `translate(0px, 0px) scale(0.2)`;
 
             return (
               <div
@@ -138,8 +187,14 @@ export function WhyChooseUsSection() {
                 onMouseEnter={() => setActiveHoverIndex(item.id)}
                 onMouseLeave={() => setActiveHoverIndex(null)}
                 onClick={() => setActiveHoverIndex(isActive ? null : item.id)}
-                className="absolute z-20 pointer-events-auto"
-                style={{ transform: `translate(${tx}px, ${ty}px)` }}
+                className="absolute z-20 pointer-events-auto transition-all"
+                style={{
+                  transform: entranceTransform,
+                  opacity: inView ? 1 : 0,
+                  transitionDuration: "800ms",
+                  transitionTimingFunction: EASE,
+                  transitionDelay: inView ? `${180 + index * 90}ms` : "0ms",
+                }}
               >
                 <div className="relative flex flex-col items-center group">
 

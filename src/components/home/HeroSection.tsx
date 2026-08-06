@@ -3,8 +3,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Play, Star } from "lucide-react";
 
-/* Scroll-reveal animation hook */
-function useInView() {
+/* ---------------------------------------------------
+   Scroll-reveal hook — RE-TRIGGERS on every scroll pass
+   (top→bottom OR bottom→top). Element leaving the
+   viewport resets it so it replays next time it enters.
+--------------------------------------------------- */
+function useInView(threshold = 0.1) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [inView, setInView] = useState(false);
 
@@ -12,25 +16,16 @@ function useInView() {
     const el = ref.current;
     if (!el) return;
 
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      setInView(true);
-      return;
-    }
-
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.unobserve(el);
-        }
+        setInView(entry.isIntersecting);
       },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      { threshold, rootMargin: "0px 0px -10% 0px" }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [threshold]);
 
   return { ref, inView };
 }
@@ -74,7 +69,6 @@ function Reveal({
    5 Cartoon Vector Stickers (Responsive Size)
 --------------------------------------------------- */
 
-{/* Sticker 1: Pickup Truck */}
 function PickupTruckSticker() {
   return (
     <div className="w-14 h-14 sm:w-24 sm:h-24 bg-[#FDE5D4] rounded-2xl sm:rounded-3xl shadow-lg p-1.5 sm:p-2.5 flex flex-col items-center justify-center border border-[#FAD2B8] hover:scale-110 hover:shadow-xl transition-all duration-300 shrink-0 cursor-pointer">
@@ -94,7 +88,6 @@ function PickupTruckSticker() {
   );
 }
 
-{/* Sticker 2: Ironing & Folded Laundry */}
 function IroningSticker() {
   return (
     <div className="w-14 h-14 sm:w-24 sm:h-24 bg-[#FDE5D4] rounded-2xl sm:rounded-3xl shadow-lg p-1.5 sm:p-2.5 flex flex-col items-center justify-center border border-[#FAD2B8] hover:scale-110 hover:shadow-xl transition-all duration-300 shrink-0 cursor-pointer">
@@ -112,7 +105,6 @@ function IroningSticker() {
   );
 }
 
-{/* Sticker 3: Dry Clean Suit */}
 function DryCleanSticker() {
   return (
     <div className="w-14 h-14 sm:w-24 sm:h-24 bg-[#FDE5D4] rounded-2xl sm:rounded-3xl shadow-lg p-1.5 sm:p-2.5 flex flex-col items-center justify-center border border-[#FAD2B8] hover:scale-110 hover:shadow-xl transition-all duration-300 shrink-0 cursor-pointer">
@@ -129,7 +121,6 @@ function DryCleanSticker() {
   );
 }
 
-{/* Sticker 4: Eco Clean Spray */}
 function EcoCleanSticker() {
   return (
     <div className="w-14 h-14 sm:w-24 sm:h-24 bg-[#FDE5D4] rounded-2xl sm:rounded-3xl shadow-lg p-1.5 sm:p-2.5 flex flex-col items-center justify-center border border-[#FAD2B8] hover:scale-110 hover:shadow-xl transition-all duration-300 shrink-0 cursor-pointer">
@@ -148,7 +139,6 @@ function EcoCleanSticker() {
   );
 }
 
-{/* Sticker 5: Smart Washing Machine */}
 function WashingMachineSticker() {
   return (
     <div className="w-14 h-14 sm:w-24 sm:h-24 bg-[#FDE5D4] rounded-2xl sm:rounded-3xl shadow-lg p-1.5 sm:p-2.5 flex flex-col items-center justify-center border border-[#FAD2B8] hover:scale-110 hover:shadow-xl transition-all duration-300 shrink-0 cursor-pointer">
@@ -170,59 +160,18 @@ function WashingMachineSticker() {
 }
 
 export function HeroSection() {
-  // Symmetrical 5-Point Polar Coordinates: Desktop R = 245px, Mobile R = 135px
   const orbitingStickers = [
-    {
-      id: 1,
-      StickerComponent: PickupTruckSticker,
-      // Top Center (0°)
-      x: 0,
-      y: -245,
-      mobX: 0,
-      mobY: -135,
-    },
-    {
-      id: 2,
-      StickerComponent: IroningSticker,
-      // Top Right (72°)
-      x: 235,
-      y: -75,
-      mobX: 128,
-      mobY: -42,
-    },
-    {
-      id: 3,
-      StickerComponent: DryCleanSticker,
-      // Bottom Right (144°)
-      x: 145,
-      y: 195,
-      mobX: 79,
-      mobY: 109,
-    },
-    {
-      id: 4,
-      StickerComponent: EcoCleanSticker,
-      // Bottom Left (216°)
-      x: -145,
-      y: 195,
-      mobX: -79,
-      mobY: 109,
-    },
-    {
-      id: 5,
-      StickerComponent: WashingMachineSticker,
-      // Top Left (288°)
-      x: -235,
-      y: -75,
-      mobX: -128,
-      mobY: -42,
-    },
+    { id: 1, StickerComponent: PickupTruckSticker, x: 0, y: -245, mobX: 0, mobY: -135 },
+    { id: 2, StickerComponent: IroningSticker, x: 235, y: -75, mobX: 128, mobY: -42 },
+    { id: 3, StickerComponent: DryCleanSticker, x: 145, y: 195, mobX: 79, mobY: 109 },
+    { id: 4, StickerComponent: EcoCleanSticker, x: -145, y: 195, mobX: -79, mobY: 109 },
+    { id: 5, StickerComponent: WashingMachineSticker, x: -235, y: -75, mobX: -128, mobY: -42 },
   ];
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-r from-[#EAF7FD] via-[#FAFDFE] to-[#FFF4E8] py-8 sm:py-12 lg:py-14">
       <div className="max-container grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center relative z-10">
-        
+
         {/* Left Column Text Content */}
         <Reveal from="up" className="lg:col-span-6 space-y-6 text-center lg:text-left">
           <div className="space-y-4">
@@ -299,16 +248,14 @@ export function HeroSection() {
 
         {/* Right Column: Central Laundry SVG & Responsive Orbiting 5 Badges */}
         <Reveal from="up" delay={100} className="lg:col-span-6 relative flex items-center justify-center min-h-[360px] sm:min-h-[580px]">
-          
+
           <div className="relative w-[300px] h-[300px] sm:w-[520px] sm:h-[520px] flex items-center justify-center group">
 
-            {/* Dashed Circle Orbit SVG Ring (Responsive Radius) */}
             <svg className="absolute inset-0 w-full h-full text-sky-200 pointer-events-none" viewBox="0 0 520 520">
               <circle cx="260" cy="260" r="245" className="hidden sm:block" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="6 6" />
               <circle cx="260" cy="260" r="150" className="block sm:hidden" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="5 5" />
             </svg>
 
-            {/* Central Main Laundry Illustration */}
             <div className="relative w-[180px] h-[180px] sm:w-[290px] sm:h-[290px] z-10 flex items-center justify-center transition-all duration-500 group-hover:scale-105">
               <img
                 src="/laundry_hero.svg"
@@ -317,7 +264,6 @@ export function HeroSection() {
               />
             </div>
 
-            {/* 5 Symmetrical Responsive Orbit Badges */}
             {orbitingStickers.map((item, index) => {
               const StickerComp = item.StickerComponent;
               return (

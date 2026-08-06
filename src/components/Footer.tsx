@@ -9,12 +9,15 @@ export function Footer() {
   return (
     <footer className="bg-[#FAF3EE] text-[#5B636B] pt-16 pb-12 border-t border-[#F3E7DC]">
       <div className="max-container space-y-12">
-        {/* Top 4-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+        {/* Top Grid — 2 cols on mobile, 2 on md, 12 on lg */}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-10 sm:gap-x-10">
           
-          {/* Column 1: Brand Info & Follow Us */}
-          <div className="lg:col-span-4 space-y-6">
+          {/* Column 1: Brand Info & Follow Us — full width on mobile */}
+          <div className="col-span-2 lg:col-span-4 space-y-6">
             <BrandLogo />
+            <h3 className="font-extrabold text-[#2C3238] text-lg -mt-2">
+              Beachwood Cleaners & Laundry
+            </h3>
 
             <p className="text-[#64748B] text-sm leading-relaxed max-w-sm font-medium">
               Beachwood Cleaners & Laundry offers professional laundering solutions to assist individuals and businesses in achieving optimal garment care and cleanliness.
@@ -65,8 +68,8 @@ export function Footer() {
           </div>
 
           {/* Column 2: Company */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="font-extrabold text-[#2C3238] text-lg">Company</h4>
+          <div className="col-span-1 lg:col-span-2 space-y-4">
+            <h4 className="font-extrabold text-[#2C3238] text-base sm:text-lg">Company</h4>
             <ul className="space-y-2.5 text-sm font-medium">
               <li>
                 <Link href="/about" className="hover:text-[#00A8E8] transition-colors">About Us</Link>
@@ -87,8 +90,8 @@ export function Footer() {
           </div>
 
           {/* Column 3: Further Links */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="font-extrabold text-[#2C3238] text-lg">Further Links</h4>
+          <div className="col-span-1 lg:col-span-3 space-y-4">
+            <h4 className="font-extrabold text-[#2C3238] text-base sm:text-lg">Further Links</h4>
             <ul className="space-y-2.5 text-sm font-medium">
               <li>
                 <Link href="/pricing" className="hover:text-[#00A8E8] transition-colors">Pricing Rates</Link>
@@ -105,9 +108,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Contact Info */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="font-extrabold text-[#2C3238] text-lg">Contact Info</h4>
+          {/* Column 4: Contact Info — full width on mobile so the address wraps cleanly */}
+          <div className="col-span-2 lg:col-span-3 space-y-4">
+            <h4 className="font-extrabold text-[#2C3238] text-base sm:text-lg">Contact Info</h4>
             <ul className="space-y-3.5 text-sm font-medium">
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-[#00A8E8] shrink-0" />
