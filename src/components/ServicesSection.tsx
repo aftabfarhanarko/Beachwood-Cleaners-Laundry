@@ -110,8 +110,8 @@ export function ServicesSection() {
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-[#F8FCFF]" id="services">
-      <div className="max-container space-y-12">
+    <section className="py-10 sm:py-14 bg-[#F8FCFF]" id="services">
+      <div className="max-container space-y-8">
         {/* Section Header matching exact screenshot title */}
         <div className="text-center max-w-3xl mx-auto space-y-2">
           <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#363C44] tracking-tight leading-tight">

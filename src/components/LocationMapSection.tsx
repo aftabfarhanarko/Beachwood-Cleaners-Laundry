@@ -36,8 +36,8 @@ export function LocationMapSection({ showHeading = true }: LocationMapSectionPro
   };
 
   return (
-    <section className="py-12 sm:py-16 bg-[#FAFDFE]" id="location">
-      <div className="max-container space-y-12">
+    <section className="py-10 sm:py-14 bg-[#FAFDFE]" id="location">
+      <div className="max-container space-y-8">
         
         {/* Optional Section Header (Only rendered when showHeading is true) */}
         {showHeading && (

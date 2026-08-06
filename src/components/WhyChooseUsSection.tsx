@@ -66,7 +66,7 @@ export function WhyChooseUsSection() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-r from-[#EBF7FD] via-[#FAFDFE] to-[#FFF4E8] py-16 sm:py-24" id="why-choose-us">
+    <section className="relative overflow-hidden bg-gradient-to-r from-[#EBF7FD] via-[#FAFDFE] to-[#FFF4E8] py-10 sm:py-14" id="why-choose-us">
       
       {/* Floating Translucent Soap Bubbles Background */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
@@ -80,7 +80,7 @@ export function WhyChooseUsSection() {
         </svg>
       </div>
 
-      <div className="max-container relative z-10 space-y-12 text-center">
+      <div className="max-container relative z-10 space-y-8 text-center">
         
         {/* Section Header */}
         <div className="max-w-2xl mx-auto space-y-3">

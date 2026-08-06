@@ -18,8 +18,8 @@ export function ContactFormSection() {
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-white" id="contact">
-      <div className="max-container space-y-12">
+    <section className="py-10 sm:py-14 bg-[#FAFDFE]" id="contact">
+      <div className="max-container space-y-8">
         {/* Title matching reference image */}
         <div className="text-center max-w-2xl mx-auto">
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-[#2D3339] tracking-tight">

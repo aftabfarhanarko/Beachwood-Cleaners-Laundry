@@ -154,13 +154,13 @@ export function PricingSection() {
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-gradient-to-b from-[#F7FCFF] via-[#FAFDFE] to-white relative overflow-hidden" id="pricing">
+    <section className="py-10 sm:py-14 bg-gradient-to-b from-[#F7FCFF] via-[#FAFDFE] to-white relative overflow-hidden" id="pricing">
       
       {/* Decorative Translucent Glowing Background Circles */}
       <div className="absolute top-1/4 -left-20 w-80 h-80 bg-[#00A8E8]/5 rounded-full filter blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 -right-20 w-80 h-80 bg-[#F97316]/5 rounded-full filter blur-3xl pointer-events-none" />
 
-      <div className="max-container space-y-14 relative z-10">
+      <div className="max-container space-y-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">

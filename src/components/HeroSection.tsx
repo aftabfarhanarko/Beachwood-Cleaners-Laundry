@@ -134,15 +134,15 @@ function DryCleanSticker() {
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-r from-[#EAF7FD] via-[#FAFDFE] to-[#FFF4E8] py-12 lg:py-20">
+    <section className="relative overflow-hidden bg-gradient-to-r from-[#EAF7FD] via-[#FAFDFE] to-[#FFF4E8] py-8 sm:py-12 lg:py-14">
       
-      <div className="max-container grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+      <div className="max-container grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center relative z-10">
         
         {/* Left Column Text Content */}
-        <div className="lg:col-span-6 space-y-8 text-center lg:text-left">
+        <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
           
           {/* Headline matching reference image */}
-          <div className="space-y-5">
+          <div className="space-y-4">
             <h1 className="text-4xl sm:text-5xl lg:text-[60px] font-black text-[#2D3339] tracking-tight leading-[1.12]">
               Simplify Your Life <br />
               with <span className="text-[#00A8E8]">QuickFold</span> <br />

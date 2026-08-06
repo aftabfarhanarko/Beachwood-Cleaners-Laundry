@@ -32,8 +32,8 @@ export function LatestNewsSection() {
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-[#EAF5FC]" id="news">
-      <div className="max-container space-y-12">
+    <section className="py-10 sm:py-14 bg-[#EAF5FC]" id="news">
+      <div className="max-container space-y-8">
         
         {/* Section Header matching reference screenshot */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">

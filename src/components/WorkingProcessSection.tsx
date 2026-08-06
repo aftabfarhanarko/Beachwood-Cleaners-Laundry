@@ -101,7 +101,7 @@ export function WorkingProcessSection() {
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-[#EAF5FC] relative overflow-hidden" id="how-it-works">
+    <section className="py-10 sm:py-14 bg-[#EAF5FC] relative overflow-hidden" id="how-it-works">
       
       {/* Floating Translucent Soap Bubbles Background */}
       <div className="absolute inset-0 pointer-events-none opacity-50">
@@ -115,7 +115,7 @@ export function WorkingProcessSection() {
         </svg>
       </div>
 
-      <div className="max-container space-y-16 relative z-10">
+      <div className="max-container space-y-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-2">

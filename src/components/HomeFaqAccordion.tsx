@@ -38,7 +38,7 @@ export function HomeFaqAccordion() {
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-[#FAFDFE]" id="faq">
+    <section className="py-10 sm:py-14 bg-[#FAFDFE]" id="faq">
       <div className="max-container">
         
         {/* 2-Column Split Grid matching website light sky color palette */}

@@ -94,8 +94,8 @@ export function TestimonialsSection() {
   const marqueeRow2 = [...row2, ...row2];
 
   return (
-    <section className="py-16 sm:py-24 bg-[#FAFDFE] overflow-hidden" id="testimonials">
-      <div className="space-y-12">
+    <section className="py-10 sm:py-14 bg-[#FAFDFE] overflow-hidden" id="testimonials">
+      <div className="space-y-8">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto px-4 space-y-3">
