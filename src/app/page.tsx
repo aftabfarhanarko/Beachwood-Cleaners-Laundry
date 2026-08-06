@@ -24,6 +24,7 @@ import {
   Briefcase,
 } from "lucide-react";
 import { HomeFaqAccordion } from "@/components/HomeFaqAccordion";
+import { PodcastStyleFeature } from "@/components/PodcastStyleFeature";
 
 /* ------------------------------------------------------------------ */
 /*  PricingCalculator — premium minimal instant price estimator        */
@@ -706,7 +707,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Value Proposition Grid (6 Cards) */}
+      {/* Overlapping Podcast-Style Feature Component */}
+      <PodcastStyleFeature />
       <section className="max-container" data-aos="fade-up">
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
           <h2 className="text-xs font-bold uppercase tracking-wider text-[#00A8B5]">
