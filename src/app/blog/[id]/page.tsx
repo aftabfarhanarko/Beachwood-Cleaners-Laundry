@@ -1,6 +1,6 @@
 import React from "react";
 import { blogPosts, BlogPost } from "@/data/blogData";
-import { NewsletterBannerSection } from "@/components/NewsletterBannerSection";
+import { NewsletterBannerSection } from "@/components/home/NewsletterBannerSection";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Calendar, Clock, ArrowLeft, ArrowRight, CheckCircle2, Tag, PhoneCall, Sparkles, RefreshCw, Shirt, ShieldCheck } from "lucide-react";

@@ -1,14 +1,14 @@
 import React from "react";
-import { HeroSection } from "@/components/HeroSection";
-import { TrustCommunitySection } from "@/components/TrustCommunitySection";
-import { ServicesSection } from "@/components/ServicesSection";
-import { WhyChooseUsSection } from "@/components/WhyChooseUsSection";
-import { WorkingProcessSection } from "@/components/WorkingProcessSection";
-import { PricingSection } from "@/components/PricingSection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
-import { ContactFormSection } from "@/components/ContactFormSection";
-import { LatestNewsSection } from "@/components/LatestNewsSection";
-import { NewsletterBannerSection } from "@/components/NewsletterBannerSection";
+import { HeroSection } from "@/components/home/HeroSection";
+import { TrustCommunitySection } from "@/components/home/TrustCommunitySection";
+import { ServicesSection } from "@/components/home/ServicesSection";
+import { WhyChooseUsSection } from "@/components/home/WhyChooseUsSection";
+import { WorkingProcessSection } from "@/components/home/WorkingProcessSection";
+import { PricingSection } from "@/components/pricing/PricingSection";
+import { TestimonialsSection } from "@/components/home/TestimonialsSection";
+import { ContactFormSection } from "@/components/home/ContactFormSection";
+import { LatestNewsSection } from "@/components/home/LatestNewsSection";
+import { NewsletterBannerSection } from "@/components/home/NewsletterBannerSection";
 
 export const metadata = {
   title: "Beachwood Cleaners & Laundry | Premier Dry Cleaning & Wash Service in Los Angeles",

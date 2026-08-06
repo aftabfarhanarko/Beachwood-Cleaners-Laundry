@@ -1,6 +1,6 @@
 import React from "react";
-import { TrustCommunitySection } from "@/components/TrustCommunitySection";
-import { NewsletterBannerSection } from "@/components/NewsletterBannerSection";
+import { TrustCommunitySection } from "@/components/home/TrustCommunitySection";
+import { NewsletterBannerSection } from "@/components/home/NewsletterBannerSection";
 import { HeartHandshake, ShieldCheck, Sparkles, Clock, Scale, Truck, Award, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 

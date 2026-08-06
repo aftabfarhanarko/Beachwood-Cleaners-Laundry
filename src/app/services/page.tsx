@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { ServicesSection } from "@/components/ServicesSection";
-import { WorkingProcessSection } from "@/components/WorkingProcessSection";
-import { NewsletterBannerSection } from "@/components/NewsletterBannerSection";
+import { ServicesSection } from "@/components/home/ServicesSection";
+import { WorkingProcessSection } from "@/components/home/WorkingProcessSection";
+import { NewsletterBannerSection } from "@/components/home/NewsletterBannerSection";
 import Link from "next/link";
 import { Sparkles, ShieldCheck, Truck, RefreshCw, Check, ArrowRight, Search } from "lucide-react";
 

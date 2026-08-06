@@ -1,7 +1,7 @@
 import React from "react";
 import { LocationMapSection } from "@/components/LocationMapSection";
-import { NewsletterBannerSection } from "@/components/NewsletterBannerSection";
-import { HomeFaqAccordion } from "@/components/HomeFaqAccordion";
+import { NewsletterBannerSection } from "@/components/home/NewsletterBannerSection";
+import { HomeFaqAccordion } from "@/components/home/HomeFaqAccordion";
 
 export const metadata = {
   title: "Find Location & Delivery Areas | Beachwood Cleaners & Laundry",

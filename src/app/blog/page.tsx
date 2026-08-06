@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { blogPosts } from "@/data/blogData";
-import { NewsletterBannerSection } from "@/components/NewsletterBannerSection";
+import { NewsletterBannerSection } from "@/components/home/NewsletterBannerSection";
 import Link from "next/link";
 import { ArrowRight, Search, Calendar, Clock } from "lucide-react";
 

@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { PricingSection } from "@/components/PricingSection";
-import { HomeFaqAccordion } from "@/components/HomeFaqAccordion";
-import { NewsletterBannerSection } from "@/components/NewsletterBannerSection";
+import { PricingSection } from "@/components/pricing/PricingSection";
+import { HomeFaqAccordion } from "@/components/home/HomeFaqAccordion";
+import { NewsletterBannerSection } from "@/components/home/NewsletterBannerSection";
 import {
   CheckCircle2,
   ShieldCheck,

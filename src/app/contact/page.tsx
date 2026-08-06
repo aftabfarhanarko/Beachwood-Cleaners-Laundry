@@ -1,7 +1,7 @@
 import React from "react";
-import { ContactFormSection } from "@/components/ContactFormSection";
+import { ContactFormSection } from "@/components/home/ContactFormSection";
 import { LocationMapSection } from "@/components/LocationMapSection";
-import { NewsletterBannerSection } from "@/components/NewsletterBannerSection";
+import { NewsletterBannerSection } from "@/components/home/NewsletterBannerSection";
 
 export const metadata = {
   title: "Contact Us | Beachwood Cleaners & Laundry",
