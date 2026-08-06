@@ -3,6 +3,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { AosProvider } from "@/components/AosProvider";
+import { PageTransition } from "@/components/PageTransition";
 
 const baiJamjuree = Bai_Jamjuree({
   subsets: ["latin"],
@@ -58,7 +59,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-[#F8FAFC] text-[#0F172A]">
         <AosProvider>
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
           <Footer />
         </AosProvider>
       </body>
