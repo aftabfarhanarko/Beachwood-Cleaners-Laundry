@@ -1,77 +1,136 @@
-<svg viewBox="0 0 500 550" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Soft Backdrop Radial Aura (Transparent Blend) -->
-  <circle cx="250" cy="270" r="210" fill="#E0F2FE" opacity="0.6" />
-  <circle cx="250" cy="270" r="160" fill="#FFF7ED" opacity="0.8" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 600" width="100%" height="100%">
+  <defs>
+    <!-- Metallic Cyan Washer Gradient -->
+    <linearGradient id="washerBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="50%" stop-color="#00A8E8" />
+      <stop offset="100%" stop-color="#007EA7" />
+    </linearGradient>
 
-  <!-- Drop Shadow under Basket & Feet -->
-  <ellipse cx="250" cy="505" rx="160" ry="25" fill="#0F172A" opacity="0.08" />
-  <ellipse cx="250" cy="495" rx="120" ry="18" fill="#00A8E8" opacity="0.12" />
+    <!-- Glass Door Reflection -->
+    <linearGradient id="glassReflection" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.6" />
+      <stop offset="40%" stop-color="#E0F2FE" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#00A8E8" stop-opacity="0.4" />
+    </linearGradient>
 
-  <!-- Laundry Professional Body -->
-  <!-- White T-Shirt with soft shadow -->
-  <path d="M140 280 C140 220, 360 220, 360 280 L380 520 L120 520 Z" fill="#FFFFFF" />
-  
-  <!-- Face & Head -->
-  <!-- Skin Tone Base -->
-  <path d="M250 90 C205 90 180 120 180 168 C180 215 205 240 250 240 C295 240 320 215 320 168 C320 120 295 90 250 90 Z" fill="#7C2D12" />
-  
-  <!-- Haircut -->
-  <path d="M180 145 C175 105 215 80 250 80 C285 80 325 105 320 145 C305 110 285 100 250 100 C215 100 195 110 180 145 Z" fill="#1E293B" />
-  
-  <!-- Ears -->
-  <circle cx="178" cy="165" r="12" fill="#7C2D12" />
-  <circle cx="322" cy="165" r="12" fill="#7C2D12" />
-  <circle cx="178" cy="165" r="6" fill="#581C87" opacity="0.2" />
-  <circle cx="322" cy="165" r="6" fill="#581C87" opacity="0.2" />
+    <!-- Warm Orange Accent -->
+    <linearGradient id="orangeGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F97316" />
+      <stop offset="100%" stop-color="#FDBA74" />
+    </linearGradient>
 
-  <!-- Beaming White Smile -->
-  <path d="M218 190 Q250 222 282 190 Z" fill="#FFFFFF" />
-  <path d="M222 190 Q250 198 278 190" stroke="#E2E8F0" stroke-width="2" fill="none" />
+    <!-- Soft Shadow Filter -->
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0F172A" flood-opacity="0.12" />
+    </filter>
 
-  <!-- Eyes & Eyebrows -->
-  <path d="M212 142 Q225 136 238 142" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round" fill="none" />
-  <path d="M262 142 Q275 136 288 142" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round" fill="none" />
-  
-  <circle cx="225" cy="155" r="7" fill="#FFFFFF" />
-  <circle cx="275" cy="155" r="7" fill="#FFFFFF" />
-  <circle cx="226" cy="155" r="4" fill="#0F172A" />
-  <circle cx="276" cy="155" r="4" fill="#0F172A" />
-  <circle cx="228" cy="153" r="1.5" fill="#FFFFFF" />
-  <circle cx="278" cy="153" r="1.5" fill="#FFFFFF" />
+    <filter id="glowFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
 
-  <!-- Apron (Fresh Mint Teal) -->
-  <path d="M185 260 L315 260 L335 520 L165 520 Z" fill="#2DD4BF" />
-  <!-- Apron Straps (Orange/Amber) -->
-  <path d="M195 260 L218 190 L233 190 L210 260 Z" fill="#F59E0B" />
-  <path d="M305 260 L282 190 L267 190 L290 260 Z" fill="#F59E0B" />
-  <!-- Clothes Pegs on Strap -->
-  <rect x="220" y="215" width="8" height="18" rx="2.5" fill="#38BDF8" />
-  <rect x="220" y="238" width="8" height="18" rx="2.5" fill="#F97316" />
+  <!-- Floor Base Shadow -->
+  <ellipse cx="350" cy="540" rx="280" ry="24" fill="#0F172A" opacity="0.08" />
 
-  <!-- Overflowing Colorful Laundry Stack -->
-  <!-- Purple Towel -->
-  <path d="M135 375 C115 305 175 295 195 365 Z" fill="#8B5CF6" />
-  <!-- Pink Waffle Towel -->
-  <path d="M175 365 C165 275 240 265 250 365 Z" fill="#F43F5E" />
-  <!-- Teal Soft Towel -->
-  <path d="M230 355 C210 265 305 250 315 345 Z" fill="#10B981" />
-  <!-- Yellow Folded Clothes -->
-  <path d="M290 365 C280 295 365 290 370 370 Z" fill="#FBBF24" />
-  <!-- Gray Towel Right -->
-  <path d="M340 375 C330 310 395 320 375 385 Z" fill="#94A3B8" />
+  <!-- === MAIN WASHING MACHINE === -->
+  <g filter="url(#softShadow)">
+    <!-- Outer Main Body Casing -->
+    <rect x="180" y="160" width="340" height="360" rx="36" fill="url(#washerBody)" />
 
-  <!-- Eco Soap Bottle sticking out -->
-  <rect x="245" y="275" width="22" height="42" rx="7" fill="#0284C7" transform="rotate(-15 245 275)" />
-  <circle cx="240" cy="270" r="7.5" fill="#F97316" />
+    <!-- Top Metallic Control Panel -->
+    <rect x="180" y="160" width="340" height="80" rx="36" fill="#F8FAFC" />
+    <rect x="180" y="220" width="340" height="20" fill="#F8FAFC" />
 
-  <!-- High-Quality Cyan Laundry Tub / Basket with Front Lip -->
-  <path d="M120 375 L380 375 L350 495 C350 510 335 520 320 520 L180 520 C165 520 150 510 150 495 Z" fill="#00A8E8" />
-  <path d="M105 365 C105 355 130 355 140 365 L360 365 C370 355 395 355 395 365 L385 385 L115 385 Z" fill="#0284C7" />
-  <rect x="180" y="440" width="140" height="12" rx="6" fill="#38BDF8" opacity="0.6" />
+    <!-- Detergent Drawer -->
+    <rect x="210" y="180" width="90" height="42" rx="10" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2" />
+    <line x1="240" y1="180" x2="240" y2="222" stroke="#94A3B8" stroke-width="1.5" />
+    <rect x="280" y="194" width="12" height="14" rx="3" fill="#94A3B8" />
 
-  <!-- Sparkles & Magic Clean Highlights -->
-  <path d="M105 220 L110 205 L115 220 L130 225 L115 230 L110 245 L105 230 L90 225 Z" fill="#FBBF24" />
-  <path d="M385 180 L388 170 L391 180 L401 183 L391 186 L388 196 L385 186 L375 183 Z" fill="#F97316" />
-  <circle cx="140" cy="290" r="4" fill="#38BDF8" opacity="0.8" />
-  <circle cx="360" cy="270" r="5" fill="#38BDF8" opacity="0.8" />
+    <!-- Digital LED Display Screen -->
+    <rect x="320" y="180" width="100" height="42" rx="10" fill="#0F172A" />
+    <text x="340" y="208" fill="#38BDF8" font-size="18" font-weight="900" font-family="monospace">24:00</text>
+    <circle cx="404" cy="201" r="3" fill="#F97316" />
+
+    <!-- Program Selection Dial Knob -->
+    <circle cx="465" cy="201" r="20" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2" />
+    <circle cx="465" cy="201" r="14" fill="#F8FAFC" />
+    <line x1="465" y1="201" x2="465" y2="187" stroke="#F97316" stroke-width="3.5" stroke-linecap="round" />
+
+    <!-- Large Front Loading Door Outer Rim -->
+    <circle cx="350" cy="360" r="115" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="3" />
+    <circle cx="350" cy="360" r="98" fill="#0F172A" />
+
+    <!-- Glass Window Inner Drum -->
+    <circle cx="350" cy="360" r="86" fill="url(#glassReflection)" />
+
+    <!-- Water Swirl & Clothes inside Drum -->
+    <path d="M 280 370 C 310 330, 390 330, 420 370 C 390 410, 310 410, 280 370 Z" fill="#00A8E8" opacity="0.6" />
+    <path d="M 300 350 C 330 320, 370 380, 400 350" stroke="#F97316" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.8" />
+    <path d="M 310 385 C 340 410, 380 360, 390 395" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.9" />
+
+    <!-- Chrome Door Handle -->
+    <rect x="445" y="340" width="12" height="40" rx="6" fill="#94A3B8" stroke="#FFFFFF" stroke-width="1.5" />
+  </g>
+
+  <!-- === BASKET OF NEATLY FOLDED LAUNDRY (LEFT SIDE) === -->
+  <g filter="url(#softShadow)">
+    <!-- Wicker Basket Base -->
+    <path d="M 80 430 L 100 520 C 102 528, 110 534, 118 534 L 212 534 C 220 534, 228 528, 230 520 L 250 430 Z" fill="#D97706" />
+    <!-- Wicker Weave Texture -->
+    <path d="M 90 455 L 240 455 M 95 480 L 235 480 M 100 505 L 230 505" stroke="#B45309" stroke-width="2.5" />
+
+    <!-- Stacked Folded Clothes -->
+    <!-- Bottom Layer - Orange Towel -->
+    <rect x="70" y="405" width="190" height="28" rx="8" fill="#F97316" />
+    <!-- Mid Layer - Cyan Folded Shirt -->
+    <rect x="75" y="380" width="180" height="28" rx="8" fill="#38BDF8" />
+    <!-- Top Layer - Mint Green Towel -->
+    <rect x="85" y="355" width="160" height="28" rx="8" fill="#2DD4BF" />
+    <!-- Crisp White Top Linen -->
+    <rect x="95" y="332" width="140" height="26" rx="8" fill="#FFFFFF" />
+  </g>
+
+  <!-- === ECO DETERGENT BOTTLE (RIGHT SIDE) === -->
+  <g filter="url(#softShadow)">
+    <!-- Bottle Body -->
+    <path d="M 540 400 C 530 400, 520 410, 520 430 L 520 510 C 520 524, 530 534, 544 534 L 596 534 C 610 534, 620 524, 620 510 L 620 430 C 620 410, 610 400, 600 400 Z" fill="#00A8E8" />
+    <!-- Measuring Cap -->
+    <rect x="552" y="370" width="36" height="32" rx="6" fill="#F97316" />
+    <!-- Bottle Handle -->
+    <path d="M 600 435 C 615 435, 615 485, 600 485" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" fill="none" />
+    <!-- Eco Label -->
+    <rect x="535" y="440" width="70" height="50" rx="8" fill="#FFFFFF" />
+    <circle cx="570" cy="465" r="14" fill="#2DD4BF" />
+    <path d="M 565 468 L 570 460 L 575 468" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- === STEAM IRON (TOP RIGHT DASH) === -->
+  <g filter="url(#softShadow)" transform="translate(480, 110)">
+    <!-- Iron Soleplate Base -->
+    <path d="M 10 70 L 100 70 C 115 70, 125 55, 105 40 L 40 25 C 20 25, 10 40, 10 70 Z" fill="#F8FAFC" />
+    <path d="M 10 70 L 100 70 L 115 75 L 0 75 Z" fill="#94A3B8" />
+    <!-- Orange Handle Accent -->
+    <path d="M 25 35 C 25 15, 75 15, 85 35" stroke="#F97316" stroke-width="12" stroke-linecap="round" fill="none" />
+    <!-- Steam Jets Vapor -->
+    <path d="M -15 82 C -5 78, 5 86, 15 82" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.7" />
+    <path d="M 25 86 C 35 82, 45 90, 55 86" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.7" />
+  </g>
+
+  <!-- === FLOATING SPARKLING SOAP BUBBLES === -->
+  <g filter="url(#glowFilter)">
+    <circle cx="150" cy="180" r="22" fill="#FFFFFF" fill-opacity="0.6" stroke="#38BDF8" stroke-width="2" />
+    <circle cx="144" cy="174" r="6" fill="#FFFFFF" opacity="0.9" />
+
+    <circle cx="560" cy="220" r="18" fill="#FFFFFF" fill-opacity="0.6" stroke="#F97316" stroke-width="2" />
+    <circle cx="555" cy="215" r="5" fill="#FFFFFF" opacity="0.9" />
+
+    <circle cx="230" cy="100" r="14" fill="#FFFFFF" fill-opacity="0.5" stroke="#38BDF8" stroke-width="1.5" />
+    <circle cx="490" cy="80" r="12" fill="#FFFFFF" fill-opacity="0.5" stroke="#38BDF8" stroke-width="1.5" />
+
+    <!-- Sparkle Stars -->
+    <path d="M 120 120 L 123 128 L 131 131 L 123 134 L 120 142 L 117 134 L 109 131 L 117 128 Z" fill="#F97316" />
+    <path d="M 580 140 L 582 146 L 588 148 L 582 150 L 580 156 L 578 150 L 572 148 L 578 146 Z" fill="#38BDF8" />
+  </g>
 </svg>
