@@ -2,12 +2,19 @@
 
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Phone } from "lucide-react";
 
 export function BottomCtaBanner() {
   return (
-    <section className="max-container" data-aos="fade-up">
-      <div className="bg-gradient-to-r from-[#003B65] via-[#00A8B5] to-[#00223D] rounded-3xl p-8 sm:p-12 text-white text-center space-y-6 shadow-2xl relative overflow-hidden border border-white/10">
+    <section className="max-container overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
+        className="bg-gradient-to-r from-[#003B65] via-[#00A8B5] to-[#00223D] rounded-[2.25rem] p-8 sm:p-12 text-white text-center space-y-6 shadow-2xl relative overflow-hidden border border-white/10"
+      >
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight max-w-2xl mx-auto leading-tight">
           Ready For Fresh Clothes Without The Effort?
         </h2>
@@ -15,20 +22,24 @@ export function BottomCtaBanner() {
           Book your pickup online in under 60 seconds or call our LA team directly at +1 (323) 828-7503.
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
-          <Link
-            href="/contact"
-            className="w-full sm:w-auto px-8 py-4 bg-[#FFC72C] hover:bg-amber-400 text-slate-950 font-extrabold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-150 text-base"
-          >
-            Schedule Pickup Now
-          </Link>
-          <a
-            href="tel:+13238287503"
-            className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold rounded-2xl transition-all text-base flex items-center justify-center gap-2"
-          >
-            <Phone className="w-4 h-4 text-[#FFC72C]" /> Call +1 (323) 828-7503
-          </a>
+          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="w-full sm:w-auto">
+            <Link
+              href="/contact"
+              className="w-full sm:w-auto px-8 py-4 bg-[#FFC72C] hover:bg-amber-400 text-slate-950 font-extrabold rounded-2xl shadow-lg hover:shadow-xl transition-all text-base inline-block"
+            >
+              Schedule Pickup Now
+            </Link>
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="w-full sm:w-auto">
+            <a
+              href="tel:+13238287503"
+              className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold rounded-2xl transition-all text-base flex items-center justify-center gap-2"
+            >
+              <Phone className="w-4 h-4 text-[#FFC72C]" /> Call +1 (323) 828-7503
+            </a>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
