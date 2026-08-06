@@ -19,9 +19,9 @@ export function PodcastStyleFeature() {
           className="lg:col-span-5 space-y-6 sm:space-y-8"
         >
           <div className="space-y-4">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#00223D] tracking-tight leading-[1.1]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#00223D] tracking-tight leading-[1.1]">
               Find and schedule your favorite laundry service here!
-            </h2>
+            </h1>
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal max-w-lg">
               The best laundry & dry cleaning service communicates quality and makes it easy for LA visitors to discover doorstep eco garment care.
             </p>
