@@ -14,18 +14,16 @@ export function PodcastStyleFeature() {
       <div className="max-container grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         {/* Left Side: Headline & CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-5 space-y-5 sm:space-y-6"
         >
           <div className="space-y-3 sm:space-y-4">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.1 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50 text-[#00707A] text-xs font-bold border border-cyan-100/80 shadow-2xs"
             >
               <Sparkles className="w-3.5 h-3.5 text-[#00A8B5]" />
@@ -42,10 +40,10 @@ export function PodcastStyleFeature() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
               <Link
                 href="/contact"
-                className="px-6 sm:px-7 py-3 sm:py-3.5 bg-[#111827] hover:bg-[#00223D] text-white font-bold text-xs sm:text-sm rounded-xl shadow-md hover:shadow-lg transition-all inline-block"
+                className="px-6 sm:px-7 py-3 sm:py-3.5 bg-[#00A8B5] hover:bg-[#0091A4] text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-md hover:shadow-lg transition-all inline-block"
               >
                 Get Started
               </Link>
@@ -54,7 +52,7 @@ export function PodcastStyleFeature() {
             <motion.div whileHover={{ x: 4 }} transition={{ type: "spring", stiffness: 300 }}>
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2 font-semibold text-slate-800 hover:text-[#00A8B5] text-xs sm:text-sm transition-colors group px-3 py-3"
+                className="inline-flex items-center gap-2 font-bold text-[#00A8B5] hover:text-[#003B65] text-xs sm:text-sm transition-colors group px-3 py-3"
               >
                 <span>🚀 Explore services</span>
                 <ArrowRight className="w-4 h-4 text-[#00A8B5] group-hover:translate-x-1 transition-transform" />
@@ -63,18 +61,17 @@ export function PodcastStyleFeature() {
           </div>
         </motion.div>
 
-        {/* Right Side: Overlapping Design Composition */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-7 relative"
-        >
+        {/* Right Side: Overlapping Design Composition (Slide-In From Right) */}
+        <div className="lg:col-span-7 relative">
           <div className="relative max-w-lg mx-auto lg:max-w-none grid grid-cols-12 gap-3 sm:gap-5 items-end">
             
-            {/* Top-Left Card Group */}
-            <div className="col-span-7 space-y-2.5 sm:space-y-4 relative z-10">
+            {/* Top-Left Card Group (Slide-in from Right) */}
+            <motion.div
+              initial={{ opacity: 0, x: 70 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="col-span-7 space-y-2.5 sm:space-y-4 relative z-10"
+            >
               {/* Sage Green Background Panel Container */}
               <motion.div
                 whileHover={{ scale: 1.015 }}
@@ -92,25 +89,20 @@ export function PodcastStyleFeature() {
                 </div>
               </motion.div>
 
-              {/* Floating Dark Metric Badge (Overlapping Top Right) */}
+              {/* Floating Dark Metric Badge (Slide & Pop from Right) */}
               <motion.div
-                animate={{
-                  y: [0, -6, 0],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+                initial={{ opacity: 0, x: 40, scale: 0.85 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.45 }}
                 whileHover={{ scale: 1.05 }}
-                className="bg-[#111827] text-white p-3 sm:p-4 rounded-xl shadow-2xl absolute -top-4 -right-2 sm:-top-6 sm:-right-6 z-30 min-w-[140px] sm:min-w-[170px]"
+                className="bg-[#00223D] text-white p-3 sm:p-4 rounded-xl shadow-2xl absolute -top-4 -right-2 sm:-top-6 sm:-right-6 z-30 min-w-[140px] sm:min-w-[170px]"
               >
-                <div className="text-[10px] sm:text-[11px] font-medium text-slate-400">Total Orders Done</div>
+                <div className="text-[10px] sm:text-[11px] font-medium text-slate-300">Total Orders Done</div>
                 <div className="text-base sm:text-xl font-extrabold tracking-tight text-white flex items-baseline justify-between mt-0.5">
                   <span>12,480</span>
-                  <span className="text-[9px] sm:text-[10px] text-slate-400 font-normal hover:underline cursor-pointer">stats</span>
+                  <span className="text-[9px] sm:text-[10px] text-cyan-300 font-normal hover:underline cursor-pointer">stats</span>
                 </div>
-                <div className="text-[9px] sm:text-[10px] font-medium text-cyan-400 mt-1 flex items-center gap-1">
+                <div className="text-[9px] sm:text-[10px] font-medium text-[#00A8B5] mt-1 flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   Beachwood LA
                 </div>
@@ -121,7 +113,7 @@ export function PodcastStyleFeature() {
                 <button
                   onClick={() => setIsPlaying(!isPlaying)}
                   aria-label="Toggle Animation Status"
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#111827] text-white flex items-center justify-center shrink-0 hover:scale-105 transition-transform"
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#00A8B5] hover:bg-[#0091A4] text-white flex items-center justify-center shrink-0 hover:scale-105 transition-transform"
                 >
                   {isPlaying ? <Pause className="w-3.5 h-3.5 fill-white" /> : <Play className="w-3.5 h-3.5 fill-white ml-0.5" />}
                 </button>
@@ -142,7 +134,7 @@ export function PodcastStyleFeature() {
                         delay: i * 0.05,
                         ease: "easeInOut",
                       }}
-                      className={`w-1 rounded-full ${i < 8 ? "bg-[#111827]" : "bg-slate-300"}`}
+                      className={`w-1 rounded-full ${i < 8 ? "bg-[#00A8B5]" : "bg-slate-300"}`}
                     />
                   ))}
                 </div>
@@ -154,10 +146,15 @@ export function PodcastStyleFeature() {
                   <path d="M0,15 L40,0 L80,25 L120,5 L160,20 L160,30 L120,15 L80,30 L40,10 L0,25 Z" />
                 </svg>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Bottom-Right Card Group (Overlapping) */}
-            <div className="col-span-5 relative z-20">
+            {/* Bottom-Right Card Group (Slide-in from Right with Offset) */}
+            <motion.div
+              initial={{ opacity: 0, x: 90 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.85, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="col-span-5 relative z-20"
+            >
               {/* Soft Purple Background Panel */}
               <motion.div
                 whileHover={{ scale: 1.015 }}
@@ -175,29 +172,23 @@ export function PodcastStyleFeature() {
                 </div>
               </motion.div>
 
-              {/* Floating Circular Badge (Bottom Right) */}
+              {/* Floating Circular Badge (Slide & Pop from Right) */}
               <motion.div
-                animate={{
-                  y: [0, 6, 0],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1,
-                }}
+                initial={{ opacity: 0, x: 40, scale: 0.8 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.55 }}
                 whileHover={{ scale: 1.1 }}
-                className="absolute -bottom-3 -right-2 sm:-bottom-5 sm:-right-5 bg-[#1E3A8A] text-white w-18 h-18 sm:w-22 sm:h-22 rounded-full flex flex-col items-center justify-center text-center p-1.5 shadow-2xl border-4 border-white font-extrabold z-30"
+                className="absolute -bottom-3 -right-2 sm:-bottom-5 sm:-right-5 bg-[#003B65] text-white w-18 h-18 sm:w-22 sm:h-22 rounded-full flex flex-col items-center justify-center text-center p-1.5 shadow-2xl border-4 border-white font-extrabold z-30"
               >
                 <span className="text-xs sm:text-sm leading-none font-black text-white">500+</span>
                 <span className="text-[9px] sm:text-[10px] font-semibold text-cyan-200 mt-0.5 leading-tight">
                   Happy Homes
                 </span>
               </motion.div>
-            </div>
+            </motion.div>
 
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
